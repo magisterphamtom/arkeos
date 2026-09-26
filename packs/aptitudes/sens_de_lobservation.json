@@ -1,0 +1,18 @@
+{
+  "_id": "MJIv4vSK4rTIN8xM",
+  "name": "Sens de l'Observation",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Investigateur",
+    "cout": 1,
+    "effet": "Bonus +2 en Renseignement",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

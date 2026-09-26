@@ -1,0 +1,19 @@
+{
+  "_id": "5PFIWmrSC4s0u6ZT",
+  "name": "Intimidation",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "social",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Effrayer, chantage, coercition — souvent illégal."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

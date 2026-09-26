@@ -1,0 +1,23 @@
+{
+  "_id": "bYef4PhHnRW8Z5TE",
+  "name": "Webley Mk VI",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "poing",
+    "degats": 9,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 6,
+    "porteeEff": 15,
+    "porteeMax": 50,
+    "special": "Revolver calibre .455, fiable",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

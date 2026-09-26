@@ -1,0 +1,19 @@
+{
+  "_id": "yEPKEvAEKb7r2d6E",
+  "name": "Système D",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "savoir",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Mécanique, électricité, bricolage de fortune."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

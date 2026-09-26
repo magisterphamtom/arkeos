@@ -1,0 +1,18 @@
+{
+  "_id": "KQJrUXgHcVxZsNGa",
+  "name": "Chance Insolente",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Baroudeur",
+    "cout": 4,
+    "effet": "1×/scénario : un jet raté devient réussite",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

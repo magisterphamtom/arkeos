@@ -1,0 +1,19 @@
+{
+  "_id": "0kwAkByByTVnnEfd",
+  "name": "Armes d'épaule",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "combat",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Fusils de chasse, de guerre ou de tireur d'élite."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

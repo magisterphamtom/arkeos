@@ -1,0 +1,23 @@
+{
+  "_id": "lbgXQlW5XsSXE9Br",
+  "name": "MP18",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "automatique",
+    "degats": 8,
+    "tempsRech": "3",
+    "coupsRound": "3/1",
+    "magasin": 32,
+    "porteeEff": 25,
+    "porteeMax": 100,
+    "special": "Pistolet-mitrailleur allemand",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

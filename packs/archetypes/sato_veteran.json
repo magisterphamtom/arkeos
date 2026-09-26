@@ -1,0 +1,59 @@
+{
+  "_id": "i9jv4lpE6Sfwhq2U",
+  "name": "Sato — Vétéran",
+  "type": "pj",
+  "img": "systems/arkeos/assets/portraits/portrait_08.jpg",
+  "system": {
+    "etatCivil": {
+      "prenom": "Sato",
+      "nom": "",
+      "surnom": "",
+      "dateNaissance": "",
+      "culture": "",
+      "nationalite": "",
+      "yeux": "",
+      "cheveux": "",
+      "taille": "",
+      "poids": "",
+      "age": "",
+      "sexe": ""
+    },
+    "archetype": "Vétéran",
+    "carac": {
+      "physique": 8,
+      "mental": 6,
+      "perception": 7,
+      "presence": 5
+    },
+    "coutChamps": {
+      "connaissance": 3,
+      "combat": 1,
+      "savoir": 2,
+      "social": 2
+    },
+    "pvActuels": 24,
+    "degLetauxActuels": 0,
+    "degSuperfActuels": 0,
+    "protections": [],
+    "evActuelle": 20,
+    "pointsEclatMax": 3,
+    "pointsEclatActuels": 3,
+    "reputation": 1,
+    "experience": 0,
+    "argent": {
+      "revenus": 320,
+      "liquidites": 1600
+    },
+    "biographie": "<p><em>Personnage prêt-à-jouer — Vétéran</em></p>",
+    "notes": "",
+    "equipement": "",
+    "magie": ""
+  },
+  "items": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

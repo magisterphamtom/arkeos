@@ -1,0 +1,81 @@
+{{! ARKÉOS — Feuille PNJ }}
+<div class="arkeos pnj-sheet">
+<div class="sheet-header ark-header pnj-header">
+  <img class="ark-portrait pnj-portrait" src="{{actor.img}}" data-edit="img" />
+  <div class="pnj-identite">
+    <input class="hero-nom" type="text" name="name" value="{{actor.name}}" placeholder="Nom du PNJ" />
+    <input type="text" name="system.archetype" value="{{system.archetype}}" placeholder="Archétype / Nature…" class="pnj-archetype" />
+    <input type="text" name="system.description" value="{{system.description}}" placeholder="Description rapide…" class="pnj-desc" />
+  </div>
+</div>
+
+<div class="pnj-body">
+
+  <div class="ark-section">
+    <h3 class="ark-section-titre">c a r a c t é r i s t i q u e s</h3>
+    <div class="carac-grille">
+      <div class="carac-bloc"><div class="carac-nom">physique</div>
+        <input class="carac-val" type="number" name="system.carac.physique" value="{{system.carac.physique}}" min="1" max="20" /></div>
+      <div class="carac-bloc"><div class="carac-nom">mental</div>
+        <input class="carac-val" type="number" name="system.carac.mental" value="{{system.carac.mental}}" min="1" max="20" /></div>
+      <div class="carac-bloc"><div class="carac-nom">perception</div>
+        <input class="carac-val" type="number" name="system.carac.perception" value="{{system.carac.perception}}" min="1" max="20" /></div>
+      <div class="carac-bloc"><div class="carac-nom">présence</div>
+        <input class="carac-val" type="number" name="system.carac.presence" value="{{system.carac.presence}}" min="1" max="20" /></div>
+    </div>
+  </div>
+
+  <div class="ark-section">
+    <h3 class="ark-section-titre">⚡ Champs</h3>
+    <div class="pnj-champs">
+      {{#each system.champs as |val champId|}}
+        <div class="pnj-champ-ligne">
+          <span class="pnj-champ-nom">{{champId}}</span>
+          <span class="pnj-champ-val"><b>{{val}}</b></span>
+          <button class="btn-confrontation" data-champ="{{champId}}">🎲 Jet</button>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="ark-section">
+    <div class="pnj-stats">
+      <div class="pnj-stat-ligne">
+        <span>PV : </span>
+        <input type="number" name="system.pvActuels" value="{{system.pvActuels}}" min="0" style="width:55px;" />
+        <span>/ {{system.pvMax}}</span>
+        <span style="margin-left:12px;">Défense : <b>{{system.defense}}</b></span>
+        <span style="margin-left:12px;">Impact : <b>{{system.impact}}</b></span>
+        <span style="margin-left:12px;">Init. : <b>{{system.initiative}}</b></span>
+      </div>
+      <div class="pnj-stat-ligne">
+        EV : <input type="number" name="system.evActuelle" value="{{system.evActuelle}}" min="0" style="width:55px;" />
+        / {{system.evMax}}
+        <span style="margin-left:12px;">Volonté : <b>{{system.volonte}}</b></span>
+        <span style="margin-left:12px;">Rép. : <input type="number" name="system.reputation" value="{{system.reputation}}" min="0" style="width:45px;" /></span>
+      </div>
+    </div>
+  </div>
+
+  {{#if armes.length}}
+  <div class="ark-section">
+    <h3 class="ark-section-titre">⚔️ Armes</h3>
+    <table class="armes-table">
+      <thead><tr><th>Arme</th><th>Dég.</th><th>P.E.</th><th></th></tr></thead>
+      <tbody>
+        {{#each armes as |arme|}}
+          <tr><td>{{arme.name}}</td><td>+{{arme.system.degats}}</td><td>{{arme.system.porteeEff}}m</td>
+            <td><button class="btn-attaque" data-item-id="{{arme.id}}">⚔️</button></td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/if}}
+
+  <div class="ark-section">
+    <h3 class="ark-section-titre">📝 Notes MJ</h3>
+    <textarea name="system.notes" rows="5" style="width:100%;" placeholder="Notes sur ce PNJ…">{{system.notes}}</textarea>
+  </div>
+
+</div>
+</div>

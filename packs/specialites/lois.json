@@ -1,0 +1,19 @@
+{
+  "_id": "kgdtNCV5I9SJ79yC",
+  "name": "Lois",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "connaissance",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Droit, bureaucratie, rouages administratifs."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

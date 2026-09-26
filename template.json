@@ -1,0 +1,16 @@
+{
+  "Actor": {
+    "types": ["pj", "pnj"],
+    "pj":  {},
+    "pnj": {}
+  },
+  "Item": {
+    "types": ["specialite", "arme", "aptitude", "trait", "equipement", "pouvoir"],
+    "specialite":  {},
+    "arme":        {},
+    "aptitude":    {},
+    "trait":       {},
+    "equipement":  {},
+    "pouvoir":     {}
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "VUK8oUdiUKkqe90T",
+  "name": "Indice Primordial",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Investigateur",
+    "cout": 4,
+    "effet": "1×/scénario : question oui/non au MJ",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

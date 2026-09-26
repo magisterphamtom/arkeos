@@ -1,0 +1,102 @@
+{{! ======================================================= }}
+{{! ARKÉOS — Onglet Avancé : EV, Volonté, Aptitudes, Traits, Pouvoirs }}
+{{! ======================================================= }}
+<div class="tab {{#if (eq tabActif 'avance')}}active{{/if}}" data-tab="avance">
+
+  {{! ========= ÉNERGIE VITALE & VOLONTÉ ========= }}
+  <div class="ark-section">
+    <div class="ev-section">
+      <div class="ev-header">
+        <span class="ev-titre">énergie vitale</span>
+        <input type="number" name="system.evActuelle" value="{{system.evActuelle}}" min="0" class="ev-actuel" />
+        <span class="ev-sep">/</span>
+        <span class="ev-max">{{system.evMax}}</span>
+        <span class="ev-formule">(MEN×2+PHY)</span>
+        <span class="volonte-zone">volonté : <b>{{system.volonte}}</b></span>
+      </div>
+      <div class="barre-ev">
+        {{#each barreEV}}
+          <div class="case-ev {{#if actif}}active-ev{{/if}}" data-val="{{val}}" title="EV {{val}}">{{val}}</div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  {{! ========= APTITUDES ========= }}
+  <div class="ark-section">
+    <h3 class="ark-section-titre">⭐ Aptitudes</h3>
+    <p class="section-aide">Talents uniques liés à votre archétype.</p>
+    {{#each aptitudes as |apt|}}
+      <div class="apt-ligne">
+        <span class="apt-nom">{{apt.name}}</span>
+        <span class="apt-cout">({{apt.system.cout}} pt)</span>
+        <span class="apt-effet">{{apt.system.effet}}</span>
+        <button class="btn-ouvrir-item" data-item-id="{{apt.id}}">✏️</button>
+        <button class="btn-supprimer-item" data-item-id="{{apt.id}}">🗑️</button>
+      </div>
+    {{/each}}
+    <div class="drop-zone" data-type="aptitude">⭐ Glisser une Aptitude</div>
+  </div>
+
+  {{! ========= TRAITS (Avantages/Restrictions) ========= }}
+  <div class="ark-section">
+    <h3 class="ark-section-titre">🔖 Traits</h3>
+    <p class="section-aide">Avantages et Restrictions personnels.</p>
+    {{#each traits as |trait|}}
+      <div class="trait-ligne trait-{{trait.system.type}}">
+        <span class="trait-nom">{{trait.name}}</span>
+        <span class="trait-valeur {{#if (lt trait.system.valeur 0)}}trait-negatif{{else}}trait-positif{{/if}}">
+          {{#if (gt trait.system.valeur 0)}}+{{/if}}{{trait.system.valeur}}
+        </span>
+        <span class="trait-effet">{{trait.system.effet}}</span>
+        <button class="btn-ouvrir-item" data-item-id="{{trait.id}}">✏️</button>
+        <button class="btn-supprimer-item" data-item-id="{{trait.id}}">🗑️</button>
+      </div>
+    {{/each}}
+    <div class="drop-zone" data-type="trait">🔖 Glisser un Trait (Avantage/Restriction)</div>
+  </div>
+
+  {{! ========= POUVOIRS / MAGIE ========= }}
+  <div class="ark-section">
+    <h3 class="ark-section-titre">🔮 Pouvoirs / Magie</h3>
+    {{#each pouvoirs as |pouvoir|}}
+      <div class="pouvoir-ligne">
+        <span class="pouvoir-nom">{{pouvoir.name}}</span>
+        <span class="pouvoir-famille">{{pouvoir.system.famille}}</span>
+        <span class="pouvoir-niveau">Niv. +{{pouvoir.system.niveau}} (+{{pouvoir.system.gainEV}} EV)</span>
+        <button class="btn-ouvrir-item" data-item-id="{{pouvoir.id}}">✏️</button>
+        <button class="btn-supprimer-item" data-item-id="{{pouvoir.id}}">🗑️</button>
+      </div>
+    {{/each}}
+    <div class="drop-zone" data-type="pouvoir">🔮 Glisser un Pouvoir</div>
+    <div class="notes-champ" style="margin-top:8px;">
+      <div class="editor-content" data-edit="system.magie">{{{system.magie}}}</div>
+    </div>
+  </div>
+
+  {{! ========= RÉPUTATION, ARGENT, XP ========= }}
+  <div class="ark-section">
+    <div class="stats-finales">
+      <div class="stat-item">
+        <label>réputation</label>
+        <input type="number" name="system.reputation" value="{{system.reputation}}" min="0" style="width:60px;" />
+      </div>
+      <div class="stat-item">
+        <label>expérience</label>
+        <input type="number" name="system.experience" value="{{system.experience}}" min="0" style="width:70px;" />
+        <span style="font-size:0.75em;color:#888;"> PX</span>
+      </div>
+      <div class="stat-item">
+        <label>revenus mensuels</label>
+        <input type="number" name="system.argent.revenus" value="{{system.argent.revenus}}" min="0" style="width:80px;" />
+        <span style="font-size:0.75em;"> $/mois</span>
+      </div>
+      <div class="stat-item">
+        <label>liquidités</label>
+        <input type="number" name="system.argent.liquidites" value="{{system.argent.liquidites}}" min="0" style="width:80px;" />
+        <span style="font-size:0.75em;"> $</span>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,18 @@
+{
+  "_id": "hx2NS29krUgTR4PU",
+  "name": "Ressources",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Dandy",
+    "cout": 4,
+    "effet": "1×/scénario : obtenir l'objet nécessaire",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

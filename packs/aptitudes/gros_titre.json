@@ -1,0 +1,18 @@
+{
+  "_id": "Wkvy3KnSU2ECgXFF",
+  "name": "Gros Titre",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Journaliste",
+    "cout": 4,
+    "effet": "1×/scénario : scoop ou indice inédit",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

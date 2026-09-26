@@ -1,0 +1,19 @@
+{
+  "_id": "zdARQ14zIPbki9wq",
+  "name": "Déguisement",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "social",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Maquillage, costumes, se fondre dans la masse."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

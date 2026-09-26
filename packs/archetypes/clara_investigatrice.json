@@ -1,0 +1,59 @@
+{
+  "_id": "oXOw0kdomySmJjum",
+  "name": "Clara — Investigatrice",
+  "type": "pj",
+  "img": "systems/arkeos/assets/portraits/portrait_05.jpg",
+  "system": {
+    "etatCivil": {
+      "prenom": "Clara",
+      "nom": "",
+      "surnom": "",
+      "dateNaissance": "",
+      "culture": "",
+      "nationalite": "",
+      "yeux": "",
+      "cheveux": "",
+      "taille": "",
+      "poids": "",
+      "age": "",
+      "sexe": ""
+    },
+    "archetype": "Investigateur",
+    "carac": {
+      "physique": 5,
+      "mental": 8,
+      "perception": 8,
+      "presence": 5
+    },
+    "coutChamps": {
+      "connaissance": 3,
+      "combat": 2,
+      "savoir": 2,
+      "social": 1
+    },
+    "pvActuels": 15,
+    "degLetauxActuels": 0,
+    "degSuperfActuels": 0,
+    "protections": [],
+    "evActuelle": 21,
+    "pointsEclatMax": 3,
+    "pointsEclatActuels": 3,
+    "reputation": 1,
+    "experience": 0,
+    "argent": {
+      "revenus": 320,
+      "liquidites": 1600
+    },
+    "biographie": "<p><em>Personnage prêt-à-jouer — Investigateur</em></p>",
+    "notes": "",
+    "equipement": "",
+    "magie": ""
+  },
+  "items": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

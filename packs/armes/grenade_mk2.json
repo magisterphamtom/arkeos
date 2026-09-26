@@ -1,0 +1,23 @@
+{
+  "_id": "1bSomsHabL358uSm",
+  "name": "Grenade Mk2",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "lourde",
+    "degats": 14,
+    "tempsRech": "3",
+    "coupsRound": "1",
+    "magasin": 1,
+    "porteeEff": 10,
+    "porteeMax": 30,
+    "special": "Rayon de 5m, tous subissent les dégâts",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

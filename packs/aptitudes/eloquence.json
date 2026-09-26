@@ -1,0 +1,18 @@
+{
+  "_id": "tqHUg8oLNuYEqxPN",
+  "name": "Éloquence",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Dandy",
+    "cout": 1,
+    "effet": "Bonus +2 en Baratin",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

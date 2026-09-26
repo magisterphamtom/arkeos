@@ -1,0 +1,23 @@
+{
+  "_id": "zQNbIfrD37vzRczx",
+  "name": "Winchester 1897",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "epaule",
+    "degats": 13,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 5,
+    "porteeEff": 30,
+    "porteeMax": 80,
+    "special": "Fusil à pompe, +2 à moins de 10m",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,23 @@
+{
+  "_id": "ng4mhOecevhdDp41",
+  "name": "Thompson A1",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "automatique",
+    "degats": 9,
+    "tempsRech": "3",
+    "coupsRound": "3/1",
+    "magasin": 20,
+    "porteeEff": 30,
+    "porteeMax": 150,
+    "special": "Tommy Gun, tir rafale",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "i0NguALoBL214DZr",
+  "name": "Armes lourdes",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "combat",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Canons, lance-flammes, mortiers, engins anti-véhicule."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

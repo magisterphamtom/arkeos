@@ -1,0 +1,154 @@
+{{! ======================================================= }}
+{{! ARKÉOS — Feuille Item générique                        }}
+{{! ======================================================= }}
+<div class="arkeos item-sheet">
+<div class="sheet-header ark-header item-header">
+  <img src="{{item.img}}" data-edit="img" class="item-portrait" title="Changer l'icône" />
+  <div class="item-identite">
+    <input class="item-nom-input" type="text" name="name" value="{{item.name}}" placeholder="Nom…" />
+    <span class="item-type-badge">{{item.type}}</span>
+  </div>
+</div>
+
+<div class="item-body">
+
+  {{! ===== SPÉCIALITÉ ===== }}
+  {{#if (eq item.type 'specialite')}}
+    <div class="form-section">
+      <div class="form-group">
+        <label>Champ</label>
+        <select name="system.champ">
+          <option value="connaissance" {{#if (eq system.champ 'connaissance')}}selected{{/if}}>Connaissance</option>
+          <option value="combat"       {{#if (eq system.champ 'combat')}}selected{{/if}}>Combat</option>
+          <option value="savoir"       {{#if (eq system.champ 'savoir')}}selected{{/if}}>Savoir</option>
+          <option value="social"       {{#if (eq system.champ 'social')}}selected{{/if}}>Social</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Bonus</label>
+        <input type="number" name="system.bonus" value="{{system.bonus}}" min="0" max="6" style="width:60px;" />
+        <span style="font-size:0.8em;color:#888;"> (+0=néophyte, +2=pro, +4=expert, +6=extraordinaire)</span>
+      </div>
+      <div class="form-group">
+        <label>Double Spécialité (nom)</label>
+        <input type="text" name="system.doubleSpecNom" value="{{system.doubleSpecNom}}" placeholder="ex: Histoire précolombienne" />
+      </div>
+      <div class="form-group">
+        <label>Double Spécialité (bonus)</label>
+        <input type="number" name="system.doubleSpecBonus" value="{{system.doubleSpecBonus}}" min="0" max="4" style="width:60px;" />
+      </div>
+    </div>
+  {{/if}}
+
+  {{! ===== ARME ===== }}
+  {{#if (eq item.type 'arme')}}
+    <div class="form-section">
+      <div class="form-group">
+        <label>Catégorie</label>
+        <select name="system.categorie">
+          <option value="poing"       {{#if (eq system.categorie 'poing')}}selected{{/if}}>Armes de poing</option>
+          <option value="melee"       {{#if (eq system.categorie 'melee')}}selected{{/if}}>Armes de mêlée</option>
+          <option value="epaule"      {{#if (eq system.categorie 'epaule')}}selected{{/if}}>Armes d'épaule</option>
+          <option value="automatique" {{#if (eq system.categorie 'automatique')}}selected{{/if}}>Armes automatiques</option>
+          <option value="lourde"      {{#if (eq system.categorie 'lourde')}}selected{{/if}}>Armes lourdes</option>
+          <option value="jet"         {{#if (eq system.categorie 'jet')}}selected{{/if}}>Armes de jet</option>
+          <option value="speciale"    {{#if (eq system.categorie 'speciale')}}selected{{/if}}>Armes spéciales</option>
+          <option value="artsmartiaux"{{#if (eq system.categorie 'artsmartiaux')}}selected{{/if}}>Arts martiaux</option>
+          <option value="bagarre"     {{#if (eq system.categorie 'bagarre')}}selected{{/if}}>Bagarre</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Dégâts (facteur)</label>
+        <input type="number" name="system.degats" value="{{system.degats}}" style="width:60px;" /></div>
+      <div class="form-group"><label>T/R (temps rechargement)</label>
+        <input type="text" name="system.tempsRech" value="{{system.tempsRech}}" style="width:60px;" /></div>
+      <div class="form-group"><label>C/R (coups/round)</label>
+        <input type="text" name="system.coupsRound" value="{{system.coupsRound}}" style="width:60px;" /></div>
+      <div class="form-group"><label>Magasin</label>
+        <input type="number" name="system.magasin" value="{{system.magasin}}" min="0" style="width:60px;" /></div>
+      <div class="form-group"><label>P.E. (portée efficace en m)</label>
+        <input type="number" name="system.porteeEff" value="{{system.porteeEff}}" min="0" style="width:70px;" /></div>
+      <div class="form-group"><label>P.M. (portée max en m)</label>
+        <input type="number" name="system.porteeMax" value="{{system.porteeMax}}" min="0" style="width:70px;" /></div>
+      <div class="form-group"><label>Spécial</label>
+        <input type="text" name="system.special" value="{{system.special}}" /></div>
+    </div>
+  {{/if}}
+
+  {{! ===== APTITUDE ===== }}
+  {{#if (eq item.type 'aptitude')}}
+    <div class="form-section">
+      <div class="form-group"><label>Archétype</label>
+        <input type="text" name="system.archetype" value="{{system.archetype}}" /></div>
+      <div class="form-group"><label>Coût (pts de Génération)</label>
+        <input type="number" name="system.cout" value="{{system.cout}}" min="0" style="width:60px;" /></div>
+      <div class="form-group"><label>Effet</label>
+        <input type="text" name="system.effet" value="{{system.effet}}" /></div>
+    </div>
+  {{/if}}
+
+  {{! ===== TRAIT ===== }}
+  {{#if (eq item.type 'trait')}}
+    <div class="form-section">
+      <div class="form-group"><label>Type</label>
+        <select name="system.type">
+          <option value="avantage"    {{#if (eq system.type 'avantage')}}selected{{/if}}>Avantage</option>
+          <option value="restriction" {{#if (eq system.type 'restriction')}}selected{{/if}}>Restriction</option>
+          <option value="les_deux"    {{#if (eq system.type 'les_deux')}}selected{{/if}}>Avantage ou Restriction</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Valeur (+ ou −)</label>
+        <input type="number" name="system.valeur" value="{{system.valeur}}" style="width:60px;" /></div>
+      <div class="form-group"><label>Coût en PG</label>
+        <input type="number" name="system.cout" value="{{system.cout}}" min="0" style="width:60px;" /></div>
+      <div class="form-group"><label>Effet</label>
+        <input type="text" name="system.effet" value="{{system.effet}}" /></div>
+    </div>
+  {{/if}}
+
+  {{! ===== ÉQUIPEMENT ===== }}
+  {{#if (eq item.type 'equipement')}}
+    <div class="form-section">
+      <div class="form-group"><label>Prix ($)</label>
+        <input type="number" name="system.prix" value="{{system.prix}}" min="0" style="width:80px;" /></div>
+      <div class="form-group"><label>Quantité</label>
+        <input type="number" name="system.quantite" value="{{system.quantite}}" min="0" style="width:60px;" /></div>
+      <div class="form-group"><label>Poids</label>
+        <select name="system.poids">
+          <option value="léger"  {{#if (eq system.poids 'léger')}}selected{{/if}}>Léger</option>
+          <option value="moyen"  {{#if (eq system.poids 'moyen')}}selected{{/if}}>Moyen</option>
+          <option value="lourd"  {{#if (eq system.poids 'lourd')}}selected{{/if}}>Lourd</option>
+        </select>
+      </div>
+    </div>
+  {{/if}}
+
+  {{! ===== POUVOIR ===== }}
+  {{#if (eq item.type 'pouvoir')}}
+    <div class="form-section">
+      <div class="form-group"><label>Famille</label>
+        <select name="system.famille">
+          <option value="psionique"      {{#if (eq system.famille 'psionique')}}selected{{/if}}>Psionique (Présence)</option>
+          <option value="physiologique"  {{#if (eq system.famille 'physiologique')}}selected{{/if}}>Physiologique (Physique)</option>
+          <option value="extrasensoriel" {{#if (eq system.famille 'extrasensoriel')}}selected{{/if}}>Extrasensoriel (Perception)</option>
+          <option value="genie"          {{#if (eq system.famille 'genie')}}selected{{/if}}>Génie (spécial)</option>
+          <option value="magic"          {{#if (eq system.famille 'magic')}}selected{{/if}}>Magic (Mental)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Niveau (0=Instinctif, 1=Contenu, 2=Contrôlé, 3=Maîtrisé)</label>
+        <input type="number" name="system.niveau" value="{{system.niveau}}" min="0" max="3" style="width:50px;" /></div>
+      <div class="form-group"><label>Gain EV</label>
+        <input type="number" name="system.gainEV" value="{{system.gainEV}}" min="0" style="width:60px;" /></div>
+      <div class="form-group"><label>Coût (PG)</label>
+        <input type="number" name="system.cout" value="{{system.cout}}" min="0" style="width:60px;" /></div>
+    </div>
+  {{/if}}
+
+  <div class="form-section">
+    <label><b>📝 Description</b></label>
+    <div class="editor-content" data-edit="system.description">{{{system.description}}}</div>
+  </div>
+
+</div>
+</div>
+
+</div>

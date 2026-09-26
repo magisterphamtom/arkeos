@@ -1,0 +1,23 @@
+{
+  "_id": "0xG1KpLJHq7mwtd5",
+  "name": "Mauser C96",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "poing",
+    "degats": 9,
+    "tempsRech": "2",
+    "coupsRound": "1",
+    "magasin": 10,
+    "porteeEff": 25,
+    "porteeMax": 100,
+    "special": "Semi-auto, peut être culassé en carabine",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "bpL8mYCRY8PxHRuF",
+  "name": "Stratégie/tactique",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "connaissance",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Art militaire, tactique de siège, stratégie."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

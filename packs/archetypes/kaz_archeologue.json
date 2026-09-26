@@ -1,0 +1,59 @@
+{
+  "_id": "oMr5eyQOAQnU57tY",
+  "name": "Kaz — Archéologue",
+  "type": "pj",
+  "img": "systems/arkeos/assets/portraits/portrait_01.jpg",
+  "system": {
+    "etatCivil": {
+      "prenom": "Kaz",
+      "nom": "",
+      "surnom": "",
+      "dateNaissance": "",
+      "culture": "",
+      "nationalite": "",
+      "yeux": "",
+      "cheveux": "",
+      "taille": "",
+      "poids": "",
+      "age": "",
+      "sexe": ""
+    },
+    "archetype": "Archéologue",
+    "carac": {
+      "physique": 6,
+      "mental": 7,
+      "perception": 7,
+      "presence": 8
+    },
+    "coutChamps": {
+      "connaissance": 1,
+      "combat": 3,
+      "savoir": 2,
+      "social": 2
+    },
+    "pvActuels": 18,
+    "degLetauxActuels": 0,
+    "degSuperfActuels": 0,
+    "protections": [],
+    "evActuelle": 20,
+    "pointsEclatMax": 3,
+    "pointsEclatActuels": 3,
+    "reputation": 1,
+    "experience": 0,
+    "argent": {
+      "revenus": 320,
+      "liquidites": 1600
+    },
+    "biographie": "<p><em>Personnage prêt-à-jouer — Archéologue</em></p>",
+    "notes": "",
+    "equipement": "",
+    "magie": ""
+  },
+  "items": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

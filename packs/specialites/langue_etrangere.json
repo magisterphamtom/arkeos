@@ -1,0 +1,19 @@
+{
+  "_id": "aiQ4mtd682mIiE3D",
+  "name": "Langue étrangère",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "connaissance",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Une langue par spécialité (anglais, arabe, espagnol...)."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

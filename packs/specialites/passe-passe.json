@@ -1,0 +1,19 @@
+{
+  "_id": "da5MAYu2NKf1jDao",
+  "name": "Passe-passe",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "savoir",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Pickpocket, prestidigitation, tour de main."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "Dgk624fpnTW48jlI",
+  "name": "Survie",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "savoir",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Milieux arctique, désertique, jungle — survie en nature."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

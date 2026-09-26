@@ -1,0 +1,59 @@
+{
+  "_id": "GVPL4szekjGG4wQM",
+  "name": "Jack — Baroudeur",
+  "type": "pj",
+  "img": "systems/arkeos/assets/portraits/portrait_02.jpg",
+  "system": {
+    "etatCivil": {
+      "prenom": "Jack",
+      "nom": "",
+      "surnom": "",
+      "dateNaissance": "",
+      "culture": "",
+      "nationalite": "",
+      "yeux": "",
+      "cheveux": "",
+      "taille": "",
+      "poids": "",
+      "age": "",
+      "sexe": ""
+    },
+    "archetype": "Baroudeur",
+    "carac": {
+      "physique": 7,
+      "mental": 6,
+      "perception": 7,
+      "presence": 6
+    },
+    "coutChamps": {
+      "connaissance": 3,
+      "combat": 2,
+      "savoir": 1,
+      "social": 2
+    },
+    "pvActuels": 21,
+    "degLetauxActuels": 0,
+    "degSuperfActuels": 0,
+    "protections": [],
+    "evActuelle": 19,
+    "pointsEclatMax": 3,
+    "pointsEclatActuels": 3,
+    "reputation": 1,
+    "experience": 0,
+    "argent": {
+      "revenus": 320,
+      "liquidites": 1600
+    },
+    "biographie": "<p><em>Personnage prêt-à-jouer — Baroudeur</em></p>",
+    "notes": "",
+    "equipement": "",
+    "magie": ""
+  },
+  "items": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "4gcs9e9I9l8YE0vD",
+  "name": "Chasse",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "savoir",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Pister, tendre des pièges, suivre une proie."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "9gxMLaMKsS0Krn2J",
+  "name": "Sens du Combat",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Vétéran",
+    "cout": 1,
+    "effet": "Bonus +2 à l'Initiative",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

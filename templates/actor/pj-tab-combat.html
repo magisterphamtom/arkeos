@@ -1,0 +1,130 @@
+{{! ======================================================= }}
+{{! ARKÉOS — Onglet Combat                                 }}
+{{! ======================================================= }}
+<div class="tab {{#if (eq tabActif 'combat')}}active{{/if}}" data-tab="combat">
+
+  {{! ========= BARRES DE DÉGÂTS ========= }}
+  <div class="ark-section">
+    <h3 class="ark-section-titre">⚔️ Blessures</h3>
+
+    <div class="degats-bloc">
+      <div class="degats-label">dég. létaux</div>
+      <div class="barre-letaux">
+        {{#each barreLetaux}}
+          <div class="case-degat case-letaux {{#if (eq val 0)}}case-zero{{/if}} {{#if actif}}active{{/if}}"
+               data-val="{{val}}"
+               title="{{val}} dégâts létaux">
+            {{val}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="degats-bloc">
+      <div class="degats-label">dég. superf.</div>
+      <div class="barre-superf">
+        {{#each barreSuperf}}
+          <div class="case-degat case-superf {{#if (eq val 0)}}case-zero{{/if}} {{#if actif}}active-superf{{/if}}"
+               data-val="{{val}}"
+               title="{{val}} dégâts superficiels">
+            {{val}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    {{! Seuils visuels }}
+    <div class="seuils-info">
+      PV : <b>{{system.pvActuels}}</b>/{{system.pvMax}}
+      — Seuil <b>−2</b> à {{system.seuilMoins2}} PV
+      — Seuil <b>−4</b> à {{system.seuilMoins4}} PV
+      {{#if (eq system.etatBlessure 'Blessé')}}
+        <span class="etat-blesse"> ⚠️ BLESSÉ (−2 à tout)</span>
+      {{/if}}
+      {{#if (eq system.etatBlessure 'Gravement Blessé')}}
+        <span class="etat-grave"> 🔴 GRIÈVEMENT BLESSÉ (−4 à tout)</span>
+      {{/if}}
+    </div>
+
+    <div class="soins-actions">
+      <button class="btn-soins" data-type="superf">🏥 Soigner les superficiels</button>
+      <button class="btn-soins" data-type="letaux">💉 Soigner les létaux</button>
+      <button class="btn-soins" data-type="full">✨ Récupération complète</button>
+    </div>
+  </div>
+
+  {{! ========= PROTECTIONS & ARMES ========= }}
+  <div class="ark-section">
+    <div class="combat-grille">
+
+      {{! Protections }}
+      <div class="protections-bloc">
+        <h4 class="sub-titre">protections</h4>
+        {{#each system.protections as |prot idx|}}
+          <div class="prot-ligne">
+            <input type="text" name="system.protections.{{idx}}.nom" value="{{prot.nom}}" placeholder="Nom…" class="prot-nom" />
+            <input type="number" name="system.protections.{{idx}}.valeur" value="{{prot.valeur}}" min="0" class="prot-val" />
+          </div>
+        {{/each}}
+        <div class="prot-total">
+          <span>défense : <b>{{system.defense}}</b></span>
+          <span>total protections : <b>{{system.protectionTotale}}</b></span>
+        </div>
+        <div class="prot-impact">impact : <b>{{system.impact}}</b></div>
+      </div>
+
+      {{! Armes }}
+      <div class="armes-bloc">
+        <h4 class="sub-titre">armes</h4>
+        <table class="armes-table">
+          <thead>
+            <tr>
+              <th>Arme</th><th>Dég.</th><th>T/R</th><th>C/R</th><th>Mag.</th><th>P.E.</th><th>P.M.</th><th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each armes as |arme|}}
+              <tr class="arme-ligne">
+                <td class="arme-nom">{{arme.name}}</td>
+                <td class="arme-stat">{{#if arme.system.degats}}+{{arme.system.degats}}{{else}}—{{/if}}</td>
+                <td class="arme-stat">{{arme.system.tempsRech}}</td>
+                <td class="arme-stat">{{arme.system.coupsRound}}</td>
+                <td class="arme-stat">{{arme.system.magasin}}</td>
+                <td class="arme-stat">{{arme.system.porteeEff}}</td>
+                <td class="arme-stat">{{arme.system.porteeMax}}</td>
+                <td class="arme-actions">
+                  <button class="btn-attaque" data-item-id="{{arme.id}}" title="Attaquer avec {{arme.name}}">⚔️</button>
+                  <button class="btn-ouvrir-item" data-item-id="{{arme.id}}">✏️</button>
+                  <button class="btn-supprimer-item" data-item-id="{{arme.id}}">🗑️</button>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="drop-zone" data-type="arme">⚔️ Glisser une arme depuis le compendium</div>
+      </div>
+    </div>
+  </div>
+
+  {{! ========= POINTS D'ÉCLAT ========= }}
+  <div class="ark-section eclat-section">
+    <h3 class="ark-section-titre">✨ Points d'Éclat</h3>
+    <div class="eclat-compteur">
+      <input type="number" name="system.pointsEclatActuels" value="{{system.pointsEclatActuels}}" min="0" class="eclat-actuel" />
+      <span class="eclat-sep">/</span>
+      <input type="number" name="system.pointsEclatMax" value="{{system.pointsEclatMax}}" min="0" class="eclat-max" />
+    </div>
+    <div class="eclat-boutons">
+      <button class="btn-eclat-depenser" data-type="action" title="Réussir automatiquement (1 point)">
+        🌟 Réussir auto (1)
+      </button>
+      <button class="btn-eclat-depenser" data-type="chance" title="Coup de pouce du destin (1 point)">
+        🍀 Coup de chance (1)
+      </button>
+      <button class="btn-eclat-depenser" data-type="mort" title="Échapper à la mort (3 points)">
+        💀 Échapper à la mort (3)
+      </button>
+    </div>
+  </div>
+
+</div>

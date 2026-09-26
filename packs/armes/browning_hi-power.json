@@ -1,0 +1,23 @@
+{
+  "_id": "lgEYcdGUf6UIKe2V",
+  "name": "Browning Hi-Power",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "poing",
+    "degats": 8,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 13,
+    "porteeEff": 15,
+    "porteeMax": 50,
+    "special": "13 balles, léger",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

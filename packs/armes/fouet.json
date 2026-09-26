@@ -1,0 +1,23 @@
+{
+  "_id": "QJyThXxI8j1ZXwps",
+  "name": "Fouet",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "speciale",
+    "degats": 2,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 0,
+    "porteeEff": 3,
+    "porteeMax": 4,
+    "special": "Désarmer adversaire sans malus",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

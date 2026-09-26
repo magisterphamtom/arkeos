@@ -1,0 +1,19 @@
+{
+  "_id": "4JV9OHTeYZE3Bh6P",
+  "name": "Armes de jet",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "combat",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Couteaux, haches, boomerangs, javelots, dards. Pas les grenades."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

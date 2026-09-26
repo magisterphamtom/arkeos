@@ -1,0 +1,18 @@
+{
+  "_id": "MTIAJUydS164hIyO",
+  "name": "Survivant",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Vétéran",
+    "cout": 4,
+    "effet": "1×/scénario : restaurer les PV au maximum",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

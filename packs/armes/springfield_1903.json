@@ -1,0 +1,23 @@
+{
+  "_id": "XcrFnALeKLSq3Dk0",
+  "name": "Springfield 1903",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "epaule",
+    "degats": 14,
+    "tempsRech": "2",
+    "coupsRound": "1",
+    "magasin": 5,
+    "porteeEff": 500,
+    "porteeMax": 1000,
+    "special": "Bolt-action .30-06, excellent sniper",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "v4MBYTThD0stmiRz",
+  "name": "Baratin",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "social",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Bluff, persuasion, manipulation par l'éloquence."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

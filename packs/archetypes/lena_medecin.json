@@ -1,0 +1,59 @@
+{
+  "_id": "q8rKfZs419kbaZOK",
+  "name": "Lena — Médecin",
+  "type": "pj",
+  "img": "systems/arkeos/assets/portraits/portrait_07.jpg",
+  "system": {
+    "etatCivil": {
+      "prenom": "Lena",
+      "nom": "",
+      "surnom": "",
+      "dateNaissance": "",
+      "culture": "",
+      "nationalite": "",
+      "yeux": "",
+      "cheveux": "",
+      "taille": "",
+      "poids": "",
+      "age": "",
+      "sexe": ""
+    },
+    "archetype": "Médecin",
+    "carac": {
+      "physique": 5,
+      "mental": 8,
+      "perception": 7,
+      "presence": 6
+    },
+    "coutChamps": {
+      "connaissance": 2,
+      "combat": 3,
+      "savoir": 1,
+      "social": 2
+    },
+    "pvActuels": 15,
+    "degLetauxActuels": 0,
+    "degSuperfActuels": 0,
+    "protections": [],
+    "evActuelle": 21,
+    "pointsEclatMax": 3,
+    "pointsEclatActuels": 3,
+    "reputation": 1,
+    "experience": 0,
+    "argent": {
+      "revenus": 320,
+      "liquidites": 1600
+    },
+    "biographie": "<p><em>Personnage prêt-à-jouer — Médecin</em></p>",
+    "notes": "",
+    "equipement": "",
+    "magie": ""
+  },
+  "items": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

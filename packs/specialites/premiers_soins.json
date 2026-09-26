@@ -1,0 +1,19 @@
+{
+  "_id": "2gdyAdQalEh5sDAs",
+  "name": "Premiers soins",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "savoir",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Blessures de guerre, maladies courantes, stabilisation."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

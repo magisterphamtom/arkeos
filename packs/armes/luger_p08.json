@@ -1,0 +1,23 @@
+{
+  "_id": "TYPa7TiXFkrrZdeD",
+  "name": "Luger P08",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "poing",
+    "degats": 8,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 8,
+    "porteeEff": 20,
+    "porteeMax": 60,
+    "special": "Parabellum 9mm, précis",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

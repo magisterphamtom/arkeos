@@ -1,0 +1,23 @@
+{
+  "_id": "fKPlqLj2BoPsr8j8",
+  "name": "Colt 1911",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "poing",
+    "degats": 9,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 7,
+    "porteeEff": 15,
+    "porteeMax": 50,
+    "special": "Semi-automatique .45 ACP",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

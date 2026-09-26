@@ -1,0 +1,23 @@
+{
+  "_id": "PDvcBQCoH6N4Ahxa",
+  "name": "Poignard de combat",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "melee",
+    "degats": 3,
+    "tempsRech": "/",
+    "coupsRound": "1",
+    "magasin": 0,
+    "porteeEff": 0,
+    "porteeMax": 3,
+    "special": "Couteau à double tranchant",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

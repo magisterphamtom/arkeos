@@ -1,0 +1,18 @@
+{
+  "_id": "u5S6sBMjBMqb6qci",
+  "name": "Coup de Grâce",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Chasseur",
+    "cout": 4,
+    "effet": "1×/scénario : dégâts max, ignore la Défense",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

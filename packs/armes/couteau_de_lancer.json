@@ -1,0 +1,23 @@
+{
+  "_id": "rFGu4kqIsZ8Q8PEl",
+  "name": "Couteau de lancer",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "jet",
+    "degats": 3,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 1,
+    "porteeEff": 5,
+    "porteeMax": 15,
+    "special": "Récupérable",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

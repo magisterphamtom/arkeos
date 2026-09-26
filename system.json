@@ -1,0 +1,81 @@
+{
+  "id": "arkeos",
+  "title": "Arkéos — EW-System",
+  "description": "Adaptation Foundry VTT d'Arkéos (EW-Universe #1, Extraordinary Worlds Studio). Jeu de rôle pulp des années 1930 basé sur l'EW-System — résolution D20, Caractéristiques, Champs et Spécialités.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13.351"
+  },
+  "authors": [
+    {
+      "name": "magisterphamtom",
+      "url": "https://github.com/magisterphamtom"
+    }
+  ],
+  "esmodules": [
+    "module/arkeos.mjs"
+  ],
+  "styles": [
+    "css/arkeos.css"
+  ],
+  "packs": [
+    {
+      "name": "specialites",
+      "label": "📚 Spécialités",
+      "path": "packs/specialites",
+      "type": "Item",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "armes",
+      "label": "⚔️ Armes",
+      "path": "packs/armes",
+      "type": "Item",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "aptitudes",
+      "label": "⭐ Aptitudes",
+      "path": "packs/aptitudes",
+      "type": "Item",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "archetypes",
+      "label": "🎭 Archétypes (PJ)",
+      "path": "packs/archetypes",
+      "type": "Actor",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    }
+  ],
+  "socket": false,
+  "url": "https://github.com/magisterphamtom/arkeos",
+  "manifest": "https://github.com/magisterphamtom/arkeos/releases/latest/download/system.json",
+  "download": "https://github.com/magisterphamtom/arkeos/releases/download/v1.0.0/arkeos.zip",
+  "bugs": "https://github.com/magisterphamtom/arkeos/issues",
+  "license": "MIT"
+}

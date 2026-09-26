@@ -1,0 +1,18 @@
+{
+  "_id": "OaNEHmQaZg30ACTn",
+  "name": "Recherches",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Archéologue",
+    "cout": 1,
+    "effet": "Bonus +2 en Archéologie",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

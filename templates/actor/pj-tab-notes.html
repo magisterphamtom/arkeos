@@ -1,0 +1,38 @@
+{{! ======================================================= }}
+{{! ARKÉOS — Onglet Notes & Équipement                      }}
+{{! ======================================================= }}
+<div class="tab {{#if (eq tabActif 'notes')}}active{{/if}}" data-tab="notes">
+
+  <div class="ark-section">
+    <h3 class="ark-section-titre">🎒 Équipement</h3>
+    {{#each equipements as |item|}}
+      <div class="item-ligne">
+        <span class="item-nom">{{item.name}}</span>
+        <span class="item-info">x{{item.system.quantite}} — {{item.system.poids}}</span>
+        {{#if item.system.prix}}<span class="item-prix">{{item.system.prix}} $</span>{{/if}}
+        <button class="btn-ouvrir-item" data-item-id="{{item.id}}">✏️</button>
+        <button class="btn-supprimer-item" data-item-id="{{item.id}}">🗑️</button>
+      </div>
+    {{/each}}
+    <div class="drop-zone" data-type="equipement">🎒 Glisser un Équipement</div>
+    <div class="notes-champ" style="margin-top:8px;">
+      <label>Notes équipement libre</label>
+      <div class="editor-content" data-edit="system.equipement">{{{system.equipement}}}</div>
+    </div>
+  </div>
+
+  <div class="ark-section">
+    <h3 class="ark-section-titre">📖 Biographie & Histoire</h3>
+    <div class="notes-champ">
+      <div class="editor-content" data-edit="system.biographie">{{{system.biographie}}}</div>
+    </div>
+  </div>
+
+  <div class="ark-section">
+    <h3 class="ark-section-titre">✏️ Notes libres</h3>
+    <div class="notes-champ">
+      <div class="editor-content" data-edit="system.notes">{{{system.notes}}}</div>
+    </div>
+  </div>
+
+</div>

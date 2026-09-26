@@ -1,0 +1,19 @@
+{
+  "_id": "qwILB4JhdHMYn92P",
+  "name": "Commerce",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "connaissance",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Acheter, vendre, marchander à profit."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,23 @@
+{
+  "_id": "7Dj4FqPXbuMpz1Q3",
+  "name": "Lee-Enfield N°4",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "epaule",
+    "degats": 14,
+    "tempsRech": "2",
+    "coupsRound": "1",
+    "magasin": 10,
+    "porteeEff": 400,
+    "porteeMax": 900,
+    "special": "Bolt-action précis, cadence rapide",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

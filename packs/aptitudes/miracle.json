@@ -1,0 +1,18 @@
+{
+  "_id": "4b7H9WeDTZJzALEk",
+  "name": "Miracle",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Médecin",
+    "cout": 4,
+    "effet": "1×/scénario : ramener un mort récent à 1 PV",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

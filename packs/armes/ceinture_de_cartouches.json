@@ -1,0 +1,23 @@
+{
+  "_id": "bQAEUnmqllTNoLs1",
+  "name": "Ceinture de cartouches",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "melee",
+    "degats": 2,
+    "tempsRech": "/",
+    "coupsRound": "1",
+    "magasin": 0,
+    "porteeEff": 0,
+    "porteeMax": 0,
+    "special": "Improvisation, Bagarre",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

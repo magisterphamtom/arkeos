@@ -1,0 +1,19 @@
+{
+  "_id": "jOjAxxoNW7lcwoDH",
+  "name": "Renseignement",
+  "type": "specialite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "champ": "social",
+    "bonus": 2,
+    "doubleSpecNom": "",
+    "doubleSpecBonus": 0,
+    "description": "Obtenir des informations lors d'échanges verbaux."
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

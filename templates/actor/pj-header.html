@@ -1,0 +1,61 @@
+{{! ARKÉOS EW-System — Header PJ }}
+<div class="sheet-header ark-header">
+
+  {{! Bandeau supérieur avec logo }}
+  <div class="ark-banner">
+    <div class="ark-banner-logo">
+      <span class="ark-logo-text">ArKéoS</span>
+      <span class="ark-logo-sub">EW-System · Années 1930</span>
+    </div>
+    <div class="ark-banner-right">
+      <span class="ark-fiche-label">fiche de personnage</span>
+    </div>
+  </div>
+
+  {{! Zone principale : portrait + état civil }}
+  <div class="header-top">
+
+    {{! Portrait avec cadre pulp }}
+    <div class="portrait-zone">
+      <div class="portrait-frame">
+        <img class="ark-portrait" src="{{actor.img}}" data-edit="img" title="Changer le portrait" />
+      </div>
+      <div class="archetype-badge">{{system.archetype}}</div>
+      <div class="eclat-mini">✨ {{system.pointsEclatActuels}} / {{system.pointsEclatMax}}</div>
+    </div>
+
+    {{! État Civil }}
+    <div class="etat-civil">
+      <div class="ec-titre">É T A T &nbsp; C I V I L</div>
+      <div class="ec-grille">
+        <div class="ec-champ"><label>Prénom</label><input type="text" name="system.etatCivil.prenom" value="{{system.etatCivil.prenom}}" /></div>
+        <div class="ec-champ"><label>Nom</label><input type="text" name="system.etatCivil.nom" value="{{system.etatCivil.nom}}" /></div>
+        <div class="ec-champ"><label>Surnom</label><input type="text" name="system.etatCivil.surnom" value="{{system.etatCivil.surnom}}" /></div>
+        <div class="ec-champ"><label>Né(e) le</label><input type="text" name="system.etatCivil.dateNaissance" value="{{system.etatCivil.dateNaissance}}" /></div>
+        <div class="ec-champ"><label>Culture</label><input type="text" name="system.etatCivil.culture" value="{{system.etatCivil.culture}}" /></div>
+        <div class="ec-champ"><label>Nationalité</label><input type="text" name="system.etatCivil.nationalite" value="{{system.etatCivil.nationalite}}" /></div>
+        <div class="ec-champ"><label>Yeux</label><input type="text" name="system.etatCivil.yeux" value="{{system.etatCivil.yeux}}" /></div>
+        <div class="ec-champ"><label>Cheveux</label><input type="text" name="system.etatCivil.cheveux" value="{{system.etatCivil.cheveux}}" /></div>
+        <div class="ec-champ"><label>Taille</label><input type="text" name="system.etatCivil.taille" value="{{system.etatCivil.taille}}" /></div>
+        <div class="ec-champ"><label>Poids</label><input type="text" name="system.etatCivil.poids" value="{{system.etatCivil.poids}}" /></div>
+        <div class="ec-champ"><label>Âge</label><input type="text" name="system.etatCivil.age" value="{{system.etatCivil.age}}" /></div>
+        <div class="ec-champ"><label>Sexe</label><input type="text" name="system.etatCivil.sexe" value="{{system.etatCivil.sexe}}" /></div>
+      </div>
+
+      <div class="archetype-zone">
+        <label class="arch-label">Archétype</label>
+        <input type="text" name="system.archetype" value="{{system.archetype}}" class="arch-input" placeholder="ex: Archéologue" />
+      </div>
+    </div>
+
+  </div>
+
+  {{! Onglets }}
+  <nav class="sheet-tabs">
+    <a class="item {{#if (eq tabActif 'principal')}}active{{/if}}" data-tab="principal">📋 Personnage</a>
+    <a class="item {{#if (eq tabActif 'combat')}}active{{/if}}" data-tab="combat">⚔️ Combat</a>
+    <a class="item {{#if (eq tabActif 'avance')}}active{{/if}}" data-tab="avance">✨ Avancé</a>
+    <a class="item {{#if (eq tabActif 'notes')}}active{{/if}}" data-tab="notes">📝 Notes</a>
+  </nav>
+
+</div>

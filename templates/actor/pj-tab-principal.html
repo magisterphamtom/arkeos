@@ -1,0 +1,165 @@
+{{! ======================================================= }}
+{{! ARKÉOS EW-System — Onglet Principal : Carac, Champs, Spécialités }}
+{{! ======================================================= }}
+<div class="tab {{#if (eq tabActif 'principal')}}active{{/if}}" data-tab="principal">
+
+  {{! ========= CARACTÉRISTIQUES ========= }}
+  <div class="ark-section">
+    <h3 class="ark-section-titre">c a r a c t é r i s t i q u e s</h3>
+    <div class="carac-grille">
+      <div class="carac-bloc">
+        <div class="carac-nom">physique</div>
+        <input class="carac-val" type="number" name="system.carac.physique" value="{{system.carac.physique}}" min="1" max="15" />
+      </div>
+      <div class="carac-bloc">
+        <div class="carac-nom">mental</div>
+        <input class="carac-val" type="number" name="system.carac.mental" value="{{system.carac.mental}}" min="1" max="15" />
+      </div>
+      <div class="carac-bloc">
+        <div class="carac-nom">perception</div>
+        <input class="carac-val" type="number" name="system.carac.perception" value="{{system.carac.perception}}" min="1" max="15" />
+      </div>
+      <div class="carac-bloc">
+        <div class="carac-nom">présence</div>
+        <input class="carac-val" type="number" name="system.carac.presence" value="{{system.carac.presence}}" min="1" max="15" />
+      </div>
+    </div>
+  </div>
+
+  {{! ========= CHAMPS & SPÉCIALITÉS ========= }}
+  <div class="ark-section">
+    <h3 class="ark-section-titre">c h a m p s &amp; s p é c i a l i t é s</h3>
+    <div class="champs-grille">
+
+      {{! CONNAISSANCE }}
+      <div class="champ-col champ-connaissance">
+        <div class="champ-header">
+          <span class="champ-nom">connaissance</span>
+          <span class="champ-formule">(MEN+PRÉ)/2</span>
+          <span class="champ-score">{{system.champs.connaissance}}</span>
+          <button class="btn-confrontation" data-champ="connaissance">🎲</button>
+        </div>
+        <div class="champ-cout">coût acq : <input type="number" name="system.coutChamps.connaissance" value="{{system.coutChamps.connaissance}}" min="1" max="3" class="cout-input" /></div>
+        <div class="specialites-liste">
+          {{#each specialites.connaissance as |spe|}}
+            <div class="spe-ligne">
+              <span class="spe-nom">{{spe.name}}</span>
+              <span class="spe-bonus">+{{spe.system.bonus}}</span>
+              {{#if spe.system.doubleSpecNom}}
+                <span class="double-spe">⤷ {{spe.system.doubleSpecNom}} +{{spe.system.doubleSpecBonus}}</span>
+              {{/if}}
+              <button class="btn-confrontation spe-roll" data-champ="connaissance" data-spe-id="{{spe.id}}">🎲</button>
+              <button class="btn-ouvrir-item" data-item-id="{{spe.id}}">✏️</button>
+              <button class="btn-supprimer-item" data-item-id="{{spe.id}}">🗑️</button>
+            </div>
+          {{/each}}
+        </div>
+        <div class="drop-zone" data-type="specialite" data-champ="connaissance">+ glisser spécialité</div>
+      </div>
+
+      {{! COMBAT }}
+      <div class="champ-col champ-combat">
+        <div class="champ-header">
+          <span class="champ-nom">combat</span>
+          <span class="champ-formule">(PHY+PER)/2</span>
+          <span class="champ-score">{{system.champs.combat}}</span>
+          <button class="btn-confrontation" data-champ="combat">🎲</button>
+        </div>
+        <div class="champ-cout">coût acq : <input type="number" name="system.coutChamps.combat" value="{{system.coutChamps.combat}}" min="1" max="3" class="cout-input" /></div>
+        <div class="specialites-liste">
+          {{#each specialites.combat as |spe|}}
+            <div class="spe-ligne">
+              <span class="spe-nom">{{spe.name}}</span>
+              <span class="spe-bonus">+{{spe.system.bonus}}</span>
+              {{#if spe.system.doubleSpecNom}}
+                <span class="double-spe">⤷ {{spe.system.doubleSpecNom}} +{{spe.system.doubleSpecBonus}}</span>
+              {{/if}}
+              <button class="btn-confrontation spe-roll" data-champ="combat" data-spe-id="{{spe.id}}">🎲</button>
+              <button class="btn-ouvrir-item" data-item-id="{{spe.id}}">✏️</button>
+              <button class="btn-supprimer-item" data-item-id="{{spe.id}}">🗑️</button>
+            </div>
+          {{/each}}
+        </div>
+        <div class="drop-zone" data-type="specialite" data-champ="combat">+ glisser spécialité</div>
+      </div>
+
+      {{! SAVOIR }}
+      <div class="champ-col champ-savoir">
+        <div class="champ-header">
+          <span class="champ-nom">savoir</span>
+          <span class="champ-formule">(PHY+MEN)/2</span>
+          <span class="champ-score">{{system.champs.savoir}}</span>
+          <button class="btn-confrontation" data-champ="savoir">🎲</button>
+        </div>
+        <div class="champ-cout">coût acq : <input type="number" name="system.coutChamps.savoir" value="{{system.coutChamps.savoir}}" min="1" max="3" class="cout-input" /></div>
+        <div class="specialites-liste">
+          {{#each specialites.savoir as |spe|}}
+            <div class="spe-ligne">
+              <span class="spe-nom">{{spe.name}}</span>
+              <span class="spe-bonus">+{{spe.system.bonus}}</span>
+              {{#if spe.system.doubleSpecNom}}
+                <span class="double-spe">⤷ {{spe.system.doubleSpecNom}} +{{spe.system.doubleSpecBonus}}</span>
+              {{/if}}
+              <button class="btn-confrontation spe-roll" data-champ="savoir" data-spe-id="{{spe.id}}">🎲</button>
+              <button class="btn-ouvrir-item" data-item-id="{{spe.id}}">✏️</button>
+              <button class="btn-supprimer-item" data-item-id="{{spe.id}}">🗑️</button>
+            </div>
+          {{/each}}
+        </div>
+        <div class="drop-zone" data-type="specialite" data-champ="savoir">+ glisser spécialité</div>
+      </div>
+
+      {{! SOCIAL }}
+      <div class="champ-col champ-social">
+        <div class="champ-header">
+          <span class="champ-nom">social</span>
+          <span class="champ-formule">(PRÉ+PER)/2</span>
+          <span class="champ-score">{{system.champs.social}}</span>
+          <button class="btn-confrontation" data-champ="social">🎲</button>
+        </div>
+        <div class="champ-cout">coût acq : <input type="number" name="system.coutChamps.social" value="{{system.coutChamps.social}}" min="1" max="3" class="cout-input" /></div>
+        <div class="specialites-liste">
+          {{#each specialites.social as |spe|}}
+            <div class="spe-ligne">
+              <span class="spe-nom">{{spe.name}}</span>
+              <span class="spe-bonus">+{{spe.system.bonus}}</span>
+              {{#if spe.system.doubleSpecNom}}
+                <span class="double-spe">⤷ {{spe.system.doubleSpecNom}} +{{spe.system.doubleSpecBonus}}</span>
+              {{/if}}
+              <button class="btn-confrontation spe-roll" data-champ="social" data-spe-id="{{spe.id}}">🎲</button>
+              <button class="btn-ouvrir-item" data-item-id="{{spe.id}}">✏️</button>
+              <button class="btn-supprimer-item" data-item-id="{{spe.id}}">🗑️</button>
+            </div>
+          {{/each}}
+        </div>
+        <div class="drop-zone" data-type="specialite" data-champ="social">+ glisser spécialité</div>
+      </div>
+
+    </div>{{! fin champs-grille }}
+  </div>{{! fin section champs }}
+
+  {{! ========= VALEURS DÉRIVÉES ========= }}
+  <div class="ark-section derives-section">
+    <div class="derives-grille">
+      <div class="derive-item"><span class="derive-label">éducation</span><span class="derive-val">{{system.education}}</span></div>
+      <div class="derive-item"><span class="derive-label">initiative</span><span class="derive-val">{{system.initiative}}</span>
+        <button class="btn-initiative" title="Lancer l'initiative (score + D10)">⚡</button>
+      </div>
+      <div class="derive-item pv-item">
+        <span class="derive-label">points de vie</span>
+        <input type="number" name="system.pvActuels" value="{{system.pvActuels}}" min="0" class="pv-actuel" />
+        <span class="pv-sep">/</span>
+        <span class="derive-val">{{system.pvMax}}</span>
+        <span class="blessure-etat {{#if (eq system.etatBlessure 'Blessé')}}etat-blesse{{/if}} {{#if (eq system.etatBlessure 'Gravement Blessé')}}etat-grave{{/if}}">
+          {{system.etatBlessure}}
+        </span>
+      </div>
+      <div class="derive-item seuils-item">
+        <span class="derive-label">seuils</span>
+        <span class="seuil seuil-2">−2 : {{system.seuilMoins2}}</span>
+        <span class="seuil seuil-4">−4 : {{system.seuilMoins4}}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

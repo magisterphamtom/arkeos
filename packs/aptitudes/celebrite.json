@@ -1,0 +1,18 @@
+{
+  "_id": "eWddqa4XK2yvD0Lr",
+  "name": "Célébrité",
+  "type": "aptitude",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "archetype": "Archéologue",
+    "cout": 4,
+    "effet": "1×/scénario : un admirateur rend service",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

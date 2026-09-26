@@ -1,0 +1,59 @@
+{
+  "_id": "HTnKkDCNf5LKShdp",
+  "name": "Raj — Chasseur",
+  "type": "pj",
+  "img": "systems/arkeos/assets/portraits/portrait_03.jpg",
+  "system": {
+    "etatCivil": {
+      "prenom": "Raj",
+      "nom": "",
+      "surnom": "",
+      "dateNaissance": "",
+      "culture": "",
+      "nationalite": "",
+      "yeux": "",
+      "cheveux": "",
+      "taille": "",
+      "poids": "",
+      "age": "",
+      "sexe": ""
+    },
+    "archetype": "Chasseur de Fauves",
+    "carac": {
+      "physique": 8,
+      "mental": 5,
+      "perception": 7,
+      "presence": 6
+    },
+    "coutChamps": {
+      "connaissance": 2,
+      "combat": 2,
+      "savoir": 1,
+      "social": 3
+    },
+    "pvActuels": 24,
+    "degLetauxActuels": 0,
+    "degSuperfActuels": 0,
+    "protections": [],
+    "evActuelle": 18,
+    "pointsEclatMax": 3,
+    "pointsEclatActuels": 3,
+    "reputation": 1,
+    "experience": 0,
+    "argent": {
+      "revenus": 320,
+      "liquidites": 1600
+    },
+    "biographie": "<p><em>Personnage prêt-à-jouer — Chasseur de Fauves</em></p>",
+    "notes": "",
+    "equipement": "",
+    "magie": ""
+  },
+  "items": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}

@@ -1,0 +1,23 @@
+{
+  "_id": "FkZZGOEXf3eY8iOH",
+  "name": "Beretta 1934",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "poing",
+    "degats": 7,
+    "tempsRech": "1",
+    "coupsRound": "1",
+    "magasin": 7,
+    "porteeEff": 12,
+    "porteeMax": 40,
+    "special": "Compact, .380 ACP",
+    "description": ""
+  },
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {}
+}
