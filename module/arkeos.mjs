@@ -202,17 +202,18 @@ class ArkeosActeur extends Actor {
   }
 
   async modifyTokenAttribute(attribute, value, isDelta, isBar) {
+    const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
     if (attribute === "system.pv") {
       const pvActuels = isDelta
-        ? Math.clamped((this.system.pvActuels ?? 0) + value, 0, this.system.pvMax ?? 999)
-        : Math.clamped(value, 0, this.system.pvMax ?? 999);
+        ? clamp((this.system.pvActuels ?? 0) + value, 0, this.system.pvMax ?? 999)
+        : clamp(value, 0, this.system.pvMax ?? 999);
       await this.update({ "system.pvActuels": pvActuels });
       return this;
     }
     if (attribute === "system.ev") {
       const evActuelle = isDelta
-        ? Math.clamped((this.system.evActuelle ?? 0) + value, 0, this.system.evMax ?? 999)
-        : Math.clamped(value, 0, this.system.evMax ?? 999);
+        ? clamp((this.system.evActuelle ?? 0) + value, 0, this.system.evMax ?? 999)
+        : clamp(value, 0, this.system.evMax ?? 999);
       await this.update({ "system.evActuelle": evActuelle });
       return this;
     }
