@@ -136,6 +136,7 @@ export async function ouvrirCreationPersonnage() {
     pgsCarac:  28,
     specialites: [],
     pgsSpecialites: 36,
+    speOnglet: "connaissance",   // onglet actif à l'étape 4
   };
 
   const calcChamps = (c) => ({
@@ -172,7 +173,7 @@ export async function ouvrirCreationPersonnage() {
 
       case 1: return `
         <div class="creation-etape">
-          <h2>1/6 — Identité</h2>
+          <h2>1/5 — Identité</h2>
           <p class="aide">Qui est votre personnage ? Ces informations seront placées dans l'état civil de la fiche.</p>
           <div class="form-row-creation"><label>Prénom</label>
             <input type="text" id="cr-prenom" value="${etat.prenom}" placeholder="Elena…" /></div>
@@ -188,7 +189,7 @@ export async function ouvrirCreationPersonnage() {
 
       case 2: return `
         <div class="creation-etape">
-          <h2>2/6 — Caractéristiques</h2>
+          <h2>2/5 — Caractéristiques</h2>
           <p class="aide">Répartissez <strong>${pgsRestants} Points de Génération restants</strong> sur 28 au total (valeur : 3–10 par Caractéristique).</p>
           <div class="carac-creation">
             ${["physique","mental","perception","presence"].map(c => `
@@ -212,7 +213,7 @@ export async function ouvrirCreationPersonnage() {
 
       case 3: return `
         <div class="creation-etape">
-          <h2>3/6 — Archétype</h2>
+          <h2>3/5 — Archétype</h2>
           <p class="aide">Choisissez votre profession — elle détermine les coûts de Spécialités et vos Aptitudes uniques.</p>
           <div class="archetypes-grille">
             ${Object.entries(ARCHETYPES).map(([id, a]) => `
@@ -234,43 +235,59 @@ export async function ouvrirCreationPersonnage() {
 
       case 4: {
         if (!arch) return `<div class="creation-etape"><p>⚠️ Choisissez d'abord un archétype (étape 3).</p></div>`;
-        const speCount = etat.specialites.length;
         const pgsDep = etat.specialites.reduce((sum, s) => sum + s.cout, 0);
         const pgsR = 36 - pgsDep;
         return `
           <div class="creation-etape">
-            <h2>4/6 — Spécialités</h2>
-            <p class="aide"><strong>${pgsR} PG restants</strong> sur 36 pour Spécialités, Aptitudes, Traits, Pouvoirs.</p>
-            <p class="aide">Coût par champ : Con ${arch.coûts.connaissance}pt | Com ${arch.coûts.combat}pt | Sav ${arch.coûts.savoir}pt | Soc ${arch.coûts.social}pt</p>
-            <div class="spe-colonnes">
-              ${["connaissance","combat","savoir","social"].map(champ => `
-                <div class="spe-colonne">
-                  <div class="spe-col-titre" style="color:${couleurChamp(champ)}">${CHAMPS_LABELS[champ]} (${champs[champ]})</div>
-                  <div class="spe-col-score">${arch.coûts[champ]} PG/spé</div>
-                  <div class="spe-items">
-                    ${TOUTES_SPECIALITES[champ].map(nom => {
-                      const spe = etat.specialites.find(s => s.nom === nom && s.champ === champ);
-                      const bonus = spe ? spe.bonus : 0;
-                      const isTypique = arch.typiquesNoms.includes(nom) || nom === arch.speDepart;
-                      return `
-                        <div class="spe-item ${bonus > 0 ? 'spe-acquise' : ''} ${isTypique ? 'spe-typique' : ''}">
-                          <span class="spe-nom">${nom}${isTypique ? ' ⭐' : ''}</span>
-                          <span class="spe-controles">
-                            <button type="button" class="spe-btn" data-spe="${nom}" data-champ="${champ}" data-delta="-1">−</button>
-                            <span class="spe-bonus-val">${bonus > 0 ? '+' + bonus : '0'}</span>
-                            <button type="button" class="spe-btn" data-spe="${nom}" data-champ="${champ}" data-delta="1">+</button>
-                          </span>
-                        </div>`;
-                    }).join("")}
-                  </div>
-                </div>`).join("")}
+            <h2>4/5 — Spécialités</h2>
+            <div id="spe-pg-restants" class="spe-pg-bloc ${pgsR < 0 ? 'pg-negatif' : ''}">
+              <strong>${pgsR} PG restants</strong> sur 36
+              <span class="spe-pg-detail">· Spécialités · Aptitudes · Traits · Pouvoirs</span>
             </div>
+
+            <div class="spe-onglets">
+              ${["connaissance","combat","savoir","social"].map(champ => {
+                const nb = etat.specialites.filter(s => s.champ === champ).length;
+                return `
+                  <button type="button"
+                    class="spe-onglet-btn ${etat.speOnglet === champ ? 'actif' : ''}"
+                    data-onglet="${champ}"
+                    style="--champ-color:${couleurChamp(champ)}">
+                    <span class="spe-ong-label">${CHAMPS_LABELS[champ]}</span>
+                    <span class="spe-ong-info">Val ${champs[champ]} · ${arch.coûts[champ]}pt/spé${nb > 0 ? ` · <b>${nb}</b> choisie${nb > 1 ? 's' : ''}` : ''}</span>
+                  </button>`;
+              }).join("")}
+            </div>
+
+            ${["connaissance","combat","savoir","social"].map(champ => `
+              <div class="spe-panel ${etat.speOnglet === champ ? 'spe-panel-actif' : ''}" data-panel="${champ}">
+                <div class="spe-items-panel">
+                  ${TOUTES_SPECIALITES[champ].map(nom => {
+                    const spe = etat.specialites.find(s => s.nom === nom && s.champ === champ);
+                    const bonus = spe ? spe.bonus : 0;
+                    const isTypique = arch.typiquesNoms.includes(nom) || nom === arch.speDepart;
+                    const isDepart = nom === arch.speDepart;
+                    return `
+                      <div class="spe-item ${bonus > 0 ? 'spe-acquise' : ''} ${isTypique ? 'spe-typique' : ''}">
+                        <span class="spe-nom">
+                          ${nom}
+                          ${isDepart ? '<span class="spe-badge-depart">départ</span>' : isTypique ? '<span class="spe-badge-typ">typique</span>' : ''}
+                        </span>
+                        <span class="spe-controles">
+                          <button type="button" class="spe-btn" data-spe="${nom}" data-champ="${champ}" data-delta="-1">−</button>
+                          <span class="spe-bonus-val">${bonus > 0 ? '+' + bonus : '0'}</span>
+                          <button type="button" class="spe-btn" data-spe="${nom}" data-champ="${champ}" data-delta="1">+</button>
+                        </span>
+                      </div>`;
+                  }).join("")}
+                </div>
+              </div>`).join("")}
           </div>`;
       }
 
       case 5: return `
         <div class="creation-etape">
-          <h2>5/6 — Récapitulatif</h2>
+          <h2>5/5 — Récapitulatif</h2>
           ${arch ? `<div class="recap-section">
             <h3>${arch.icone} ${arch.nom}</h3>
             <p><strong>${etat.prenom} ${etat.nom}</strong> ${etat.surnom ? `"${etat.surnom}"` : ""} — ${etat.culture}, ${etat.nationalite}</p>
@@ -388,6 +405,18 @@ export async function ouvrirCreationPersonnage() {
       });
     });
 
+    // Onglets de spécialités
+    el.querySelectorAll(".spe-onglet-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const onglet = btn.dataset.onglet;
+        etat.speOnglet = onglet;
+        el.querySelectorAll(".spe-onglet-btn").forEach(b => b.classList.remove("actif"));
+        btn.classList.add("actif");
+        el.querySelectorAll(".spe-panel").forEach(p => p.classList.remove("spe-panel-actif"));
+        el.querySelector(`.spe-panel[data-panel="${onglet}"]`)?.classList.add("spe-panel-actif");
+      });
+    });
+
     // Spécialités
     el.querySelectorAll(".spe-btn").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -401,8 +430,7 @@ export async function ouvrirCreationPersonnage() {
         const pgsDep = etat.specialites.reduce((sum, s) => sum + s.cout, 0);
 
         if (delta > 0) {
-          const cout = spe ? coutChamp : coutChamp;  // même coût pour augmentation
-          if (pgsDep + cout > 36) return;
+          if (pgsDep + coutChamp > 36) return;
           if (!spe) {
             spe = { nom, champ, bonus: 2, cout: coutChamp };
             etat.specialites.push(spe);
@@ -425,9 +453,23 @@ export async function ouvrirCreationPersonnage() {
           bonusEl.textContent = s ? `+${s.bonus}` : "0";
           btn.closest(".spe-item")?.classList.toggle("spe-acquise", !!s && s.bonus > 0);
         }
+
+        // Mise à jour compteur PG (étape 4 — id spe-pg-restants)
         const pgsDep2 = etat.specialites.reduce((sum, s) => sum + s.cout, 0);
-        const pgsR = el.querySelector(".pg-restants");
-        if (pgsR) pgsR.innerHTML = `PG restants : <strong>${36 - pgsDep2}</strong> / 36`;
+        const pgsRestants = 36 - pgsDep2;
+        const pgCounterEl = el.querySelector("#spe-pg-restants");
+        if (pgCounterEl) {
+          pgCounterEl.innerHTML = `<strong>${pgsRestants} PG restants</strong> sur 36 <span class="spe-pg-detail">· Spécialités · Aptitudes · Traits · Pouvoirs</span>`;
+          pgCounterEl.classList.toggle("pg-negatif", pgsRestants < 0);
+        }
+
+        // Mise à jour du badge "choisies" dans l'onglet
+        const nbChamp = etat.specialites.filter(s => s.champ === champ).length;
+        const ongletBtn = el.querySelector(`.spe-onglet-btn[data-onglet="${champ}"] .spe-ong-info`);
+        if (ongletBtn) {
+          const arch2 = ARCHETYPES[etat.archetype];
+          ongletBtn.innerHTML = `Val ${calcChamps(etat.carac)[champ]} · ${arch2.coûts[champ]}pt/spé${nbChamp > 0 ? ` · <b>${nbChamp}</b> choisie${nbChamp > 1 ? 's' : ''}` : ''}`;
+        }
       });
     });
   };

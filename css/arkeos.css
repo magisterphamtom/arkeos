@@ -2349,20 +2349,44 @@
 .arch-spe   { font-size: 0.75em; color: #c8860a; font-style: italic; }
 .arch-detail { background: #fffbe8; border: 1px solid #c8860a; border-radius: 4px; padding: 10px 12px; font-size: 0.95em; color: #4a3010; margin-top: 6px; line-height: 1.5; }
 
+/* --- Étape 4 : compteur PG --- */
+.spe-pg-bloc { display: flex; align-items: baseline; gap: 4px; text-align: center; justify-content: center; font-size: 1.05em; color: #8b6430; padding: 8px 12px; background: #fffbe8; border: 2px solid #c8860a; border-radius: 5px; margin-bottom: 8px; flex-wrap: wrap; }
+.spe-pg-bloc strong { font-size: 1.15em; }
+.spe-pg-detail { font-size: 0.8em; color: #aaa; font-weight: normal; }
+.spe-pg-bloc.pg-negatif { border-color: #c03010; background: #fff0ec; color: #8b1a00; }
+
+/* --- Onglets de champ --- */
+.spe-onglets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-bottom: 2px solid #ddd; margin-bottom: 0; }
+.spe-onglet-btn { padding: 8px 4px 6px; border: 1px solid #ddd; border-bottom: none; border-radius: 4px 4px 0 0; background: #f3ede0; cursor: pointer; text-align: center; font-family: Georgia, serif; display: flex; flex-direction: column; align-items: center; gap: 2px; transition: background 0.1s; color: #4a3010; }
+.spe-onglet-btn:hover { background: #fdf0d0; }
+.spe-onglet-btn.actif { background: white; border-bottom: 3px solid var(--champ-color, #c8860a); z-index: 1; font-weight: bold; }
+.spe-ong-label { font-weight: bold; font-size: 0.95em; color: var(--champ-color, #4a3010); }
+.spe-ong-info { font-size: 0.75em; color: #888; }
+.spe-ong-info b { color: #1a5a1a; }
+
+/* --- Panels de spécialités --- */
+.spe-panel { display: none; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px; background: white; }
+.spe-panel-actif { display: block; }
+.spe-items-panel { max-height: 260px; overflow-y: auto; }
+.spe-item { display: flex; align-items: center; justify-content: space-between; padding: 5px 8px; border-bottom: 1px solid #f0f0f0; font-size: 0.92em; }
+.spe-item:last-child { border-bottom: none; }
+.spe-item:hover { background: #fafaf5; }
+.spe-acquise { background: #edfbee !important; }
+.spe-typique .spe-nom { color: #8b6430; }
+.spe-nom { flex: 1; display: flex; align-items: center; gap: 6px; }
+.spe-badge-depart { font-size: 0.7em; background: #c8860a; color: white; border-radius: 3px; padding: 1px 5px; font-weight: bold; letter-spacing: 0.5px; }
+.spe-badge-typ { font-size: 0.7em; background: #e8d8b0; color: #8b6430; border-radius: 3px; padding: 1px 5px; }
+.spe-controles { display: flex; align-items: center; gap: 4px; }
+.spe-btn { width: 22px; height: 22px; border: 1px solid #ccc; background: #f5f5f5; cursor: pointer; border-radius: 3px; font-size: 1em; font-weight: bold; display: flex; align-items: center; justify-content: center; color: #4a3010; }
+.spe-btn:hover { background: rgba(200,134,10,0.2); border-color: #c8860a; }
+.spe-bonus-val { width: 30px; text-align: center; font-weight: bold; font-size: 1em; color: #1a5a1a; }
+.spe-acquise .spe-bonus-val { color: #1a5a1a; }
+
+/* Ancienne grille 4 colonnes — conservée pour compatibilité */
 .spe-colonnes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .spe-colonne { border: 1px solid #ddd; border-radius: 4px; overflow: hidden; background: white; }
 .spe-col-titre { padding: 5px 6px; font-weight: bold; font-size: 0.9em; background: #f0f0f0; }
 .spe-col-score { padding: 2px 6px; font-size: 0.8em; color: #888; background: #f8f8f8; border-bottom: 1px solid #eee; }
-.spe-items { max-height: 200px; overflow-y: auto; }
-.spe-item { display: flex; align-items: center; justify-content: space-between; padding: 3px 5px; border-bottom: 1px solid #f5f5f5; font-size: 0.88em; }
-.spe-item:hover { background: #fafaf0; }
-.spe-acquise { background: #f0ffe0 !important; }
-.spe-typique .spe-nom { color: #8b6430; font-weight: bold; }
-.spe-nom { flex: 1; }
-.spe-controles { display: flex; align-items: center; gap: 3px; }
-.spe-btn { width: 20px; height: 20px; border: 1px solid #ccc; background: #f5f5f5; cursor: pointer; border-radius: 2px; font-size: 0.9em; display: flex; align-items: center; justify-content: center; }
-.spe-btn:hover { background: rgba(200,134,10,0.2); border-color: #c8860a; }
-.spe-bonus-val { width: 26px; text-align: center; font-weight: bold; font-size: 0.95em; }
 
 .recap-section { margin-bottom: 10px; padding: 8px 10px; background: #f9f5e8; border-radius: 4px; border: 1px solid rgba(200,134,10,0.2); }
 .recap-section h3 { font-size: 0.95em; margin: 0 0 6px 0; color: #8b6430; border-bottom: 1px solid rgba(200,134,10,0.2); padding-bottom: 3px; }
@@ -2377,6 +2401,8 @@
 @media (max-width: 580px) {
   .archetypes-grille { grid-template-columns: repeat(2, 1fr); }
   .spe-colonnes      { grid-template-columns: repeat(2, 1fr); }
+  .spe-onglets       { grid-template-columns: repeat(2, 1fr); }
+  .spe-ong-label     { font-size: 0.85em; }
 }
 
 /* Seuils amélioré */
