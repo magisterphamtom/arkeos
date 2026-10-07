@@ -68,14 +68,14 @@ Hooks.once("init", function () {
 
   CONFIG.Actor.documentClass = ArkeosActeur;
 
-  // Barres de token : PV et EV disponibles dans les options de token
+  // Barres de token : pv et ev sont des objets {value,min,max} natifs Foundry
   CONFIG.Actor.trackableAttributes = {
     pj: {
-      bar:   ["system.pvActuels", "system.evActuelle"],
+      bar:   ["system.pv", "system.ev"],
       value: ["system.initiative", "system.defense", "system.champs.combat"],
     },
     pnj: {
-      bar:   ["system.pvActuels", "system.evActuelle"],
+      bar:   ["system.pv", "system.ev"],
       value: ["system.initiative", "system.defense"],
     },
   };
