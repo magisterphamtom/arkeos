@@ -177,6 +177,20 @@ class ArkeosActeur extends Actor {
   prepareData() { super.prepareData(); }
 
   // ---------------------------------------------------------------
+  // CRÉATION — barres de token par défaut (PV barre 1, EV barre 2)
+  // ---------------------------------------------------------------
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user);
+    // Ne pas écraser si déjà configuré
+    if (data.prototypeToken?.bar1?.attribute) return;
+    this.updateSource({
+      "prototypeToken.bar1": { attribute: "system.pvActuels" },
+      "prototypeToken.bar2": { attribute: "system.evActuelle" },
+      "prototypeToken.displayBars": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,
+    });
+  }
+
+  // ---------------------------------------------------------------
   // BARRES DE TOKEN — expose pvActuels/pvMax et evActuelle/evMax
   // comme barres de valeur sur le token en jeu
   // ---------------------------------------------------------------
