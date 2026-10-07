@@ -51,6 +51,12 @@ export class PJDataModel extends TypeDataModel {
       degLetauxActuels:  new fields.NumberField({ initial: 0, min: 0, integer: true }),
       degSuperfActuels:  new fields.NumberField({ initial: 0, min: 0, integer: true }),
 
+      // Barre de token PV — objet {value,max} reconnu nativement par Foundry
+      pv: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 15, min: 0, integer: true }),
+        max:   new fields.NumberField({ initial: 15, min: 1, integer: true }),
+      }),
+
       // --- PROTECTIONS ---
       protections: new fields.ArrayField(
         new fields.SchemaField({
@@ -62,6 +68,12 @@ export class PJDataModel extends TypeDataModel {
 
       // --- ÉNERGIE VITALE ---
       evActuelle: new fields.NumberField({ initial: 0, min: 0, integer: true }),
+
+      // Barre de token EV — objet {value,max} reconnu nativement par Foundry
+      ev: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 0, min: 0, integer: true }),
+        max:   new fields.NumberField({ initial: 15, min: 1, integer: true }),
+      }),
 
       // --- POINTS D'ÉCLAT ---
       pointsEclatMax:     new fields.NumberField({ initial: 3, min: 0, integer: true }),
@@ -124,9 +136,11 @@ export class PJDataModel extends TypeDataModel {
       this.etatBlessure  = "Normal";
     }
 
-    // Objets barre natifs Foundry — token bars
-    this.pv = { value: this.pvActuels ?? 0, min: 0, max: this.pvMax };
-    this.ev = { value: this.evActuelle ?? 0, min: 0, max: this.evMax };
+    // Synchronise les SchemaFields de barre token (déclarés dans le schéma)
+    this.pv.value = this.pvActuels ?? 0;
+    this.pv.max   = this.pvMax;
+    this.ev.value = this.evActuelle ?? 0;
+    this.ev.max   = this.evMax;
   }
 }
 
@@ -148,7 +162,15 @@ export class PNJDataModel extends TypeDataModel {
       }),
 
       pvActuels:  new fields.NumberField({ initial: 15, min: 0, integer: true }),
+      pv: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 15, min: 0, integer: true }),
+        max:   new fields.NumberField({ initial: 15, min: 1, integer: true }),
+      }),
       evActuelle: new fields.NumberField({ initial: 10, min: 0, integer: true }),
+      ev: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 10, min: 0, integer: true }),
+        max:   new fields.NumberField({ initial: 15, min: 1, integer: true }),
+      }),
       reputation: new fields.NumberField({ initial: 1, min: 0, integer: true }),
     };
   }
@@ -170,9 +192,11 @@ export class PNJDataModel extends TypeDataModel {
     this.evMax       = (c.mental * 2) + c.physique;
     this.volonte     = c.mental;
 
-    // Objets barre natifs Foundry — token bars
-    this.pv = { value: this.pvActuels ?? 0, min: 0, max: this.pvMax };
-    this.ev = { value: this.evActuelle ?? 0, min: 0, max: this.evMax };
+    // Synchronise les SchemaFields de barre token
+    this.pv.value = this.pvActuels ?? 0;
+    this.pv.max   = this.pvMax;
+    this.ev.value = this.evActuelle ?? 0;
+    this.ev.max   = this.evMax;
   }
 }
 
