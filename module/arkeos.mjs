@@ -203,6 +203,32 @@ class ArkeosActeur extends Actor {
   }
 
   // ---------------------------------------------------------------
+  // APPLIQUER LES DÉGÂTS sur cet acteur
+  // letaux    : dégâts létaux à accumuler (augmentent degLetauxActuels)
+  // superf    : dégâts superficiels à soustraire des PV
+  // Retourne un objet { letaux, superf, pvAvant, pvApres, etat }
+  // ---------------------------------------------------------------
+  async appliquerDegats(letaux, superf) {
+    const sys = this.system;
+    const pvAvant = sys.pvActuels ?? sys.pvMax ?? 0;
+    const pvApres = Math.max(0, pvAvant - superf);
+    const degLActuels = (sys.degLetauxActuels ?? 0) + letaux;
+
+    await this.update({
+      "system.pvActuels":        pvApres,
+      "system.degLetauxActuels": degLActuels,
+    });
+
+    // Recalcul de l'état de blessure pour le retour
+    const pvMax = sys.pvMax ?? 1;
+    let etat = "Normal";
+    if (pvApres <= Math.floor(pvMax / 4)) etat = "Gravement Blessé ⚠️";
+    else if (pvApres <= Math.floor(pvMax / 2)) etat = "Blessé";
+
+    return { letaux, superf, pvAvant, pvApres, etat };
+  }
+
+  // ---------------------------------------------------------------
   // INITIATIVE — intégrée au tracker de combat Foundry
   // Appelée par le bouton ⚡ du token HUD et par le Combat Tracker
   // ---------------------------------------------------------------
@@ -764,6 +790,18 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
           ${critInfo}
         </div>
       `;
+
+      // Auto-appliquer sur la cible ciblée
+      const cibleToken = game.user.targets.first();
+      const cibleActeur = cibleToken?.actor;
+      if (cibleActeur) {
+        const res = await cibleActeur.appliquerDegats(letaux, superficiels);
+        contenuDegats += `
+          <div class="chat-cible">
+            🎯 <b>${cibleActeur.name}</b> — PV ${res.pvAvant} → <b>${res.pvApres}</b>
+            <span class="cible-etat">${res.etat}</span>
+          </div>`;
+      }
     }
 
     const couleur = critEchec ? "#8b0000" : touche ? "#2d6a2d" : "#8b0000";
@@ -1053,6 +1091,18 @@ class ArkeosFeuillePNJ extends HandlebarsApplicationMixin(ActorSheetV2) {
       const letaux      = arme.system.degats ?? 0;
       const superficiels = Math.max(0, d10PnjDmg - (sys.defense ?? 1));
       degStr = `<div class="chat-degats">Létaux <b>${letaux}</b> — Superf. <b>${superficiels}</b></div>`;
+
+      // Auto-appliquer sur la cible ciblée
+      const cibleToken = game.user.targets.first();
+      const cibleActeur = cibleToken?.actor;
+      if (cibleActeur) {
+        const res = await cibleActeur.appliquerDegats(letaux, superficiels);
+        degStr += `
+          <div class="chat-cible">
+            🎯 <b>${cibleActeur.name}</b> — PV ${res.pvAvant} → <b>${res.pvApres}</b>
+            <span class="cible-etat">${res.etat}</span>
+          </div>`;
+      }
     }
 
     await ChatMessage.create({
