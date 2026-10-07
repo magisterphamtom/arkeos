@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Psychométrie</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M30 75 L30 55 Q30 50 34 50 L37 50 L37 46 Q37 43 40 43 Q43 43 43 46 L43 48 Q43 45 46 45 Q49 45 49 48 L49 50 Q49 47 52 47 Q55 47 55 50 L55 75 Z" fill="#021a18" stroke="#20b098" stroke-width="1.2"/><circle cx="68" cy="42" r="12" fill="#03201a" stroke="#30c0a8" stroke-width="1.5"/><path d="M63 37 L73 47 M73 37 L63 47" stroke="#60e0c8" stroke-width="1.5" stroke-linecap="round"/><path d="M56 52 Q62 47 60 58" fill="none" stroke="#40d0b0" stroke-width="1.5" stroke-dasharray="2,2"/>
+</svg>

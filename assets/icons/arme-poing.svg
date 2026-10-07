@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Poing</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M40 35 L60 35 L65 45 L65 62 L55 68 L45 68 L35 62 L35 45 Z" fill="#c8a090"/>
+  <path d="M45 35 L45 28 L55 28 L55 35 M38 45 L35 45 M62 45 L65 45" fill="#a07060"/>
+  <path d="M42 52 L58 52 M45 60 L55 60" fill="#906050"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Trousse de premiers soins</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- boîte -->
+  <rect x="20" y="30" width="60" height="48" fill="#e8e0d0" rx="4"/>
+  <rect x="20" y="30" width="60" height="48" fill="none" stroke="#c0a060" stroke-width="2" rx="4"/>
+  <!-- croix rouge -->
+  <rect x="42" y="38" width="16" height="32" fill="#c82020" rx="2"/>
+  <rect x="34" y="46" width="32" height="16" fill="#c82020" rx="2"/>
+  <!-- verrou -->
+  <rect x="44" y="27" width="12" height="6" fill="#a08040" rx="2"/>
+</svg>

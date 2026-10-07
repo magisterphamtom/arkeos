@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Médecine</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M42 25 L58 25 L58 42 L75 42 L75 58 L58 58 L58 75 L42 75 L42 58 L25 58 L25 42 L42 42 Z" fill="#e84848"/>
+</svg>

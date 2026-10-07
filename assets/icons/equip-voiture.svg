@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Ford Model A</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- carrosserie -->
+  <path d="M12 58 L12 48 Q14 38 28 36 L44 32 L56 32 L72 36 Q86 38 88 48 L88 58 Z" fill="#2a3a5a"/>
+  <!-- toit -->
+  <path d="M32 36 L34 24 L66 24 L68 36 Z" fill="#1a2848"/>
+  <!-- fenêtres -->
+  <rect x="36" y="26" width="12" height="10" fill="#a0c0e0" opacity="0.7" rx="1"/>
+  <rect x="52" y="26" width="12" height="10" fill="#a0c0e0" opacity="0.7" rx="1"/>
+  <!-- roues -->
+  <circle cx="28" cy="60" r="12" fill="#1a1a1a"/>
+  <circle cx="28" cy="60" r="8" fill="#303030"/>
+  <circle cx="28" cy="60" r="3" fill="#c09030"/>
+  <circle cx="72" cy="60" r="12" fill="#1a1a1a"/>
+  <circle cx="72" cy="60" r="8" fill="#303030"/>
+  <circle cx="72" cy="60" r="3" fill="#c09030"/>
+  <!-- phare -->
+  <circle cx="87" cy="50" r="4" fill="#e8e080"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Clairvoyance</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <polygon points="50,18 80,72 20,72" fill="#02181a" stroke="#20a0b0" stroke-width="1.5"/><ellipse cx="50" cy="55" rx="15" ry="10" fill="#052028" stroke="#30c0d0" stroke-width="1.2"/><circle cx="50" cy="55" r="6" fill="#106878"/><circle cx="50" cy="55" r="3" fill="#40d0e0"/><circle cx="50" cy="55" r="1.2" fill="#e0f8ff"/><path d="M50 18 L50 43" stroke="#20a0b0" stroke-width="0.8" stroke-dasharray="2,2"/>
+</svg>

@@ -7,31 +7,39 @@
     <h3 class="ark-section-titre">🎒 Équipement</h3>
     {{#each equipements as |item|}}
       <div class="item-ligne">
+        <img class="item-icone item-icone-desc" src="{{item.img}}" title="Cliquer pour lire la description" data-item-id="{{item.id}}" />
         <span class="item-nom">{{item.name}}</span>
-        <span class="item-info">x{{item.system.quantite}} — {{item.system.poids}}</span>
+        <span class="item-info item-qte">
+          <button class="btn-qte" data-item-id="{{item.id}}" data-action="moins" type="button">−</button>
+          <span class="qte-val">{{item.system.quantite}}</span>
+          <button class="btn-qte" data-item-id="{{item.id}}" data-action="plus" type="button">+</button>
+          — {{item.system.poids}}
+        </span>
         {{#if item.system.prix}}<span class="item-prix">{{item.system.prix}} $</span>{{/if}}
-        <button class="btn-ouvrir-item" data-item-id="{{item.id}}">✏️</button>
-        <button class="btn-supprimer-item" data-item-id="{{item.id}}">🗑️</button>
+        <div class="item-actions">
+          <button class="btn-ouvrir-item" data-item-id="{{item.id}}" title="Modifier">✏️</button>
+          <button class="btn-supprimer-item" data-item-id="{{item.id}}" title="Supprimer">🗑️</button>
+        </div>
       </div>
     {{/each}}
     <div class="drop-zone" data-type="equipement">🎒 Glisser un Équipement</div>
     <div class="notes-champ" style="margin-top:8px;">
       <label>Notes équipement libre</label>
-      <div class="editor-content" data-edit="system.equipement">{{{system.equipement}}}</div>
+      <textarea name="system.equipement" rows="4" placeholder="Notes sur l'équipement…">{{system.equipement}}</textarea>
     </div>
   </div>
 
   <div class="ark-section">
     <h3 class="ark-section-titre">📖 Biographie & Histoire</h3>
     <div class="notes-champ">
-      <div class="editor-content" data-edit="system.biographie">{{{system.biographie}}}</div>
+      <textarea name="system.biographie" rows="10" placeholder="Histoire du personnage, origines, motivations…">{{system.biographie}}</textarea>
     </div>
   </div>
 
   <div class="ark-section">
     <h3 class="ark-section-titre">✏️ Notes libres</h3>
     <div class="notes-champ">
-      <div class="editor-content" data-edit="system.notes">{{{system.notes}}}</div>
+      <textarea name="system.notes" rows="6" placeholder="Notes libres, contacts, secrets…">{{system.notes}}</textarea>
     </div>
   </div>
 

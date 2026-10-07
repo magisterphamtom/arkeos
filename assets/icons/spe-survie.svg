@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Survie</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 20 C30 25 18 40 22 60 C26 75 40 82 50 80 C60 82 74 75 78 60 C82 40 70 25 50 20 Z M50 80 L50 20 M36 38 C42 48 50 52 64 46 M30 55 C40 60 50 62 70 56" fill="#50c840"/>
+</svg>

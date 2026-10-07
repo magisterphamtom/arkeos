@@ -3,9 +3,11 @@
 <div class="sheet-header ark-header pnj-header">
   <img class="ark-portrait pnj-portrait" src="{{actor.img}}" data-edit="img" />
   <div class="pnj-identite">
-    <input class="hero-nom" type="text" name="name" value="{{actor.name}}" placeholder="Nom du PNJ" />
-    <input type="text" name="system.archetype" value="{{system.archetype}}" placeholder="Archétype / Nature…" class="pnj-archetype" />
-    <input type="text" name="system.description" value="{{system.description}}" placeholder="Description rapide…" class="pnj-desc" />
+    <input class="hero-nom pnj-nom-centre" type="text" name="name" value="{{actor.name}}" placeholder="Nom du PNJ" />
+    <div class="pnj-sous-infos">
+      <input type="text" name="system.archetype" value="{{system.archetype}}" placeholder="Archétype / Nature…" class="pnj-archetype" />
+      <input type="text" name="system.description" value="{{system.description}}" placeholder="Description rapide…" class="pnj-desc" />
+    </div>
   </div>
 </div>
 
@@ -38,21 +40,48 @@
     </div>
   </div>
 
-  <div class="ark-section">
+  <div class="ark-section pnj-stats-section">
     <div class="pnj-stats">
-      <div class="pnj-stat-ligne">
-        <span>PV : </span>
-        <input type="number" name="system.pvActuels" value="{{system.pvActuels}}" min="0" style="width:55px;" />
-        <span>/ {{system.pvMax}}</span>
-        <span style="margin-left:12px;">Défense : <b>{{system.defense}}</b></span>
-        <span style="margin-left:12px;">Impact : <b>{{system.impact}}</b></span>
-        <span style="margin-left:12px;">Init. : <b>{{system.initiative}}</b></span>
+      <div class="pnj-stat-bloc">
+        <span class="pnj-stat-label">PV</span>
+        <div class="pv-row">
+          <input type="number" name="system.pvActuels" value="{{system.pvActuels}}" min="0" class="pv-actuel" />
+          <span class="pv-sep">/</span>
+          <span class="pv-max">{{system.pvMax}}</span>
+        </div>
+        <div class="pv-barre-visuelle">
+          <div class="pv-barre-fill" style="width:{{pvPct}}%; background-color:{{pvColor}};"></div>
+        </div>
       </div>
-      <div class="pnj-stat-ligne">
-        EV : <input type="number" name="system.evActuelle" value="{{system.evActuelle}}" min="0" style="width:55px;" />
-        / {{system.evMax}}
-        <span style="margin-left:12px;">Volonté : <b>{{system.volonte}}</b></span>
-        <span style="margin-left:12px;">Rép. : <input type="number" name="system.reputation" value="{{system.reputation}}" min="0" style="width:45px;" /></span>
+      <div class="pnj-stat-bloc">
+        <span class="pnj-stat-label">EV</span>
+        <div class="pv-row">
+          <input type="number" name="system.evActuelle" value="{{system.evActuelle}}" min="0" class="pv-actuel" />
+          <span class="pv-sep">/</span>
+          <span class="pv-max">{{system.evMax}}</span>
+        </div>
+        <div class="pv-barre-visuelle">
+          <div class="pv-barre-fill" style="width:{{evPct}}%; background-color:{{evColor}};"></div>
+        </div>
+      </div>
+      <div class="pnj-stat-bloc">
+        <span class="pnj-stat-label">Défense</span>
+        <span class="pnj-stat-val">{{system.defense}}</span>
+      </div>
+      <div class="pnj-stat-bloc">
+        <span class="pnj-stat-label">Impact</span>
+        <span class="pnj-stat-val">{{system.impact}}</span>
+      </div>
+      <div class="pnj-stat-bloc">
+        <span class="pnj-stat-label">Initiative</span>
+        <div class="tile-row">
+          <span class="pnj-stat-val">{{system.initiative}}</span>
+          <button class="btn-initiative" title="Lancer l'initiative">⚡</button>
+        </div>
+      </div>
+      <div class="pnj-stat-bloc">
+        <span class="pnj-stat-label">Volonté</span>
+        <span class="pnj-stat-val">{{system.volonte}}</span>
       </div>
     </div>
   </div>
@@ -64,8 +93,12 @@
       <thead><tr><th>Arme</th><th>Dég.</th><th>P.E.</th><th></th></tr></thead>
       <tbody>
         {{#each armes as |arme|}}
-          <tr><td>{{arme.name}}</td><td>+{{arme.system.degats}}</td><td>{{arme.system.porteeEff}}m</td>
-            <td><button class="btn-attaque" data-item-id="{{arme.id}}">⚔️</button></td></tr>
+          <tr>
+            <td>{{arme.name}}</td>
+            <td>{{#if (gt arme.system.degats 0)}}+{{arme.system.degats}}{{else}}{{arme.system.degats}}{{/if}}</td>
+            <td>{{arme.system.porteeEff}}m</td>
+            <td><button class="btn-attaque" data-item-id="{{arme.id}}">⚔️</button></td>
+          </tr>
         {{/each}}
       </tbody>
     </table>
@@ -74,7 +107,9 @@
 
   <div class="ark-section">
     <h3 class="ark-section-titre">📝 Notes MJ</h3>
-    <textarea name="system.notes" rows="5" style="width:100%;" placeholder="Notes sur ce PNJ…">{{system.notes}}</textarea>
+    <div class="notes-champ">
+      <textarea name="system.notes" rows="5" placeholder="Notes sur ce PNJ…">{{system.notes}}</textarea>
+    </div>
   </div>
 
 </div>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Malchanceux</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- dé tombé sur 1 -->
+  <rect x="22" y="22" width="56" height="56" fill="#2a0808" rx="8" transform="rotate(15 50 50)"/>
+  <rect x="22" y="22" width="56" height="56" fill="none" stroke="#c03020" stroke-width="2" rx="8" transform="rotate(15 50 50)"/>
+  <!-- unique point -->
+  <circle cx="50" cy="50" r="8" fill="#c03020"/>
+  <!-- croix mauvaise chance -->
+  <line x1="30" y1="30" x2="70" y2="70" stroke="#c03020" stroke-width="2" opacity="0.4"/>
+  <line x1="70" y1="30" x2="30" y2="70" stroke="#c03020" stroke-width="2" opacity="0.4"/>
+</svg>

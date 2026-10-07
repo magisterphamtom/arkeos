@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Envoûtement</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 50 Q54 44 60 46 Q66 48 64 54 Q62 60 56 60 Q50 60 47 55 Q44 50 47 45 Q50 40 56 40 Q63 40 67 46 Q71 52 68 58 Q65 64 58 67 Q51 70 44 66" fill="none" stroke="#30b050" stroke-width="2"/><circle cx="50" cy="50" r="3" fill="#40c060"/><circle cx="25" cy="30" r="2.5" fill="#20a040"/><circle cx="75" cy="25" r="2" fill="#20a040"/><circle cx="22" cy="68" r="1.8" fill="#20a040"/><circle cx="78" cy="70" r="2.2" fill="#20a040"/><path d="M24 28 L26 32 L22 32 Z M74 23 L76 27 L72 27 Z" fill="#40c060"/>
+</svg>

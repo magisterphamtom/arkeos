@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Aptitude Active</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M58 18 L38 52 L50 52 L42 82 L68 45 L55 45 Z" fill="#e8e030"/>
+  <path d="M55 22 L40 50 L50 50 L44 74 L64 42 L53 42 Z" fill="#fff080"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Couverture Réflexe</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M20 45 L50 30 L80 45 L80 60 L50 70 L20 60 Z" fill="#1a1a2a"/>
+  <path d="M25 48 L50 35 L75 48 L75 58 L50 66 L25 58 Z" fill="#2a2a4a"/>
+  <path d="M35 65 L20 80 M50 70 L50 85 M65 65 L80 80" fill="#e8b848"/>
+  <path d="M42 45 L48 52 L60 38" fill="#80c0ff"/>
+</svg>

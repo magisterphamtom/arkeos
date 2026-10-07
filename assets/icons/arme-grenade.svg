@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Grenade à main</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 45 A20 20 0 1 1 49.9 45 Z" fill="#506030"/>
+  <path d="M45 25 L55 25 L55 45 L45 45 Z" fill="#707850"/>
+  <path d="M48 18 L52 18 L52 25 L48 25 Z" fill="#808080"/>
+  <path d="M52 18 L60 12 L62 15 L58 22 Z" fill="#e8a000"/>
+  <path d="M38 55 L62 55 M38 62 L62 62 M42 68 L58 68" fill="#405025"/>
+</svg>

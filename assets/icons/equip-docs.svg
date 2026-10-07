@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Documents falsifiés</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- pile de papiers -->
+  <rect x="25" y="28" width="50" height="60" fill="#e8ddb0" rx="2"/>
+  <rect x="22" y="26" width="50" height="60" fill="#f0e8c0" rx="2"/>
+  <rect x="28" y="24" width="50" height="60" fill="#f8f0d0" rx="2"/>
+  <!-- tampon officiel -->
+  <circle cx="56" cy="50" r="14" fill="none" stroke="#1a2880" stroke-width="2"/>
+  <circle cx="56" cy="50" r="10" fill="none" stroke="#1a2880" stroke-width="1"/>
+  <text x="56" y="46" text-anchor="middle" font-size="6" fill="#1a2880" font-weight="bold">OFFICIEL</text>
+  <text x="56" y="54" text-anchor="middle" font-size="5" fill="#1a2880">VISÉ</text>
+  <!-- lignes texte -->
+  <line x1="33" y1="36" x2="48" y2="36" stroke="#a09060" stroke-width="1.5"/>
+  <line x1="33" y1="42" x2="52" y2="42" stroke="#a09060" stroke-width="1.5"/>
+  <line x1="33" y1="48" x2="44" y2="48" stroke="#a09060" stroke-width="1.5"/>
+</svg>

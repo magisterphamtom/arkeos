@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Corde 15 m</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- bobine de corde -->
+  <circle cx="50" cy="50" r="28" fill="none" stroke="#a07030" stroke-width="7"/>
+  <circle cx="50" cy="50" r="18" fill="none" stroke="#8a5820" stroke-width="5"/>
+  <circle cx="50" cy="50" r="8" fill="#3a2010"/>
+  <!-- torsion corde -->
+  <path d="M22 50 Q28 44 34 50 Q40 56 46 50" fill="none" stroke="#c09040" stroke-width="2"/>
+  <path d="M22 50 Q28 56 34 50 Q40 44 46 50" fill="none" stroke="#806020" stroke-width="1.5"/>
+</svg>

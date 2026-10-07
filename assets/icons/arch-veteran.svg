@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Vétéran</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <!-- Tête burinée -->
+  <ellipse cx="50" cy="24" rx="9" ry="10" fill="#c88a5a"/>
+  <!-- Cicatrice -->
+  <path d="M53 20 L55 28" stroke="#a06030" stroke-width="1.5" fill="none"/>
+  <!-- Béret militaire -->
+  <path d="M39 20 Q50 11 63 18 L64 24 L36 24 Z" fill="#3a4a28"/>
+  <ellipse cx="51" cy="16" rx="5" ry="3" fill="#8a1a1a"/>
+  <!-- Corps / uniforme militaire -->
+  <path d="M34 36 L66 36 L68 78 L50 83 L32 78 Z" fill="#4a5a30"/>
+  <!-- Épaulettes -->
+  <rect x="30" y="36" width="8" height="5" rx="1" fill="#5a6a40"/>
+  <rect x="62" y="36" width="8" height="5" rx="1" fill="#5a6a40"/>
+  <!-- Rangée de médailles -->
+  <rect x="35" y="44" width="6" height="7" rx="0.5" fill="#c0a020"/>
+  <rect x="43" y="44" width="6" height="7" rx="0.5" fill="#c0c0c0"/>
+  <rect x="51" y="44" width="6" height="7" rx="0.5" fill="#c07020"/>
+  <!-- Rubans médailles -->
+  <line x1="38" y1="44" x2="38" y2="43" stroke="#8a1a1a" stroke-width="2"/>
+  <line x1="46" y1="44" x2="46" y2="43" stroke="#1a3a8a" stroke-width="2"/>
+  <line x1="54" y1="44" x2="54" y2="43" stroke="#2a6a2a" stroke-width="2"/>
+  <!-- Bras gauche au repos / holster -->
+  <path d="M34 40 L22 56" stroke="#4a5a30" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <!-- Bras droit / pistolet -->
+  <path d="M66 40 L78 36" stroke="#4a5a30" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <rect x="74" y="30" width="12" height="7" rx="1" fill="#2a2a2a"/>
+  <rect x="77" y="37" width="5" height="8" rx="1" fill="#2a2a2a"/>
+  <line x1="86" y1="33" x2="76" y2="33" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Ceinture avec cartouchière -->
+  <rect x="32" y="60" width="36" height="5" rx="1" fill="#3a2a10"/>
+  <rect x="36" y="59" width="5" height="3" rx="0.5" fill="#2a2010"/>
+  <rect x="44" y="59" width="5" height="3" rx="0.5" fill="#2a2010"/>
+  <rect x="52" y="59" width="5" height="3" rx="0.5" fill="#2a2010"/>
+</svg>

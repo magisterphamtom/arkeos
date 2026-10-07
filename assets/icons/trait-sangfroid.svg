@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Sang-froid</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- cristal de glace -->
+  <path d="M50 16 L50 84 M16 50 L84 50 M26 26 L74 74 M74 26 L26 74" stroke="#80c0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <!-- hexagone central -->
+  <path d="M50 32 L64 41 L64 59 L50 68 L36 59 L36 41 Z" fill="#1a3a5a" stroke="#60b0d8" stroke-width="2"/>
+  <!-- flocon ramifications -->
+  <path d="M50 32 L44 26 M50 32 L56 26" stroke="#80c0e0" stroke-width="1.5"/>
+  <path d="M64 41 L70 37 M64 41 L68 47" stroke="#80c0e0" stroke-width="1.5"/>
+  <path d="M64 59 L70 63 M64 59 L68 53" stroke="#80c0e0" stroke-width="1.5"/>
+  <path d="M50 68 L44 74 M50 68 L56 74" stroke="#80c0e0" stroke-width="1.5"/>
+  <circle cx="50" cy="50" r="6" fill="#a0d8f0"/>
+</svg>

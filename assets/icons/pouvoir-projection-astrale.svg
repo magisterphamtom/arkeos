@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Projection Astrale</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M38 75 L38 52 Q38 45 50 45 Q62 45 62 52 L62 75 Z" fill="#1a0830" stroke="#5030a0" stroke-width="1.2" opacity="0.7"/><path d="M32 65 L32 46 Q32 36 50 36 Q68 36 68 46 L68 65 Z" fill="none" stroke="#c0a0ff" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/><circle cx="50" cy="30" r="8" fill="#1a0828" stroke="#a080e0" stroke-width="1.5" opacity="0.85"/><circle cx="50" cy="26" r="4" fill="#8060c0" opacity="0.9"/><path d="M46 26 Q50 22 54 26" fill="none" stroke="#e0c8ff" stroke-width="1.2"/>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Masque à gaz</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- forme masque -->
+  <ellipse cx="50" cy="54" rx="26" ry="28" fill="#3a4028"/>
+  <!-- oculaires -->
+  <circle cx="40" cy="46" r="9" fill="#1a1a10"/>
+  <circle cx="40" cy="46" r="7" fill="#0a2a30"/>
+  <circle cx="38" cy="44" r="3" fill="#206080" opacity="0.6"/>
+  <circle cx="60" cy="46" r="9" fill="#1a1a10"/>
+  <circle cx="60" cy="46" r="7" fill="#0a2a30"/>
+  <circle cx="58" cy="44" r="3" fill="#206080" opacity="0.6"/>
+  <!-- pont nasal -->
+  <rect x="46" y="44" width="8" height="4" fill="#2a2a18"/>
+  <!-- filtre -->
+  <circle cx="50" cy="66" r="8" fill="#505040"/>
+  <circle cx="50" cy="66" r="5" fill="#404030"/>
+  <!-- sangles -->
+  <path d="M24 46 Q20 38 26 30" fill="none" stroke="#2a2a18" stroke-width="3"/>
+  <path d="M76 46 Q80 38 74 30" fill="none" stroke="#2a2a18" stroke-width="3"/>
+</svg>

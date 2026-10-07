@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Cartographie</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 18 A32 32 0 1 1 49.9 18 Z" fill="#2a1505"/>
+  <path d="M50 22 A28 28 0 1 1 49.9 22 Z" fill="none"/>
+  <path d="M50 22 A28 28 0 0 1 78 50 A28 28 0 0 1 50 78 A28 28 0 0 1 22 50 A28 28 0 0 1 50 22 Z" fill="#2a1a05"/>
+  <path d="M50 24 L52 50 L50 52 L48 50 Z" fill="#e84848"/>
+  <path d="M50 76 L48 50 L50 48 L52 50 Z" fill="#e8c860"/>
+  <path d="M50 50 m-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0" fill="#e8b848"/>
+  <path d="M50 28 L51 33 L50 34 L49 33 Z M50 72 L51 67 L50 66 L49 67 Z M28 50 L33 51 L34 50 L33 49 Z M72 50 L67 51 L66 50 L67 49 Z" fill="#c89030"/>
+</svg>

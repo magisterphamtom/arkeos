@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Jumelles</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- tube gauche -->
+  <ellipse cx="36" cy="50" rx="14" ry="20" fill="#2a2a2a"/>
+  <!-- tube droit -->
+  <ellipse cx="64" cy="50" rx="14" ry="20" fill="#2a2a2a"/>
+  <!-- pont central -->
+  <rect x="42" y="44" width="16" height="12" fill="#1a1a1a"/>
+  <!-- objectifs avant -->
+  <circle cx="36" cy="62" r="10" fill="#1a1a1a"/>
+  <circle cx="36" cy="62" r="7" fill="#0a0820"/>
+  <circle cx="33" cy="59" r="3" fill="#3050a0" opacity="0.5"/>
+  <circle cx="64" cy="62" r="10" fill="#1a1a1a"/>
+  <circle cx="64" cy="62" r="7" fill="#0a0820"/>
+  <circle cx="61" cy="59" r="3" fill="#3050a0" opacity="0.5"/>
+  <!-- oculaires -->
+  <circle cx="36" cy="38" r="8" fill="#404040"/>
+  <circle cx="64" cy="38" r="8" fill="#404040"/>
+</svg>

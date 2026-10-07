@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Domination Mentale</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <ellipse cx="50" cy="50" rx="26" ry="16" fill="#1a0830" stroke="#7040b0" stroke-width="1.5"/><circle cx="50" cy="50" r="9" fill="#2a0850"/><circle cx="50" cy="50" r="5" fill="#7030a0"/><circle cx="50" cy="50" r="2" fill="#d090ff"/><path d="M50 34 L50 29 M65 42 L69 38 M65 58 L69 62 M50 66 L50 71 M35 58 L31 62 M35 42 L31 38" stroke="#9060c0" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

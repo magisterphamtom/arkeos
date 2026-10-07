@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Outil de crochetage</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- manche -->
+  <rect x="46" y="60" width="8" height="22" fill="#6a4010" rx="3"/>
+  <!-- tige métal -->
+  <rect x="48" y="28" width="4" height="35" fill="#909090" rx="1"/>
+  <!-- crochet -->
+  <path d="M50 28 Q62 24 64 34 Q66 42 52 44" fill="none" stroke="#b0b0b0" stroke-width="3" stroke-linecap="round"/>
+  <!-- anneau de fixation -->
+  <circle cx="50" cy="56" r="4" fill="none" stroke="#c0a040" stroke-width="2"/>
+</svg>

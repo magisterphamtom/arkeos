@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Lampe de poche</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- corps -->
+  <rect x="40" y="30" width="20" height="38" fill="#484848" rx="3"/>
+  <!-- tête/réflecteur -->
+  <ellipse cx="50" cy="30" rx="14" ry="6" fill="#606060"/>
+  <!-- verre -->
+  <ellipse cx="50" cy="28" rx="10" ry="4" fill="#c8c0a0" opacity="0.8"/>
+  <!-- bouton -->
+  <circle cx="50" cy="58" r="4" fill="#e84000"/>
+  <!-- faisceau lumineux -->
+  <path d="M36 22 L30 10 M50 22 L50 8 M64 22 L70 10" stroke="#e8e880" stroke-width="1.5" opacity="0.7"/>
+  <ellipse cx="50" cy="18" rx="18" ry="8" fill="#e8e880" opacity="0.15"/>
+</svg>

@@ -140,25 +140,51 @@
 
   {{! ========= VALEURS DÉRIVÉES ========= }}
   <div class="ark-section derives-section">
+    <h3 class="ark-section-titre">valeurs dérivées</h3>
     <div class="derives-grille">
-      <div class="derive-item"><span class="derive-label">éducation</span><span class="derive-val">{{system.education}}</span></div>
-      <div class="derive-item"><span class="derive-label">initiative</span><span class="derive-val">{{system.initiative}}</span>
-        <button class="btn-initiative" title="Lancer l'initiative (score + D10)">⚡</button>
+
+      <div class="derive-tile">
+        <span class="tile-label">éducation</span>
+        <span class="tile-val">{{system.education}}</span>
       </div>
-      <div class="derive-item pv-item">
-        <span class="derive-label">points de vie</span>
-        <input type="number" name="system.pvActuels" value="{{system.pvActuels}}" min="0" class="pv-actuel" />
-        <span class="pv-sep">/</span>
-        <span class="derive-val">{{system.pvMax}}</span>
-        <span class="blessure-etat {{#if (eq system.etatBlessure 'Blessé')}}etat-blesse{{/if}} {{#if (eq system.etatBlessure 'Gravement Blessé')}}etat-grave{{/if}}">
+
+      <div class="derive-tile">
+        <span class="tile-label">initiative</span>
+        <div class="tile-row">
+          <span class="tile-val">{{system.initiative}}</span>
+          <button class="btn-initiative" title="Lancer l'initiative (score + D10)">⚡</button>
+        </div>
+      </div>
+
+      <div class="derive-tile pv-tile">
+        <span class="tile-label">points de vie</span>
+        <div class="pv-row">
+          <input type="number" name="system.pvActuels" value="{{system.pvActuels}}" min="0" class="pv-actuel" />
+          <span class="pv-sep">/</span>
+          <span class="pv-max">{{system.pvMax}}</span>
+        </div>
+        <div class="pv-barre-visuelle">
+          <div class="pv-barre-fill" style="width:{{pvPct}}%; background-color:{{pvColor}};"></div>
+        </div>
+        <span class="blessure-badge {{#if (eq system.etatBlessure 'Blessé')}}etat-blesse{{/if}} {{#if (eq system.etatBlessure 'Gravement Blessé')}}etat-grave{{/if}}">
           {{system.etatBlessure}}
         </span>
       </div>
-      <div class="derive-item seuils-item">
-        <span class="derive-label">seuils</span>
-        <span class="seuil seuil-2">−2 : {{system.seuilMoins2}}</span>
-        <span class="seuil seuil-4">−4 : {{system.seuilMoins4}}</span>
+
+      <div class="derive-tile seuils-item">
+        <span class="tile-label">seuils de blessure</span>
+        <div class="seuil-row seuil-2">
+          <span class="seuil-etat">Blessé</span>
+          <span class="seuil-pv">≤ {{system.seuilMoins2}} PV</span>
+          <span class="seuil-malus">−2</span>
+        </div>
+        <div class="seuil-row seuil-4">
+          <span class="seuil-etat">Grièvement</span>
+          <span class="seuil-pv">≤ {{system.seuilMoins4}} PV</span>
+          <span class="seuil-malus">−4</span>
+        </div>
       </div>
+
     </div>
   </div>
 

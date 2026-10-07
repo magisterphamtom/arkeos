@@ -260,3 +260,39 @@ export class PouvoirDataModel extends TypeDataModel {
     };
   }
 }
+
+// ----------------------------------------------------------------
+// ARCHÉTYPE (Item — classe de personnage, un seul par PJ)
+// ----------------------------------------------------------------
+export class ArchetypeDataModel extends TypeDataModel {
+  static defineSchema() {
+    return {
+      // Champ dominant (connaissance|combat|savoir|social)
+      champ:       new fields.StringField({ initial: "connaissance" }),
+      // Spécialité offerte gratuitement à la création
+      speDepart:   new fields.StringField({ initial: "" }),
+      // Coût en points pour acquérir chaque champ (1=économique, 2=standard, 3=coûteux)
+      coutChamps:  new fields.SchemaField({
+        connaissance: new fields.NumberField({ initial: 2, min: 1, max: 3, integer: true }),
+        combat:       new fields.NumberField({ initial: 2, min: 1, max: 3, integer: true }),
+        savoir:       new fields.NumberField({ initial: 2, min: 1, max: 3, integer: true }),
+        social:       new fields.NumberField({ initial: 2, min: 1, max: 3, integer: true }),
+      }),
+      // Finances de départ
+      revenus:     new fields.NumberField({ initial: 0, min: 0, integer: true }),
+      liquidites:  new fields.NumberField({ initial: 0, min: 0, integer: true }),
+      // Équipement de départ (texte libre)
+      equipement:  new fields.StringField({ initial: "" }),
+      // Aptitudes uniques (tableau)
+      aptitudes:   new fields.ArrayField(
+        new fields.SchemaField({
+          nom:   new fields.StringField({ initial: "" }),
+          cout:  new fields.NumberField({ initial: 1, min: 0, integer: true }),
+          effet: new fields.StringField({ initial: "" }),
+        })
+      ),
+      // Description narrative / biographie type
+      description: new fields.HTMLField({ initial: "" }),
+    };
+  }
+}

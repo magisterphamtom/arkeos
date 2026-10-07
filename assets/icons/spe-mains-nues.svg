@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Combat à Mains Nues</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M35 30 L50 28 L55 35 L60 32 L68 40 L62 48 L68 55 L60 65 L50 62 L42 68 L32 58 L38 50 L28 42 Z" fill="#c8a090"/>
+  <path d="M45 35 L55 33 M38 45 L48 42 M42 55 L52 53" fill="#a07060"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Mémoire d'Éléphant</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- tête éléphant stylisée -->
+  <ellipse cx="50" cy="48" rx="24" ry="22" fill="#808080"/>
+  <!-- oreilles -->
+  <ellipse cx="24" cy="52" rx="10" ry="14" fill="#707070"/>
+  <ellipse cx="76" cy="52" rx="10" ry="14" fill="#707070"/>
+  <!-- trompe -->
+  <path d="M42 66 Q40 78 50 80 Q60 82 58 72" fill="none" stroke="#707070" stroke-width="6" stroke-linecap="round"/>
+  <!-- yeux -->
+  <circle cx="38" cy="44" r="4" fill="#1a0800"/>
+  <circle cx="62" cy="44" r="4" fill="#1a0800"/>
+  <!-- défenses -->
+  <path d="M38 66 Q30 74 24 70" fill="none" stroke="#e8e0c0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M62 66 Q70 74 76 70" fill="none" stroke="#e8e0c0" stroke-width="4" stroke-linecap="round"/>
+</svg>

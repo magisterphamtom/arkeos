@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Blessure Ancienne</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- silhouette genoux -->
+  <circle cx="50" cy="30" r="10" fill="#4a3010"/>
+  <line x1="50" y1="40" x2="46" y2="64" stroke="#4a3010" stroke-width="6" stroke-linecap="round"/>
+  <line x1="46" y1="64" x2="44" y2="82" stroke="#4a3010" stroke-width="5" stroke-linecap="round"/>
+  <!-- cicatrice sur genou -->
+  <path d="M34 60 L58 60" stroke="#c03020" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M36 56 L38 64 M42 54 L44 62 M48 54 L50 62" stroke="#c03020" stroke-width="1.5" opacity="0.7"/>
+  <!-- douleur éclairs -->
+  <path d="M60 52 L66 60 L60 60 L66 70" stroke="#e84000" stroke-width="2" fill="none"/>
+</svg>

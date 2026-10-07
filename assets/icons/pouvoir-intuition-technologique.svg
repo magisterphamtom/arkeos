@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Intuition Technologique</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <ellipse cx="50" cy="42" rx="18" ry="20" fill="#1a0e02" stroke="#c09020" stroke-width="1.5"/><rect x="43" y="62" width="14" height="5" rx="1" fill="#a07818"/><rect x="44" y="67" width="12" height="4" rx="1" fill="#c09020"/><path d="M54 26 L44 46 L50 46 L46 62 L58 38 L52 38 Z" fill="#f0c030"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Persuasion</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M25 35 L75 35 L75 70 L55 70 L50 80 L45 70 L25 70 Z" fill="#2a1a2a"/>
+  <path d="M32 48 L68 48 M32 58 L55 58" fill="#e8b848"/>
+  <path d="M35 40 L40 40" fill="#c89030"/>
+</svg>

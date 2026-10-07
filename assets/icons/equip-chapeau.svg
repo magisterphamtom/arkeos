@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Chapeau Fedora</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- bord chapeau -->
+  <ellipse cx="50" cy="68" rx="34" ry="7" fill="#4a3010"/>
+  <!-- calotte -->
+  <path d="M24 68 Q24 38 50 36 Q76 38 76 68 Z" fill="#6a4818"/>
+  <!-- ruban -->
+  <rect x="24" y="62" width="52" height="6" fill="#1a0a00"/>
+  <rect x="24" y="62" width="52" height="2" fill="#e8b848" opacity="0.4"/>
+  <!-- crease haut -->
+  <path d="M36 36 Q50 30 64 36" fill="none" stroke="#8a5820" stroke-width="2"/>
+</svg>

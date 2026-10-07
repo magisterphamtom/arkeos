@@ -1,4 +1,12 @@
 node_modules/
+*.zip
 .DS_Store
 Thumbs.db
-*.zip
+
+# Artefacts LevelDB générés par Foundry dans les packs
+packs/*/LOG
+packs/*/LOG.old
+packs/*/LOCK
+packs/*/lost/
+packs/*/*.log
+packs/*/MANIFEST-*

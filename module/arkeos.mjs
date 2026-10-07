@@ -6,12 +6,13 @@
 import {
   PJDataModel, PNJDataModel,
   SpecialiteDataModel, ArmeDataModel, AptitudeDataModel,
-  TraitDataModel, EquipementDataModel, PouvoirDataModel
+  TraitDataModel, EquipementDataModel, PouvoirDataModel,
+  ArchetypeDataModel
 } from "./datamodels.mjs";
-import { initialiserWiki, afficherWikiSiPremiereLancement } from "./wiki.mjs";
+import { ArkeosWiki } from "./wiki.mjs";
 import { ouvrirCreationPersonnage } from "./creation.mjs";
 
-const { ActorSheetV2 }              = foundry.applications.sheets;
+const { ActorSheetV2, ItemSheetV2 }  = foundry.applications.sheets;
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
 // ================================================================
@@ -63,14 +64,29 @@ Hooks.once("init", function () {
   CONFIG.Item.dataModels.trait      = TraitDataModel;
   CONFIG.Item.dataModels.equipement = EquipementDataModel;
   CONFIG.Item.dataModels.pouvoir    = PouvoirDataModel;
+  CONFIG.Item.dataModels.archetype  = ArchetypeDataModel;
 
   CONFIG.Actor.documentClass = ArkeosActeur;
+
+  // Barres de token : PV et EV disponibles dans les options de token
+  CONFIG.Actor.trackableAttributes = {
+    pj: {
+      bar:   ["system.pvActuels", "system.evActuelle"],
+      value: ["system.initiative", "system.defense", "system.champs.combat"],
+    },
+    pnj: {
+      bar:   ["system.pvActuels", "system.evActuelle"],
+      value: ["system.initiative", "system.defense"],
+    },
+  };
 
   game.arkeos = { ArkeosActeur, ArkeosFeuillePJ, ArkeosFeuillePNJ, calculerTR };
 
   const ActorsCollection = foundry.documents.collections.Actors;
-  const ActorSheetV1     = foundry.appv1.sheets.ActorSheet;
-  ActorsCollection.unregisterSheet("core", ActorSheetV1);
+  // v13: unregister AppV1 default sheet; v14: appv1 is removed, skip gracefully
+  if (foundry.appv1?.sheets?.ActorSheet) {
+    ActorsCollection.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  }
   ActorsCollection.registerSheet("arkeos", ArkeosFeuillePJ, {
     types: ["pj"], makeDefault: true, label: "Feuille de Personnage"
   });
@@ -79,10 +95,8 @@ Hooks.once("init", function () {
   });
 
   const ItemsCollection = foundry.documents.collections.Items;
-  const ItemSheetV1     = foundry.appv1.sheets.ItemSheet;
-  ItemsCollection.unregisterSheet("core", ItemSheetV1);
   ItemsCollection.registerSheet("arkeos", ArkeosFeuilleItem, {
-    types: ["specialite","arme","aptitude","trait","equipement","pouvoir"],
+    types: ["specialite","arme","aptitude","trait","equipement","pouvoir","archetype"],
     makeDefault: true, label: "Feuille Objet"
   });
 
@@ -91,75 +105,69 @@ Hooks.once("init", function () {
 });
 
 Hooks.once("ready", async function () {
-  await initialiserWiki();
-  await afficherWikiSiPremiereLancement();
+  // Expose ArkeosWiki globalement pour les macros
+  game.arkeos.ArkeosWiki = ArkeosWiki;
+
+  // Ouverture automatique du wiki au chargement — MJ seulement
+  if (game.user.isGM) {
+    ArkeosWiki.open();
+  }
 });
 
 // ================================================================
-// BOUTONS BARRE LATÉRALE DROITE — en bas, robuste v13
+// CHAT — Marquer les messages Arkéos pour le CSS
+// Ajoute la class "arkeos-message" sur le li.chat-message parent
+// quand son contenu inclut une carte .arkeos-chat.
+// Cela permet de cibler précisément le conteneur Foundry en CSS
+// sans dépendre des sélecteurs :has() ou de l'ID du chat log.
+// ================================================================
+Hooks.on("renderChatMessage", (message, html) => {
+  if (html.querySelector?.(".arkeos-chat")) {
+    html.classList?.add("arkeos-message");
+  }
+});
+
+// ================================================================
+// BOUTON BARRE LATÉRALE ACTEURS — Création de personnage
+// (Le bouton Wiki est géré dans wiki.mjs → renderJournalDirectory)
 // ================================================================
 Hooks.on("renderActorDirectory", (app, html) => {
   // Évite les doublons si le hook se déclenche plusieurs fois
   if (html.querySelector("#arkeos-sidebar-btns")) return;
 
-  // Crée un conteneur dédié tout en bas
   const container = document.createElement("div");
   container.id = "arkeos-sidebar-btns";
   container.style.cssText = [
     "padding: 6px 8px 10px",
-    "border-top: 1px solid rgba(200,134,10,0.35)",
-    "background: linear-gradient(180deg, #0e0a06, #1a1008)",
+    "border-top: 1px solid rgba(48,96,160,0.35)",
+    "background: linear-gradient(180deg, #060a0e, #081018)",
     "display: flex",
     "flex-direction: column",
     "gap: 5px",
   ].join(";");
 
-  const btnWiki = document.createElement("button");
-  btnWiki.innerHTML = "📖 Wiki Arkéos — EW-System";
-  btnWiki.style.cssText = [
-    "width:100%", "padding:7px 10px",
-    "background:#2a0a00", "color:#e8c060",
-    "border:1px solid #c8860a", "border-radius:4px",
-    "cursor:pointer", "font-size:1em", "font-weight:bold",
-    "letter-spacing:0.5px",
-  ].join(";");
-  btnWiki.addEventListener("click", () => {
-    const j = game.journal.find(j => j.name === "📖 Wiki — Arkéos EW-System");
-    if (j) j.sheet.render(true);
-    else ui.notifications.warn("Wiki introuvable — rechargez la page (F5).");
-  });
-
   const btnCreation = document.createElement("button");
   btnCreation.innerHTML = "🎲 Créer un Personnage";
   btnCreation.style.cssText = [
     "width:100%", "padding:7px 10px",
-    "background:#0a1a2a", "color:#80c0e8",
+    "background:linear-gradient(135deg,#0a1a2a,#061018)",
+    "color:#80c0e8",
     "border:1px solid #3060a0", "border-radius:4px",
-    "cursor:pointer", "font-size:1em", "font-weight:bold",
+    "cursor:pointer", "font-size:0.9em", "font-weight:bold",
     "letter-spacing:0.5px",
   ].join(";");
   btnCreation.addEventListener("click", () => ouvrirCreationPersonnage());
 
-  container.appendChild(btnWiki);
   container.appendChild(btnCreation);
 
-  // Cherche le bon point d'insertion dans la barre latérale v13
-  // Priorité : footer existant → sidebar section → la html directement
-  const sidebar  = html.closest("#sidebar")
-                ?? html.closest(".app")
-                ?? html.parentElement;
+  const sidebar = html.closest("#sidebar") ?? html.closest(".app") ?? html.parentElement;
+  const footer  = html.querySelector(".directory-footer")
+               ?? html.querySelector("footer")
+               ?? html.querySelector(".directory-list")?.parentElement;
 
-  const footer   = html.querySelector(".directory-footer")
-                ?? html.querySelector("footer")
-                ?? html.querySelector(".directory-list")?.parentElement;
-
-  if (footer) {
-    footer.after(container);
-  } else if (sidebar) {
-    sidebar.appendChild(container);
-  } else {
-    html.appendChild(container);
-  }
+  if (footer)       footer.after(container);
+  else if (sidebar) sidebar.appendChild(container);
+  else              html.appendChild(container);
 });
 
 // ================================================================
@@ -167,6 +175,63 @@ Hooks.on("renderActorDirectory", (app, html) => {
 // ================================================================
 class ArkeosActeur extends Actor {
   prepareData() { super.prepareData(); }
+
+  // ---------------------------------------------------------------
+  // BARRES DE TOKEN — expose pvActuels/pvMax et evActuelle/evMax
+  // comme barres de valeur sur le token en jeu
+  // ---------------------------------------------------------------
+  getBarAttribute(barName, options = {}) {
+    if (barName === "system.pvActuels") {
+      return {
+        type: "bar",
+        attribute: barName,
+        value: this.system.pvActuels ?? 0,
+        max:   this.system.pvMax   ?? 1,
+        editable: true,
+      };
+    }
+    if (barName === "system.evActuelle") {
+      return {
+        type: "bar",
+        attribute: barName,
+        value: this.system.evActuelle ?? 0,
+        max:   this.system.evMax    ?? 1,
+        editable: true,
+      };
+    }
+    return super.getBarAttribute(barName, options);
+  }
+
+  // ---------------------------------------------------------------
+  // INITIATIVE — intégrée au tracker de combat Foundry
+  // Appelée par le bouton ⚡ du token HUD et par le Combat Tracker
+  // ---------------------------------------------------------------
+  async rollInitiative(options = {}) {
+    const sys  = this.system;
+    const init = sys.initiative ?? sys.champs?.combat ?? 5;
+    const roll = new Roll("1d10");
+    await roll.evaluate();
+    const total = roll.total + init;
+
+    // Mettre à jour le combattant dans le tracker si en combat
+    const cbt = game.combat?.combatants.find(c => c.actorId === this.id);
+    if (cbt) await game.combat.setInitiative(cbt.id, total);
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <div class="arkeos-chat">
+          <div class="chat-titre">⚡ Initiative — ${this.name}</div>
+          <div class="chat-corps">Score <b>${init}</b> + D10 <b>${roll.total}</b> = <b>${total}</b></div>
+          <div class="chat-resultat">
+            <div class="result-verdict result-neutre">Initiative : <b>${total}</b></div>
+          </div>
+        </div>
+      `,
+      rolls: [roll],
+    });
+    return this;
+  }
 }
 
 // ================================================================
@@ -179,6 +244,10 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     position: { width: 750, height: 900 },
     window: { resizable: true },
   };
+
+  get title() {
+    return `${this.actor.name} — Fiche de Personnage`;
+  }
 
   static PARTS = {
     header:     { template: "systems/arkeos/templates/actor/pj-header.html" },
@@ -218,6 +287,7 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     ctx.traits       = this.actor.items.filter(i => i.type === "trait");
     ctx.equipements  = this.actor.items.filter(i => i.type === "equipement");
     ctx.pouvoirs     = this.actor.items.filter(i => i.type === "pouvoir");
+    ctx.archetypeItem = this.actor.items.find(i => i.type === "archetype") ?? null;
 
     // Tableaux pre-construits pour les barres (evite {{#times}} non natif Foundry)
     const degL  = this.actor.system.degLetauxActuels ?? 0;
@@ -226,6 +296,12 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     ctx.barreLetaux = Array.from({ length: 31 }, (_, i) => ({ val: i, actif: i <= degL && i > 0 }));
     ctx.barreSuperf = Array.from({ length: 31 }, (_, i) => ({ val: i, actif: i <= degS && i > 0 }));
     ctx.barreEV     = Array.from({ length: 66 }, (_, i) => ({ val: i, actif: i <= evAct && i > 0 }));
+
+    // Barre PV animée
+    const pvAct = this.actor.system.pvActuels ?? 0;
+    const pvMax = this.actor.system.pvMax ?? 1;
+    ctx.pvPct   = Math.round(Math.max(0, Math.min(100, (pvAct / Math.max(1, pvMax)) * 100)));
+    ctx.pvColor = ctx.pvPct > 60 ? "#4a9a40" : ctx.pvPct > 30 ? "#c07a10" : "#b02020";
 
     return ctx;
   }
@@ -307,6 +383,36 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
       });
     });
 
+    // === ÉCLAT STEPPER +/− ===
+    html.querySelectorAll(".eclat-stepper-btn").forEach(btn => {
+      btn.addEventListener("click", ev => {
+        ev.preventDefault();
+        const action  = ev.currentTarget.dataset.action; // plus|moins
+        const current = this.actor.system.pointsEclatActuels ?? 0;
+        const max     = this.actor.system.pointsEclatMax ?? 0;
+        const next    = action === "plus"
+          ? Math.min(max, current + 1)
+          : Math.max(0, current - 1);
+        this.actor.update({ "system.pointsEclatActuels": next });
+      });
+    });
+
+    // === QUANTITÉ ÉQUIPEMENT +/− ===
+    html.querySelectorAll(".btn-qte").forEach(btn => {
+      btn.addEventListener("click", ev => {
+        ev.preventDefault();
+        const itemId = ev.currentTarget.dataset.itemId;
+        const action = ev.currentTarget.dataset.action; // plus|moins
+        const item   = this.actor.items.get(itemId);
+        if (!item) return;
+        const current = item.system.quantite ?? 1;
+        const next    = action === "plus"
+          ? current + 1
+          : Math.max(0, current - 1);
+        item.update({ "system.quantite": next });
+      });
+    });
+
     // === Barres de dégâts cliquables ===
     this._gererBarresDegats(html);
 
@@ -326,16 +432,82 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
         if (ok) await item.delete();
       });
     });
+
+    // === Archétype — clic pour popup + bouton retirer ===
+    const archCard = html.querySelector(".archetype-card");
+    if (archCard) {
+      archCard.addEventListener("click", async ev => {
+        if (ev.target.closest(".arch-remove-btn")) return; // géré séparément
+        ev.preventDefault();
+        const itemId = archCard.dataset.itemId;
+        const item   = this.actor.items.get(itemId);
+        if (!item) return;
+        const sys = item.system;
+        const CHAMP_LABELS_LOCAL = { connaissance:"Connaissance", combat:"Combat", savoir:"Savoir", social:"Social" };
+        const COUT_LABELS        = { 1:"★ Économique", 2:"★★ Standard", 3:"★★★ Coûteux" };
+        const lignesCouts = Object.entries(sys.coutChamps ?? {})
+          .map(([c,v]) => `<li><strong>${CHAMP_LABELS_LOCAL[c]??c}</strong> : ${COUT_LABELS[v]??v}</li>`).join("");
+        const lignesApt = (sys.aptitudes ?? [])
+          .map(ap => `<li><strong>${ap.nom}</strong> (coût ${ap.cout}) — ${ap.effet}</li>`).join("");
+        await foundry.applications.api.DialogV2.prompt({
+          window: { title: `🎭 ${item.name}`, width: 520 },
+          content: `
+            <div class="arkeos-arch-dialog">
+              <div class="arch-dialog-header">
+                <img src="${item.img}" class="arch-dialog-icone" alt="${item.name}" />
+                <div class="arch-dialog-titre-bloc">
+                  <h2 class="arch-dialog-titre">${item.name}</h2>
+                  <p class="arch-dialog-sous-titre">Champ dominant : <strong>${CHAMP_LABELS_LOCAL[sys.champ]??sys.champ}</strong> &nbsp;·&nbsp; Spé de départ : <em>${sys.speDepart}</em></p>
+                </div>
+              </div>
+              <div class="arch-dialog-corps">
+                ${sys.description || "<p><em>Aucune description.</em></p>"}
+              </div>
+            </div>`,
+          ok: { label: "Fermer", icon: "fa-times" },
+        });
+      });
+
+      html.querySelector(".arch-remove-btn")?.addEventListener("click", async ev => {
+        ev.preventDefault(); ev.stopPropagation();
+        const itemId = archCard.dataset.itemId;
+        const item   = this.actor.items.get(itemId);
+        if (!item) return;
+        const ok = await foundry.applications.api.DialogV2.confirm({
+          window: { title: "Retirer l'archétype" },
+          content: `<p>Retirer <b>${item.name}</b> du personnage ? Les coûts de champs ne seront pas restaurés automatiquement.</p>`,
+        });
+        if (ok) await item.delete();
+      });
+    }
+
+    // === Description d'item (clic sur l'icône) ===
+    html.querySelectorAll(".item-icone-desc").forEach(btn => {
+      btn.addEventListener("click", async ev => {
+        ev.preventDefault();
+        const item = this.actor.items.get(ev.currentTarget.dataset.itemId);
+        if (!item) return;
+        const desc = item.system.description || item.system.effet || "<p><em>Aucune description disponible.</em></p>";
+        await foundry.applications.api.DialogV2.prompt({
+          window: { title: `📖 ${item.name}` },
+          content: `
+            <div class="arkeos-desc-dialog">
+              <div class="desc-header">
+                <img src="${item.img}" class="desc-icone" />
+                <h2 class="desc-titre">${item.name}</h2>
+              </div>
+              <div class="desc-corps">${desc}</div>
+            </div>
+          `,
+          ok: { label: "Fermer", icon: "fa-times" },
+        });
+      });
+    });
   }
 
   _onFirstRender(context, options) {
     super._onFirstRender?.(context, options);
     const html = this.element;
-    // Drag & drop
-    ["specialite","arme","aptitude","trait","equipement","pouvoir"].forEach(type => {
-      const zone = html.querySelector(`.drop-zone[data-type="${type}"]`);
-      if (!zone) return;
-    });
 
     html.addEventListener("dragover", ev => {
       const zone = ev.target.closest(".drop-zone[data-type]");
@@ -360,6 +532,28 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
         ui.notifications.warn(`Type incorrect : attendu "${type}", reçu "${item.type}".`);
         return;
       }
+
+      // === CAS SPÉCIAL : Archétype (un seul autorisé) ===
+      if (type === "archetype") {
+        const existing = this.actor.items.find(i => i.type === "archetype");
+        if (existing) {
+          const ok = await foundry.applications.api.DialogV2.confirm({
+            window: { title: "Changer d'archétype" },
+            content: `<p>Remplacer <b>${existing.name}</b> par <b>${item.name}</b> ?</p>`,
+          });
+          if (!ok) return;
+          await existing.delete();
+        }
+        // Créer l'archétype sur l'acteur
+        const [created] = await this.actor.createEmbeddedDocuments("Item", [item.toObject()]);
+        // Appliquer les coûts de champs au PJ
+        if (created?.system?.coutChamps) {
+          await this.actor.update({ "system.coutChamps": created.system.coutChamps });
+        }
+        ui.notifications.info(`🎭 Archétype ${item.name} appliqué !`);
+        return;
+      }
+
       await this.actor.createEmbeddedDocuments("Item", [item.toObject()]);
       ui.notifications.info(`✅ ${item.name} ajouté !`);
     });
@@ -464,48 +658,34 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
       ? "✅ <b>Réussite</b>"
       : "❌ <b>Échec</b>";
 
+    const classeVerdict = critSucces ? "result-succes" : critEchec ? "result-echec" : succes ? "result-succes" : "result-echec";
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      rolls:   [roll],
       content: `
         <div class="arkeos-chat">
           <div class="chat-titre">🎲 ${nomAction}</div>
           <div class="chat-corps">
-            Score : <b>${score}</b>${bonus > 0 ? ` + ${nomSpe} <b>+${bonus}</b>` : ""}
-            ${sys.malusBlessure < 0 ? ` + Blessure <b>${sys.malusBlessure}</b>` : ""}
-            ${bonusSit > 0 ? ` + Circonstances <b>+${bonusSit}</b>` : ""}
-            ${malus > 0    ? ` − Malus <b>-${malus}</b>` : ""}
-            = <b>${scoreFinal}</b><br>
-            ND : <b>${nd}</b> → TR : <b>${tr}</b>/20<br>
-            Dé : <b>${resultat}</b>
+            Score <b>${scoreFinal}</b>${bonus > 0 ? ` (${nomSpe} +${bonus})` : ""}${sys.malusBlessure < 0 ? ` (Blessure ${sys.malusBlessure})` : ""}${bonusSit > 0 ? ` (+${bonusSit})` : ""}${malus > 0 ? ` (−${malus})` : ""}
+            — ND <b>${nd}</b> — TR <b>${tr}</b>/20
           </div>
-          <div class="chat-resultat" style="color:${couleur};">${texteRes}</div>
+          <div class="chat-resultat">
+            <div class="result-de">
+              <div class="de-bulle">${resultat}</div>
+              <div class="de-tr">TR ≤ ${tr}</div>
+            </div>
+            <div class="result-verdict ${classeVerdict}">${texteRes}</div>
+          </div>
         </div>
       `,
+      rolls: [roll],
     });
   }
 
   // ---------------------------------------------------------------
-  // INITIATIVE
+  // INITIATIVE — délègue à ArkeosActeur.rollInitiative (combat tracker)
   // ---------------------------------------------------------------
   async _lancerInitiative() {
-    const sys  = this.actor.system;
-    const init = sys.initiative ?? sys.champs?.combat ?? 5;
-    const roll = new Roll("1d10");
-    await roll.evaluate();
-    const total = init + roll.total;
-
-    await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      rolls: [roll],
-      content: `
-        <div class="arkeos-chat">
-          <div class="chat-titre">⚡ Initiative</div>
-          <div class="chat-corps">Initiative (<b>${init}</b>) + D10 (<b>${roll.total}</b>) = <b>${total}</b></div>
-          <div class="chat-resultat" style="color:#3060a0;">Initiative de combat : <b>${total}</b></div>
-        </div>
-      `,
-    });
+    await this.actor.rollInitiative();
   }
 
   // ---------------------------------------------------------------
@@ -540,20 +720,22 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     const nd         = choix.nd;
     const tr         = calculerTR(scoreFinal, nd);
 
-    const roll = new Roll("1d20");
-    await roll.evaluate();
-    const touche = roll.total <= tr;
-    const critSucces = roll.total === 1;
-    const critEchec  = roll.total === 20;
+    const rollAtk = new Roll("1d20");
+    await rollAtk.evaluate();
+    const d20Atk = rollAtk.total;
+    const touche = d20Atk <= tr;
+    const critSucces = d20Atk === 1;
+    const critEchec  = d20Atk === 20;
 
     let contenuDegats = "";
+    let rollDeg = null;
     if (touche && !critEchec) {
       // Calcul des dégâts
       const impact   = sys.impact ?? 1;
       const factDeg  = a.degats ?? 0;
-      const rollD10  = new Roll("1d10");
-      await rollD10.evaluate();
-      const d10Val   = rollD10.total;
+      rollDeg = new Roll("1d10");
+      await rollDeg.evaluate();
+      const d10Val   = rollDeg.total;
 
       const letaux   = isContact ? factDeg + (critSucces ? factDeg : 0) : factDeg;  // critique = max dégâts
       const protection = sys.protectionTotale ?? 0;
@@ -561,12 +743,25 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
       const superficiels = Math.max(0, d10Val - defense - protection);
 
       // Si critique, option dégâts max ou ignorer protection
-      const critInfo = critSucces ? "<br>💥 Réussite critique : dégâts max OU ignore armure (au choix)" : "";
+      const critInfo = critSucces
+        ? `<div class="chat-degats-crit">💥 Réussite critique : dégâts max <em>ou</em> ignore armure (au choix)</div>`
+        : "";
 
       contenuDegats = `
         <div class="chat-degats">
-          🩸 Dégâts létaux : <b>${letaux}</b> (facteur ${factDeg}${isContact ? ` + Impact ${impact}` : ""})${critInfo}<br>
-          💥 D10 superficiels : <b>${d10Val}</b> − Défense (${defense}) − Protections (${protection}) = <b>${superficiels}</b>
+          <div class="chat-degats-titre">🩸 Dégâts</div>
+          <div class="chat-degats-grille">
+            <span class="dg-label">Létaux</span>
+            <span class="dg-val"><b>${letaux}</b></span>
+            <span class="dg-detail">${isContact ? `Impact ${impact} + mod. arme ${factDeg >= 0 ? "+" : ""}${factDeg}` : `Mod. arme ${factDeg >= 0 ? "+" : ""}${factDeg}`}</span>
+            <span class="dg-label">D10 blessure</span>
+            <span class="dg-val"><b>${d10Val}</b></span>
+            <span class="dg-detail">Défense −${defense} / Protection −${protection}</span>
+            <span class="dg-label">Superficiels</span>
+            <span class="dg-val dg-superf"><b>${superficiels}</b></span>
+            <span class="dg-detail">${d10Val} − ${defense} − ${protection}</span>
+          </div>
+          ${critInfo}
         </div>
       `;
     }
@@ -574,22 +769,28 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     const couleur = critEchec ? "#8b0000" : touche ? "#2d6a2d" : "#8b0000";
     const texte   = critEchec ? "💀 Échec Critique !" : critSucces ? "🌟 Réussite Critique !" : touche ? "✅ Touché !" : "❌ Manqué";
 
+    const classeVerdictAtk = critEchec ? "result-echec" : touche ? "result-succes" : "result-echec";
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      rolls: [roll],
+
       content: `
         <div class="arkeos-chat">
           <div class="chat-titre">⚔️ Attaque — ${arme.name}</div>
           <div class="chat-corps">
-            Combat : <b>${scoreBase}</b>${speNom ? ` + ${speNom} <b>+${speBonus}</b>` : ""}
-            ${malusBlessure < 0 ? ` + Blessure <b>${malusBlessure}</b>` : ""}
-            = <b>${scoreFinal}</b> | ND <b>${nd}</b> → TR <b>${tr}</b>/20<br>
-            Dé : <b>${roll.total}</b>
+            Combat <b>${scoreFinal}</b>${speNom ? ` (${speNom} +${speBonus})` : ""}${malusBlessure < 0 ? ` (Blessure ${malusBlessure})` : ""}
+            — ND <b>${nd}</b> — TR <b>${tr}</b>/20
           </div>
-          <div class="chat-resultat" style="color:${couleur};">${texte}</div>
+          <div class="chat-resultat">
+            <div class="result-de">
+              <div class="de-bulle">${d20Atk}</div>
+              <div class="de-tr">TR ≤ ${tr}</div>
+            </div>
+            <div class="result-verdict ${classeVerdictAtk}">${texte}</div>
+          </div>
           ${contenuDegats}
         </div>
       `,
+      rolls: rollDeg ? [rollAtk, rollDeg] : [rollAtk],
     });
   }
 
@@ -620,7 +821,9 @@ class ArkeosFeuillePJ extends HandlebarsApplicationMixin(ActorSheetV2) {
         <div class="arkeos-chat">
           <div class="chat-titre">✨ Point d'Éclat dépensé (−${cout})</div>
           <div class="chat-corps">${labels[type]}</div>
-          <div class="chat-resultat" style="color:#c8860a;">Points restants : <b>${pts - cout}</b></div>
+          <div class="chat-resultat">
+            <div class="result-verdict result-neutre">Points restants : <b>${pts - cout}</b></div>
+          </div>
         </div>
       `,
     });
@@ -665,22 +868,32 @@ class ArkeosFeuillePNJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     pnj: { template: "systems/arkeos/templates/actor/pnj.html" },
   };
 
-  async _prepareContext(options) {
-    const ctx = await super._prepareContext(options);
+  _enrichPNJCtx(ctx) {
     ctx.actor  = this.actor;
     ctx.system = this.actor.system;
     ctx.armes  = this.actor.items.filter(i => i.type === "arme");
     ctx.specialites = this.actor.items.filter(i => i.type === "specialite");
+    // Barre PV
+    const pvAct = this.actor.system.pvActuels ?? 0;
+    const pvMax = this.actor.system.pvMax ?? 1;
+    ctx.pvPct   = Math.round(Math.max(0, Math.min(100, (pvAct / Math.max(1, pvMax)) * 100)));
+    ctx.pvColor = ctx.pvPct > 60 ? "#4a9a40" : ctx.pvPct > 30 ? "#c07a10" : "#b02020";
+    // Barre EV
+    const evAct2 = this.actor.system.evActuelle ?? 0;
+    const evMax2 = this.actor.system.evMax ?? 1;
+    ctx.evPct   = Math.round(Math.max(0, Math.min(100, (evAct2 / Math.max(1, evMax2)) * 100)));
+    ctx.evColor = ctx.evPct > 60 ? "#2a7acc" : ctx.evPct > 30 ? "#8844cc" : "#4a1888";
     return ctx;
+  }
+
+  async _prepareContext(options) {
+    const ctx = await super._prepareContext(options);
+    return this._enrichPNJCtx(ctx);
   }
 
   async _preparePartContext(partId, context) {
     const ctx = await super._preparePartContext(partId, context);
-    ctx.actor  = this.actor;
-    ctx.system = this.actor.system;
-    ctx.armes  = this.actor.items.filter(i => i.type === "arme");
-    ctx.specialites = this.actor.items.filter(i => i.type === "specialite");
-    return ctx;
+    return this._enrichPNJCtx(ctx);
   }
 
   _onRender(context, options) {
@@ -711,6 +924,13 @@ class ArkeosFeuillePNJ extends HandlebarsApplicationMixin(ActorSheetV2) {
       });
     });
 
+    html.querySelectorAll(".btn-initiative").forEach(btn => {
+      btn.addEventListener("click", ev => {
+        ev.preventDefault();
+        this._initiativePNJ();
+      });
+    });
+
     html.querySelectorAll(".btn-attaque").forEach(btn => {
       btn.addEventListener("click", ev => {
         ev.preventDefault();
@@ -720,25 +940,96 @@ class ArkeosFeuillePNJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     });
   }
 
+  async _initiativePNJ() {
+    await this.actor.rollInitiative();
+  }
+
   async _jetPNJ(champId) {
     const sys    = this.actor.system;
     const score  = sys.champs?.[champId] ?? 5;
-    const roll   = new Roll("1d20");
-    await roll.evaluate();
-    const nd = 10;
-    const tr = calculerTR(score, nd);
-    const succes = roll.total <= tr;
+    const nomChamp = CHAMP_LABELS[champId] ?? champId;
+    const DialogV2 = foundry.applications.api.DialogV2;
+
+    // Dialogue de saisie du ND
+    const result = await DialogV2.wait({
+      window: { title: `${nomChamp} — ${this.actor.name}` },
+      content: `
+        <div class="arkeos-dialogue">
+          <div class="dial-titre">🎲 ${nomChamp} (PNJ)</div>
+          <div class="dial-info">Score : <b>${score}</b></div>
+          <div class="dial-ligne">
+            <label>ND (Niveau de Difficulté)</label>
+            <input type="number" id="nd" value="10" min="1" max="30" style="width:70px;" />
+          </div>
+          <div class="dial-ligne">
+            <label>Bonus de situation</label>
+            <input type="number" id="bonus-sit" value="0" min="-10" max="10" style="width:70px;" />
+          </div>
+          <div class="dial-tr">TR : <b id="tr-val">${calculerTR(score, 10)}</b>/20</div>
+        </div>
+      `,
+      render: (event, dialog) => {
+        const el = dialog.element;
+        const maj = () => {
+          const nd  = Number(el.querySelector("#nd")?.value) || 10;
+          const bon = Number(el.querySelector("#bonus-sit")?.value) || 0;
+          const trEl = el.querySelector("#tr-val");
+          if (trEl) trEl.textContent = calculerTR(score + bon, nd);
+        };
+        el.querySelector("#nd")?.addEventListener("input", maj);
+        el.querySelector("#bonus-sit")?.addEventListener("input", maj);
+        maj();
+      },
+      buttons: [
+        {
+          action: "lancer", label: "🎲 Lancer", default: true,
+          callback: (event, button, dialog) => {
+            const el = dialog.element;
+            return {
+              lancer: true,
+              nd:    Number(el.querySelector("#nd")?.value) || 10,
+              bonus: Number(el.querySelector("#bonus-sit")?.value) || 0,
+            };
+          },
+        },
+        { action: "annuler", label: "Annuler", callback: () => ({ lancer: false }) },
+      ],
+    }).catch(() => ({ lancer: false }));
+
+    if (!result?.lancer) return;
+
+    const nd     = result.nd;
+    const bonus  = result.bonus;
+    const scoreFinal = score + bonus;
+    const tr     = calculerTR(scoreFinal, nd);
+    const rollPnj = new Roll("1d20");
+    await rollPnj.evaluate();
+    const d20Pnj = rollPnj.total;
+    const critSucces = d20Pnj === 1;
+    const critEchec  = d20Pnj === 20;
+    const succes = d20Pnj <= tr;
+
+    const texte = critSucces ? "🌟 Réussite Critique !"
+      : critEchec ? "💀 Échec Critique !"
+      : succes ? "✅ Réussite" : "❌ Échec";
+    const classe = (succes && !critEchec) ? "result-succes" : "result-echec";
 
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      rolls: [roll],
       content: `
         <div class="arkeos-chat pnj">
-          <div class="chat-titre">🎲 ${CHAMP_LABELS[champId]} (PNJ)</div>
-          <div class="chat-corps">Score : <b>${score}</b> | ND : <b>${nd}</b> → TR : <b>${tr}</b>/20 | Dé : <b>${roll.total}</b></div>
-          <div class="chat-resultat" style="color:${succes ? "#2d6a2d" : "#8b0000"};">${succes ? "✅ Réussite" : "❌ Échec"}</div>
+          <div class="chat-titre">🎲 ${nomChamp} — ${this.actor.name}</div>
+          <div class="chat-corps">Score <b>${scoreFinal}</b>${bonus !== 0 ? ` (sit. ${bonus > 0 ? "+" : ""}${bonus})` : ""} — ND <b>${nd}</b> — TR <b>${tr}</b>/20</div>
+          <div class="chat-resultat">
+            <div class="result-de">
+              <div class="de-bulle">${d20Pnj}</div>
+              <div class="de-tr">TR ≤ ${tr}</div>
+            </div>
+            <div class="result-verdict ${classe}">${texte}</div>
+          </div>
         </div>
       `,
+      rolls: [rollPnj],
     });
   }
 
@@ -747,31 +1038,41 @@ class ArkeosFeuillePNJ extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (!arme) return;
     const sys = this.actor.system;
     const score = sys.champs?.combat ?? 5;
-    const roll = new Roll("1d20");
-    await roll.evaluate();
+    const rollPnjAtk = new Roll("1d20");
+    await rollPnjAtk.evaluate();
+    const d20PnjAtk = rollPnjAtk.total;
     const tr = calculerTR(score, 10);
-    const touche = roll.total <= tr;
+    const touche = d20PnjAtk <= tr;
 
     let degStr = "";
+    let rollPnjDeg = null;
     if (touche) {
-      const rollD10 = new Roll("1d10");
-      await rollD10.evaluate();
+      rollPnjDeg = new Roll("1d10");
+      await rollPnjDeg.evaluate();
+      const d10PnjDmg = rollPnjDeg.total;
       const letaux      = arme.system.degats ?? 0;
-      const superficiels = Math.max(0, rollD10.total - (sys.defense ?? 1));
-      degStr = `<div class="chat-degats">Létaux : <b>${letaux}</b> | Superficiels : <b>${superficiels}</b></div>`;
+      const superficiels = Math.max(0, d10PnjDmg - (sys.defense ?? 1));
+      degStr = `<div class="chat-degats">Létaux <b>${letaux}</b> — Superf. <b>${superficiels}</b></div>`;
     }
 
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      rolls: [roll],
+
       content: `
         <div class="arkeos-chat pnj">
           <div class="chat-titre">⚔️ ${arme.name} (PNJ)</div>
-          <div class="chat-corps">Combat <b>${score}</b> | TR <b>${tr}</b>/20 | Dé <b>${roll.total}</b></div>
-          <div class="chat-resultat" style="color:${touche ? "#2d6a2d" : "#8b0000"};">${touche ? "✅ Touché" : "❌ Raté"}</div>
+          <div class="chat-corps">Combat <b>${score}</b> — TR <b>${tr}</b>/20</div>
+          <div class="chat-resultat">
+            <div class="result-de">
+              <div class="de-bulle">${d20PnjAtk}</div>
+              <div class="de-tr">TR ≤ ${tr}</div>
+            </div>
+            <div class="result-verdict ${touche ? "result-succes" : "result-echec"}">${touche ? "✅ Touché" : "❌ Raté"}</div>
+          </div>
           ${degStr}
         </div>
       `,
+      rolls: rollPnjDeg ? [rollPnjAtk, rollPnjDeg] : [rollPnjAtk],
     });
   }
 }
@@ -779,11 +1080,7 @@ class ArkeosFeuillePNJ extends HandlebarsApplicationMixin(ActorSheetV2) {
 // ================================================================
 // FEUILLE ITEM
 // ================================================================
-class ArkeosFeuilleItem extends HandlebarsApplicationMixin(
-  foundry.appv1?.sheets?.ItemSheet
-    ? foundry.appv1.sheets.ItemSheet
-    : (foundry.applications.sheets?.ItemSheetV2 ?? ActorSheetV2)
-) {
+class ArkeosFeuilleItem extends HandlebarsApplicationMixin(ItemSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["arkeos", "sheet", "item"],
     position: { width: 480, height: 440 },
@@ -967,5 +1264,6 @@ async function chargerTemplates() {
     "systems/arkeos/templates/actor/pj-tab-notes.html",
     "systems/arkeos/templates/actor/pnj.html",
     "systems/arkeos/templates/item/feuille-item.html",
+    "systems/arkeos/templates/wiki/wiki.hbs",
   ]);
 }

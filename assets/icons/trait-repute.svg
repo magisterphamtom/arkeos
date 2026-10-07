@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Réputation Douteuse</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- avis de recherche -->
+  <rect x="22" y="18" width="56" height="70" fill="#e8d8a0" rx="2"/>
+  <rect x="22" y="18" width="56" height="70" fill="none" stroke="#8a6020" stroke-width="2" rx="2"/>
+  <!-- titre WANTED -->
+  <rect x="24" y="22" width="52" height="10" fill="#c03020"/>
+  <text x="50" y="30" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold">WANTED</text>
+  <!-- portrait stylisé -->
+  <circle cx="50" cy="52" r="12" fill="#6a4020"/>
+  <circle cx="50" cy="47" r="6" fill="#5a3010"/>
+  <path d="M40 58 Q50 64 60 58" fill="#5a3010"/>
+  <!-- récompense -->
+  <text x="50" y="78" text-anchor="middle" font-size="5" fill="#8a6020">500 $</text>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Maléfice</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 22 Q68 22 70 38 Q72 52 64 60 L64 72 L36 72 L36 60 Q28 52 30 38 Q32 22 50 22 Z" fill="#021a06" stroke="#20a040" stroke-width="1.5"/><circle cx="42" cy="44" r="6" fill="#0a2810"/><circle cx="58" cy="44" r="6" fill="#0a2810"/><circle cx="42" cy="44" r="3" fill="#30a050"/><circle cx="58" cy="44" r="3" fill="#30a050"/><path d="M44 60 L44 66 L48 66 L48 60 M52 60 L52 66 L56 66 L56 60" fill="none" stroke="#20a040" stroke-width="1.2"/><path d="M40 55 Q50 58 60 55" fill="none" stroke="#30a848" stroke-width="1.2"/>
+</svg>

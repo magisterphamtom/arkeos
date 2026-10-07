@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Bâton / Improvisation</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M30 18 L38 18 L72 78 L64 82 L68 90 L58 88 L54 80 L22 20 Z" fill="#8a5a30"/>
+  <path d="M34 18 L38 18 L42 26 L38 26 Z M64 82 L68 82 L66 88 L62 88 Z" fill="#6a4020"/>
+</svg>

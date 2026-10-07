@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Illusion</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 20 L72 35 L72 60 Q72 75 50 80 Q28 75 28 60 L28 35 Z" fill="#1a0830" stroke="#7040b0" stroke-width="1.5"/><path d="M50 20 L50 80" stroke="#a060e0" stroke-width="1" stroke-dasharray="3,2"/><ellipse cx="38" cy="46" rx="7" ry="5" fill="none" stroke="#c090ff" stroke-width="1.5"/><ellipse cx="62" cy="46" rx="7" ry="5" fill="none" stroke="#5030a0" stroke-width="1.5"/><path d="M35 62 Q38 67 42 63" fill="none" stroke="#c090ff" stroke-width="1.5"/><path d="M58 62 Q62 67 66 63" fill="none" stroke="#5030a0" stroke-width="1.5"/>
+</svg>

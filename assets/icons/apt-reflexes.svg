@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Réflexes de Combat</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 20 L60 35 L78 35 L65 48 L70 65 L50 55 L30 65 L35 48 L22 35 L40 35 Z" fill="#e8b848"/>
+  <path d="M50 28 L57 40 L70 40 L60 50 L63 62 L50 55 L37 62 L40 50 L30 40 L43 40 Z" fill="#fff060"/>
+</svg>

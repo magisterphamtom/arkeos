@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Dandy</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <!-- Tête élégante -->
+  <ellipse cx="50" cy="24" rx="8" ry="10" fill="#f0d4a0"/>
+  <!-- Moustache fine -->
+  <path d="M44 29 Q50 31 56 29" stroke="#3a2010" stroke-width="1.5" fill="none"/>
+  <!-- Haut-de-forme -->
+  <rect x="40" y="11" width="20" height="16" rx="1" fill="#1a1a1a"/>
+  <path d="M34 26 L66 26" stroke="#1a1a1a" stroke-width="4"/>
+  <!-- Nœud papillon -->
+  <path d="M44 36 L46 39 L50 37 L54 39 L56 36 L50 34 Z" fill="#8a1a1a"/>
+  <!-- Costume 3 pièces élégant -->
+  <path d="M35 36 L65 36 L67 78 L50 83 L33 78 Z" fill="#1a1a2a"/>
+  <!-- Revers -->
+  <path d="M35 36 L42 48 L50 37 M65 36 L58 48 L50 37" fill="#2a2a3a"/>
+  <!-- Gilet -->
+  <path d="M43 48 L57 48 L57 70 L50 73 L43 70 Z" fill="#c8a030"/>
+  <!-- Montre à gousset -->
+  <circle cx="55" cy="65" r="4" fill="#c8b020" stroke="#a09010" stroke-width="1"/>
+  <line x1="55" y1="63" x2="55" y2="65" stroke="#333" stroke-width="1"/>
+  <line x1="55" y1="65" x2="57" y2="66" stroke="#333" stroke-width="1"/>
+  <!-- Canne -->
+  <line x1="74" y1="32" x2="82" y2="82" stroke="#4a2a08" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="73" cy="31" rx="4" ry="3" fill="#c0a030"/>
+  <!-- Bras droit tenant la canne -->
+  <path d="M65 38 L74 35" stroke="#1a1a2a" stroke-width="5" stroke-linecap="round" fill="none"/>
+</svg>

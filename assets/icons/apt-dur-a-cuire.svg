@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Dur à Cuire</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 18 L72 30 L72 55 C72 68 62 78 50 82 C38 78 28 68 28 55 L28 30 Z" fill="#404040"/>
+  <path d="M50 26 L66 36 L66 55 C66 65 58 72 50 75 C42 72 34 65 34 55 L34 36 Z" fill="#606060"/>
+  <path d="M42 50 L48 56 L60 42" fill="#e8b848"/>
+</svg>

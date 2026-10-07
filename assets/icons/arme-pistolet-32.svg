@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Pistolet .32</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M22 55 L55 55 L55 42 L65 42 L70 46 L70 52 L65 52 L65 58 L55 62 L22 62 Z" fill="#707070"/>
+  <path d="M18 55 L22 55 L22 62 L18 62 Z" fill="#c08040"/>
+  <path d="M55 45 L62 45 L62 48 L55 48 Z" fill="#404040"/>
+  <path d="M42 55 A3 3 0 1 1 41.9 55 Z" fill="#2a1a05"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Pistolet .45</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M20 52 L58 52 L58 38 L70 38 L76 43 L76 50 L70 50 L70 56 L58 60 L20 60 Z" fill="#606060"/>
+  <path d="M15 52 L20 52 L20 60 L15 60 Z" fill="#c08040"/>
+  <path d="M58 41 L68 41 L68 45 L58 45 Z" fill="#404040"/>
+  <path d="M40 52 A4 4 0 1 1 39.9 52 Z" fill="#2a1a05"/>
+  <path d="M25 55 A2 2 0 1 1 24.9 55 Z" fill="#e8b848"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Revolver .38</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M20 50 L55 50 L55 38 L65 38 L72 42 L72 50 L65 50 L65 58 L55 62 L20 62 Z" fill="#505050"/>
+  <path d="M15 50 L20 50 L20 62 L15 62 Z" fill="#c08040"/>
+  <path d="M55 40 L65 40 L65 50 A5 5 0 1 1 54.9 50 Z" fill="#404040"/>
+  <path d="M58 44 A3 3 0 1 1 57.9 44 Z M64 44 A2 2 0 1 1 63.9 44 Z M61 48 A2 2 0 1 1 60.9 48 Z" fill="#e8b848"/>
+</svg>

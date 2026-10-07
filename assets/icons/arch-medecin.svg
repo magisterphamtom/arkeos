@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Médecin</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <!-- Tête -->
+  <ellipse cx="50" cy="24" rx="9" ry="10" fill="#f0d4a0"/>
+  <!-- Cheveux / lunettes rondes -->
+  <path d="M41 22 Q50 17 59 22" stroke="#3a2010" stroke-width="2" fill="none"/>
+  <circle cx="45" cy="27" r="4" fill="none" stroke="#8a7030" stroke-width="1.5"/>
+  <circle cx="55" cy="27" r="4" fill="none" stroke="#8a7030" stroke-width="1.5"/>
+  <line x1="49" y1="27" x2="51" y2="27" stroke="#8a7030" stroke-width="1.5"/>
+  <!-- Blouse blanche -->
+  <path d="M34 36 L66 36 L68 78 L50 83 L32 78 Z" fill="#f0f0f0"/>
+  <!-- Revers blouse -->
+  <path d="M34 36 L42 50 L50 37 M66 36 L58 50 L50 37" fill="#e0e0e0"/>
+  <!-- Stéthoscope -->
+  <path d="M38 40 Q32 52 38 62 Q44 72 50 68 Q56 64 56 58" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+  <circle cx="56" cy="56" r="5" fill="none" stroke="#c0a030" stroke-width="2"/>
+  <circle cx="56" cy="56" r="2" fill="#c0a030"/>
+  <path d="M35 38 L30 34 M42 38 L38 34" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="30" cy="33" r="2" fill="#1a1a1a"/>
+  <circle cx="38" cy="33" r="2" fill="#1a1a1a"/>
+  <!-- Trousse médicale main droite -->
+  <path d="M66 40 L78 52" stroke="#f0f0f0" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="49" width="14" height="10" rx="2" fill="#8a1a1a"/>
+  <line x1="73" y1="54" x2="87" y2="54" stroke="#f0f0f0" stroke-width="1.5"/>
+  <line x1="80" y1="49" x2="80" y2="59" stroke="#f0f0f0" stroke-width="1.5"/>
+  <!-- Croix rouge sur la poche -->
+  <rect x="36" y="54" width="9" height="9" rx="1" fill="#f0f0f0"/>
+  <line x1="40.5" y1="55.5" x2="40.5" y2="62" stroke="#cc0000" stroke-width="2"/>
+  <line x1="37.5" y1="58.5" x2="44" y2="58.5" stroke="#cc0000" stroke-width="2"/>
+</svg>

@@ -1,11 +1,11 @@
 {
   "id": "arkeos",
-  "title": "Arkéos — EW-System",
+  "title": "Arkéos — EW-System | 1re Édition Non-Officielle",
   "description": "Adaptation Foundry VTT d'Arkéos (EW-Universe #1, Extraordinary Worlds Studio). Jeu de rôle pulp des années 1930 basé sur l'EW-System — résolution D20, Caractéristiques, Champs et Spécialités.",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "compatibility": {
     "minimum": "13",
-    "verified": "13.351"
+    "verified": "14.368"
   },
   "authors": [
     {
@@ -29,7 +29,8 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "format": "classic-level"
     },
     {
       "name": "armes",
@@ -40,7 +41,8 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "format": "classic-level"
     },
     {
       "name": "aptitudes",
@@ -51,18 +53,68 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "format": "classic-level"
     },
     {
       "name": "archetypes",
-      "label": "🎭 Archétypes (PJ)",
+      "label": "🎭 Archétypes",
       "path": "packs/archetypes",
-      "type": "Actor",
+      "type": "Item",
       "system": "arkeos",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "format": "classic-level"
+    },
+    {
+      "name": "scenes",
+      "label": "🗺️ Scènes",
+      "path": "packs/scenes",
+      "type": "Scene",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "format": "classic-level"
+    },
+    {
+      "name": "equipements",
+      "label": "🎒 Équipements",
+      "path": "packs/equipements",
+      "type": "Item",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "format": "classic-level"
+    },
+    {
+      "name": "traits",
+      "label": "🔖 Traits & Restrictions",
+      "path": "packs/traits",
+      "type": "Item",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "format": "classic-level"
+    },
+    {
+      "name": "pouvoirs",
+      "label": "🔮 Pouvoirs & Magie",
+      "path": "packs/pouvoirs",
+      "type": "Item",
+      "system": "arkeos",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "format": "classic-level"
     }
   ],
   "languages": [
@@ -75,7 +127,7 @@
   "socket": false,
   "url": "https://github.com/magisterphamtom/arkeos",
   "manifest": "https://github.com/magisterphamtom/arkeos/releases/latest/download/system.json",
-  "download": "https://github.com/magisterphamtom/arkeos/releases/download/v1.0.0/arkeos.zip",
+  "download": "https://github.com/magisterphamtom/arkeos/releases/download/v1.2.0/arkeos.zip",
   "bugs": "https://github.com/magisterphamtom/arkeos/issues",
   "license": "MIT"
 }

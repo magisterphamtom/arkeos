@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Sens Aiguisés</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <ellipse cx="50" cy="40" rx="20" ry="12" fill="#200808" stroke="#c05020" stroke-width="1.5"/><circle cx="50" cy="40" r="6" fill="#401010"/><circle cx="50" cy="40" r="3" fill="#e06030"/><circle cx="50" cy="40" r="1.2" fill="#fff0e0"/><path d="M36 58 Q34 52 36 48 Q38 44 42 46 Q46 48 44 52 Z" fill="#3a1008" stroke="#c05020" stroke-width="1.2"/><path d="M64 58 Q66 52 64 48 Q62 44 58 46 Q54 48 56 52 Z" fill="#3a1008" stroke="#c05020" stroke-width="1.2"/><circle cx="44" cy="65" r="3" fill="#d05020"/><circle cx="56" cy="65" r="3" fill="#d05020"/>
+</svg>

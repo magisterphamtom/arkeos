@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Armes de Mêlée</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M65 20 L80 35 L40 75 L28 78 L22 72 L25 60 Z" fill="#c0c0c0"/>
+  <path d="M22 72 L30 80 L35 75 L27 67 Z" fill="#c08040"/>
+  <path d="M65 20 L75 15 L85 20 L80 35 Z" fill="#909090"/>
+</svg>

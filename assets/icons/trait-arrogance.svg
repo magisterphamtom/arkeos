@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Arrogance</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- couronne -->
+  <path d="M18 62 L18 42 L32 56 L50 28 L68 56 L82 42 L82 62 Z" fill="#c09020"/>
+  <path d="M18 62 L18 42 L32 56 L50 28 L68 56 L82 42 L82 62 Z" fill="none" stroke="#e8c040" stroke-width="1.5"/>
+  <!-- base couronne -->
+  <rect x="18" y="60" width="64" height="12" fill="#a07818" rx="2"/>
+  <!-- gemmes -->
+  <circle cx="50" cy="34" r="5" fill="#c03060"/>
+  <circle cx="28" cy="54" r="4" fill="#2060c0"/>
+  <circle cx="72" cy="54" r="4" fill="#2060c0"/>
+  <!-- éclat -->
+  <circle cx="50" cy="66" r="3" fill="#e8d060"/>
+</svg>

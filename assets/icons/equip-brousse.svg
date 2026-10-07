@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Tenue de brousse</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- chemise kaki -->
+  <path d="M30 35 L26 75 L45 75 L50 58 L55 75 L74 75 L70 35 Z" fill="#6a7830"/>
+  <!-- col ouvert -->
+  <path d="M40 35 L50 46 L60 35 L58 30 L50 40 L42 30 Z" fill="#4a5820"/>
+  <!-- poches poitrine -->
+  <rect x="35" y="45" width="12" height="10" fill="#586028" rx="1"/>
+  <rect x="53" y="45" width="12" height="10" fill="#586028" rx="1"/>
+  <!-- ceinture -->
+  <rect x="27" y="60" width="46" height="5" fill="#3a2c10" rx="1"/>
+  <rect x="46" y="59" width="8" height="7" fill="#c89020" rx="1"/>
+</svg>

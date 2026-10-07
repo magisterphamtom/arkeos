@@ -20,7 +20,7 @@
       <div class="portrait-frame">
         <img class="ark-portrait" src="{{actor.img}}" data-edit="img" title="Changer le portrait" />
       </div>
-      <div class="archetype-badge">{{system.archetype}}</div>
+      <div class="archetype-badge">{{#if archetypeItem}}<img class="arch-badge-icon" src="{{archetypeItem.img}}" alt="{{archetypeItem.name}}" /><span class="arch-badge-nom">{{archetypeItem.name}}</span>{{else}}<span class="arch-badge-empty">🎭</span>{{/if}}</div>
       <div class="eclat-mini">✨ {{system.pointsEclatActuels}} / {{system.pointsEclatMax}}</div>
     </div>
 
@@ -42,9 +42,20 @@
         <div class="ec-champ"><label>Sexe</label><input type="text" name="system.etatCivil.sexe" value="{{system.etatCivil.sexe}}" /></div>
       </div>
 
-      <div class="archetype-zone">
-        <label class="arch-label">Archétype</label>
-        <input type="text" name="system.archetype" value="{{system.archetype}}" class="arch-input" placeholder="ex: Archéologue" />
+      {{! Zone Archétype — drag-and-drop depuis le compendium }}
+      <div class="archetype-zone drop-zone" data-type="archetype">
+        {{#if archetypeItem}}
+          <div class="archetype-card" data-item-id="{{archetypeItem.id}}" title="Cliquer pour voir la description">
+            <img class="arch-card-icon" src="{{archetypeItem.img}}" alt="{{archetypeItem.name}}" />
+            <button class="arch-remove-btn" title="Retirer l'archétype" type="button">✕</button>
+          </div>
+        {{else}}
+          <div class="arch-drop-placeholder">
+            <span class="arch-drop-icon">🎭</span>
+            <span class="arch-drop-label">Archétype</span>
+            <span class="arch-drop-hint">Glisser depuis le compendium</span>
+          </div>
+        {{/if}}
       </div>
     </div>
 

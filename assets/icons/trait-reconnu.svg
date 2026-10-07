@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Reconnaissable</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- visage très reconnaissable, avec spot lumineux -->
+  <!-- spotlight -->
+  <path d="M50 14 L30 50 L70 50 Z" fill="#e8e840" opacity="0.2"/>
+  <!-- visage -->
+  <circle cx="50" cy="50" r="22" fill="#a07840"/>
+  <!-- yeux expressifs -->
+  <ellipse cx="42" cy="45" rx="5" ry="4" fill="#1a0800"/>
+  <ellipse cx="58" cy="45" rx="5" ry="4" fill="#1a0800"/>
+  <circle cx="44" cy="43" r="2" fill="#ffffff" opacity="0.6"/>
+  <circle cx="60" cy="43" r="2" fill="#ffffff" opacity="0.6"/>
+  <!-- moustache distinctive -->
+  <path d="M40 58 Q50 54 60 58" fill="none" stroke="#5a3010" stroke-width="2.5"/>
+  <!-- flèches "on vous reconnaît" -->
+  <path d="M16 50 L24 46 L22 50 L24 54 Z" fill="#e84000" opacity="0.7"/>
+  <path d="M84 50 L76 46 L78 50 L76 54 Z" fill="#e84000" opacity="0.7"/>
+</svg>

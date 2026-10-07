@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Orateur Inspiré</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <rect x="43" y="24" width="14" height="22" rx="7" fill="#1a0e02" stroke="#c09020" stroke-width="1.5"/><path d="M36 44 Q36 58 50 58 Q64 58 64 44" fill="none" stroke="#b07818" stroke-width="2" stroke-linecap="round"/><line x1="50" y1="58" x2="50" y2="72" stroke="#c09020" stroke-width="2"/><path d="M38 72 L62 72" stroke="#c09020" stroke-width="2" stroke-linecap="round"/><path d="M26 40 Q22 50 26 60" fill="none" stroke="#d0a830" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/><path d="M74 40 Q78 50 74 60" fill="none" stroke="#d0a830" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+</svg>

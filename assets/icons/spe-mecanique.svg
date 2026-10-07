@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Mécanique</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M30 38 L38 30 L45 37 A14 14 0 0 1 63 37 L70 30 L78 38 L71 45 A14 14 0 0 1 71 63 L78 70 L70 78 L63 71 A14 14 0 0 1 45 71 L38 78 L30 70 L37 63 A14 14 0 0 1 37 45 Z" fill="#2a2a3a"/>
+  <path d="M50 38 A12 12 0 1 1 49.9 38 Z" fill="#e8b848"/>
+  <path d="M50 44 A6 6 0 1 1 49.9 44 Z" fill="#1a0a02"/>
+</svg>

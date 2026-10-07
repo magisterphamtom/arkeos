@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Stéthoscope</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- tube en Y -->
+  <path d="M50 70 L50 55 Q50 42 38 36 Q30 32 28 38" fill="none" stroke="#2a2a2a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M50 55 Q50 42 62 36 Q70 32 72 38" fill="none" stroke="#2a2a2a" stroke-width="5" stroke-linecap="round"/>
+  <!-- oreillettes -->
+  <circle cx="28" cy="36" r="5" fill="#404040"/>
+  <circle cx="72" cy="36" r="5" fill="#404040"/>
+  <!-- membrane -->
+  <circle cx="50" cy="72" r="10" fill="#484848"/>
+  <circle cx="50" cy="72" r="7" fill="#606060"/>
+  <circle cx="50" cy="72" r="4" fill="#3a3a3a"/>
+</svg>

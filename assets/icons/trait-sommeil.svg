@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Mauvais Dormeur</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- lune -->
+  <path d="M62 22 Q38 28 34 50 Q30 72 54 78 Q30 82 24 60 Q16 36 38 20 Q48 14 62 22 Z" fill="#c0c0e0"/>
+  <!-- nuage sombre de cauchemar -->
+  <ellipse cx="65" cy="55" rx="20" ry="14" fill="#2a0a30" opacity="0.8"/>
+  <ellipse cx="52" cy="60" rx="14" ry="10" fill="#2a0a30" opacity="0.8"/>
+  <ellipse cx="76" cy="62" rx="12" ry="9" fill="#2a0a30" opacity="0.8"/>
+  <!-- éclairs cauchemar -->
+  <path d="M60 48 L55 58 L62 58 L56 68" stroke="#8000c0" stroke-width="2" fill="none" opacity="0.8"/>
+  <!-- étoiles perdues -->
+  <circle cx="30" cy="36" r="2" fill="#e0e0ff" opacity="0.6"/>
+  <circle cx="74" cy="28" r="1.5" fill="#e0e0ff" opacity="0.6"/>
+</svg>

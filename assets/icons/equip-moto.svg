@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Moto Indian Scout</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- cadre -->
+  <path d="M22 55 L38 40 L62 40 L78 55" fill="none" stroke="#c04010" stroke-width="4"/>
+  <line x1="50" y1="40" x2="50" y2="58" stroke="#c04010" stroke-width="3"/>
+  <!-- moteur -->
+  <rect x="40" y="50" width="20" height="14" fill="#606060" rx="2"/>
+  <rect x="44" y="46" width="12" height="6" fill="#808080" rx="1"/>
+  <!-- roues -->
+  <circle cx="24" cy="62" r="14" fill="none" stroke="#2a2a2a" stroke-width="4"/>
+  <circle cx="24" cy="62" r="9" fill="none" stroke="#404040" stroke-width="2"/>
+  <circle cx="24" cy="62" r="3" fill="#c09030"/>
+  <circle cx="76" cy="62" r="14" fill="none" stroke="#2a2a2a" stroke-width="4"/>
+  <circle cx="76" cy="62" r="9" fill="none" stroke="#404040" stroke-width="2"/>
+  <circle cx="76" cy="62" r="3" fill="#c09030"/>
+  <!-- guidon -->
+  <path d="M62 40 L70 34 L78 36" fill="none" stroke="#808080" stroke-width="2"/>
+  <!-- selle -->
+  <ellipse cx="48" cy="40" rx="10" ry="4" fill="#3a2010"/>
+</svg>

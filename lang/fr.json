@@ -38,5 +38,7 @@
   "ITEM.TypeEquipement":      "Équipement",
   "ITEM.TypePouvoir":         "Pouvoir",
   "ACTOR.TypePj":             "Personnage Joueur",
-  "ACTOR.TypePnj":            "Personnage Non-Joueur"
+  "ACTOR.TypePnj":            "Personnage Non-Joueur",
+  "TYPES.Actor.pj":           "Personnage Joueur",
+  "TYPES.Actor.pnj":          "PNJ"
 }

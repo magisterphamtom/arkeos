@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Archéologue</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <!-- Tête -->
+  <ellipse cx="50" cy="24" rx="9" ry="10" fill="#e8c090"/>
+  <!-- Corps / veste -->
+  <path d="M34 36 L66 36 L68 78 L50 83 L32 78 Z" fill="#6b4a1a"/>
+  <!-- Chapeau de brousse -->
+  <path d="M36 24 L64 24 L66 20 L50 14 L34 20 Z" fill="#8a6a20"/>
+  <path d="M30 24 L70 24" stroke="#8a6a20" stroke-width="3" fill="none"/>
+  <!-- Bras gauche avec pioche -->
+  <path d="M34 38 L20 55 L24 58 L38 42" fill="#6b4a1a"/>
+  <!-- Pioche -->
+  <line x1="20" y1="55" x2="12" y2="63" stroke="#8a6a30" stroke-width="3"/>
+  <path d="M10 61 L15 56 L18 60 L14 65 Z" fill="#b0b0b0"/>
+  <!-- Bras droit -->
+  <path d="M66 38 L78 52" stroke="#6b4a1a" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <!-- Livre / carnet dans main droite -->
+  <rect x="74" y="50" width="10" height="12" rx="1" fill="#c8a040"/>
+  <!-- Ceinture -->
+  <rect x="33" y="58" width="34" height="4" rx="1" fill="#4a3010"/>
+  <rect x="47" y="57" width="6" height="6" rx="1" fill="#c0a030"/>
+</svg>

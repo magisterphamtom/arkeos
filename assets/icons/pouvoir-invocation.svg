@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Invocation</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <circle cx="50" cy="50" r="24" fill="#021a06" stroke="#20a040" stroke-width="1.5"/><polygon points="50,26 57,47 78,47 62,59 68,80 50,68 32,80 38,59 22,47 43,47" fill="none" stroke="#40c060" stroke-width="1.2"/><circle cx="50" cy="50" r="6" fill="#103018"/><circle cx="50" cy="50" r="3" fill="#30a050"/>
+</svg>

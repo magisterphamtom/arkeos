@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Grand Voyageur</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- globe terrestre -->
+  <circle cx="50" cy="50" r="28" fill="#1a3060"/>
+  <circle cx="50" cy="50" r="28" fill="none" stroke="#4080c0" stroke-width="2"/>
+  <!-- méridiens/parallèles -->
+  <ellipse cx="50" cy="50" rx="28" ry="10" fill="none" stroke="#4080c0" stroke-width="1" opacity="0.6"/>
+  <ellipse cx="50" cy="50" rx="28" ry="20" fill="none" stroke="#4080c0" stroke-width="1" opacity="0.6"/>
+  <line x1="50" y1="22" x2="50" y2="78" stroke="#4080c0" stroke-width="1" opacity="0.6"/>
+  <line x1="22" y1="50" x2="78" y2="50" stroke="#4080c0" stroke-width="1" opacity="0.6"/>
+  <!-- continents stylisés -->
+  <path d="M28 38 L40 34 L44 42 L38 46 Z" fill="#2a8040" opacity="0.8"/>
+  <path d="M52 36 L64 32 L70 44 L60 48 L52 44 Z" fill="#2a8040" opacity="0.8"/>
+  <path d="M44 54 L56 52 L58 64 L46 66 Z" fill="#2a8040" opacity="0.8"/>
+</svg>

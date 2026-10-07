@@ -446,7 +446,6 @@ export async function ouvrirCreationPersonnage() {
       position: { width: 680, height: "auto" },
       content: CSS_CREATION + contenuEtape(),
       modal: false,
-      render: (event, d) => attacherListeners(d),
       buttons: [
         {
           action: "precedent",
@@ -475,7 +474,11 @@ export async function ouvrirCreationPersonnage() {
         },
       ],
     });
-    dialogInstance.render(true);
+    await dialogInstance.render(true);
+    // Attacher les listeners après le render (la callback render:(event,d)
+    // reçoit l'instance comme `event` en v13, pas comme `d`)
+    await new Promise(r => setTimeout(r, 80));
+    attacherListeners(dialogInstance);
   };
 
   // naviguerV2 remplace naviguer(dialog, delta)

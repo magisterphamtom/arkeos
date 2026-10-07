@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Appareil photo</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- corps -->
+  <rect x="18" y="36" width="64" height="42" fill="#2a2a2a" rx="5"/>
+  <!-- objectif -->
+  <circle cx="50" cy="57" r="16" fill="#1a1a1a"/>
+  <circle cx="50" cy="57" r="12" fill="#0a0a0a"/>
+  <circle cx="50" cy="57" r="8" fill="#1a2040"/>
+  <circle cx="47" cy="54" r="3" fill="#4060a0" opacity="0.5"/>
+  <!-- flash -->
+  <circle cx="76" cy="42" r="5" fill="#c8c080"/>
+  <!-- déclencheur -->
+  <rect x="44" y="32" width="12" height="6" fill="#404040" rx="2"/>
+</svg>

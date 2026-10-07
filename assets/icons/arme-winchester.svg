@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Carabine Winchester</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M12 49 L82 49 L82 45 L12 45 Z" fill="#808080"/>
+  <path d="M12 51 L82 51 L82 55 L12 55 Z" fill="#707070"/>
+  <path d="M12 45 L12 55 L20 55 L20 45 Z" fill="#c08040"/>
+  <path d="M78 42 L88 42 L88 58 L78 58 Z" fill="#505050"/>
+  <path d="M25 45 L25 40 L32 40 L32 45 M25 55 L25 60 L32 60 L32 55" fill="#404040"/>
+  <path d="M50 45 A2 2 0 1 1 49.9 45 Z M60 45 A2 2 0 1 1 59.9 45 Z M70 45 A2 2 0 1 1 69.9 45 Z" fill="#e8b848"/>
+</svg>

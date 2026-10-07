@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Tromperie</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M50 20 A8 8 0 1 1 49.9 20 Z" fill="#e8b848"/>
+  <path d="M38 32 L62 32 L68 70 L50 75 L32 70 Z" fill="#2a1a2a"/>
+  <path d="M50 20 A8 8 0 1 1 49.9 20 Z" fill="#e8b848"/>
+  <path d="M35 42 L40 50 L45 42" fill="#e8b848"/>
+  <path d="M38 38 L43 38 M57 38 L62 38" fill="#e8b848"/>
+  <path d="M20 30 A25 30 0 0 1 45 25 A25 30 0 0 1 20 55 Z" fill="#8040a0"/>
+  <path d="M28 38 A5 4 0 1 1 27.9 38 Z M38 35 A3 3 0 1 1 37.9 35 Z" fill="#2a1a2a"/>
+</svg>

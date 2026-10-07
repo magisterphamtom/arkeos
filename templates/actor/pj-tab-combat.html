@@ -8,7 +8,7 @@
     <h3 class="ark-section-titre">⚔️ Blessures</h3>
 
     <div class="degats-bloc">
-      <div class="degats-label">dég. létaux</div>
+      <div class="degats-label barre-letaux-label">🩸 Dégâts létaux</div>
       <div class="barre-letaux">
         {{#each barreLetaux}}
           <div class="case-degat case-letaux {{#if (eq val 0)}}case-zero{{/if}} {{#if actif}}active{{/if}}"
@@ -21,7 +21,7 @@
     </div>
 
     <div class="degats-bloc">
-      <div class="degats-label">dég. superf.</div>
+      <div class="degats-label barre-superf-label">🟡 Dégâts superficiels</div>
       <div class="barre-superf">
         {{#each barreSuperf}}
           <div class="case-degat case-superf {{#if (eq val 0)}}case-zero{{/if}} {{#if actif}}active-superf{{/if}}"
@@ -79,14 +79,15 @@
         <table class="armes-table">
           <thead>
             <tr>
-              <th>Arme</th><th>Dég.</th><th>T/R</th><th>C/R</th><th>Mag.</th><th>P.E.</th><th>P.M.</th><th></th>
+              <th></th><th>Arme</th><th>Dég.</th><th>T/R</th><th>C/R</th><th>Mag.</th><th>P.E.</th><th>P.M.</th><th></th>
             </tr>
           </thead>
           <tbody>
             {{#each armes as |arme|}}
               <tr class="arme-ligne">
+                <td class="arme-icone-td"><img class="item-icone item-icone-desc" src="{{arme.img}}" title="Cliquer pour lire la description" data-item-id="{{arme.id}}" /></td>
                 <td class="arme-nom">{{arme.name}}</td>
-                <td class="arme-stat">{{#if arme.system.degats}}+{{arme.system.degats}}{{else}}—{{/if}}</td>
+                <td class="arme-stat">{{#if (gt arme.system.degats 0)}}+{{arme.system.degats}}{{else}}{{arme.system.degats}}{{/if}}</td>
                 <td class="arme-stat">{{arme.system.tempsRech}}</td>
                 <td class="arme-stat">{{arme.system.coupsRound}}</td>
                 <td class="arme-stat">{{arme.system.magasin}}</td>
@@ -94,8 +95,8 @@
                 <td class="arme-stat">{{arme.system.porteeMax}}</td>
                 <td class="arme-actions">
                   <button class="btn-attaque" data-item-id="{{arme.id}}" title="Attaquer avec {{arme.name}}">⚔️</button>
-                  <button class="btn-ouvrir-item" data-item-id="{{arme.id}}">✏️</button>
-                  <button class="btn-supprimer-item" data-item-id="{{arme.id}}">🗑️</button>
+                  <button class="btn-ouvrir-item" data-item-id="{{arme.id}}" title="Modifier">✏️</button>
+                  <button class="btn-supprimer-item" data-item-id="{{arme.id}}" title="Supprimer">🗑️</button>
                 </td>
               </tr>
             {{/each}}
@@ -110,9 +111,18 @@
   <div class="ark-section eclat-section">
     <h3 class="ark-section-titre">✨ Points d'Éclat</h3>
     <div class="eclat-compteur">
-      <input type="number" name="system.pointsEclatActuels" value="{{system.pointsEclatActuels}}" min="0" class="eclat-actuel" />
-      <span class="eclat-sep">/</span>
-      <input type="number" name="system.pointsEclatMax" value="{{system.pointsEclatMax}}" min="0" class="eclat-max" />
+      <div class="eclat-tuile-actuel">
+        <span class="eclat-tuile-label">✨ Actuels</span>
+        <div class="eclat-stepper">
+          <button class="eclat-stepper-btn" data-action="moins" type="button">−</button>
+          <span class="eclat-stepper-val">{{system.pointsEclatActuels}}</span>
+          <button class="eclat-stepper-btn" data-action="plus" type="button">+</button>
+        </div>
+      </div>
+      <div class="eclat-tuile-max">
+        <span class="eclat-tuile-label">Max</span>
+        <input type="number" name="system.pointsEclatMax" value="{{system.pointsEclatMax}}" min="0" class="eclat-max" />
+      </div>
     </div>
     <div class="eclat-boutons">
       <button class="btn-eclat-depenser" data-type="action" title="Réussir automatiquement (1 point)">

@@ -5,12 +5,13 @@
     "pnj": {}
   },
   "Item": {
-    "types": ["specialite", "arme", "aptitude", "trait", "equipement", "pouvoir"],
+    "types": ["specialite", "arme", "aptitude", "trait", "equipement", "pouvoir", "archetype"],
     "specialite":  {},
     "arme":        {},
     "aptitude":    {},
     "trait":       {},
     "equipement":  {},
-    "pouvoir":     {}
+    "pouvoir":     {},
+    "archetype":   {}
   }
 }

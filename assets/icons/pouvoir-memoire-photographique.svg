@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Mémoire Photographique</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <path d="M20 65 L20 30 Q20 26 24 26 L50 26 L50 65 Z" fill="#1a0e02" stroke="#b08018" stroke-width="1.5"/><path d="M80 65 L80 30 Q80 26 76 26 L50 26 L50 65 Z" fill="#140c02" stroke="#b08018" stroke-width="1.5"/><path d="M26 36 L44 36 M26 42 L44 42 M26 48 L44 48 M26 54 L44 54" stroke="#c09030" stroke-width="1"/><path d="M56 36 L74 36 M56 42 L74 42 M56 48 L74 48" stroke="#c09030" stroke-width="1"/><path d="M63 20 L66 30 Q67 34 64 35 Q61 36 59 32 L56 22 Z" fill="#e0b028" opacity="0.8"/><path d="M72 24 L74 34 Q75 38 72 38 Q69 38 68 34 L65 24 Z" fill="#e0b028" opacity="0.5"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Costume trois pièces</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+
+  <!-- veste -->
+  <path d="M28 40 L25 80 L48 80 L48 55 L50 45 L52 55 L52 80 L75 80 L72 40 Z" fill="#2a3a5a"/>
+  <!-- chemise/gilet centre -->
+  <path d="M42 40 L50 45 L58 40 L58 80 L42 80 Z" fill="#e8e0c0"/>
+  <!-- revers -->
+  <path d="M38 40 L50 50 L62 40 L60 35 L50 44 L40 35 Z" fill="#1a2840"/>
+  <!-- cravate -->
+  <path d="M47 44 L50 55 L53 44 L52 42 L48 42 Z" fill="#8a1a00"/>
+  <!-- boutons chemise -->
+  <circle cx="50" cy="58" r="1.5" fill="#c0b090"/>
+  <circle cx="50" cy="65" r="1.5" fill="#c0b090"/>
+</svg>

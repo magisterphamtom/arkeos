@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Chasseur de Fauves</title>
+  <circle cx="50" cy="50" r="48" fill="#1a0a02" stroke="#5a3a08" stroke-width="2"/>
+  <!-- Tête hâlée -->
+  <ellipse cx="50" cy="24" rx="9" ry="10" fill="#c8924a"/>
+  <!-- Casque colonial -->
+  <path d="M38 22 Q50 11 62 22 L64 27 L36 27 Z" fill="#d4c080"/>
+  <path d="M30 27 L70 27" stroke="#b8a060" stroke-width="2.5"/>
+  <!-- Corps / tenue safary -->
+  <path d="M34 36 L66 36 L68 78 L50 83 L32 78 Z" fill="#c8a850"/>
+  <!-- Fusil de chasse -->
+  <line x1="18" y1="30" x2="78" y2="56" stroke="#6a4820" stroke-width="4" stroke-linecap="round"/>
+  <rect x="70" y="52" width="14" height="5" rx="1" fill="#5a3a18" transform="rotate(22 70 52)"/>
+  <circle cx="22" cy="32" r="3" fill="#3a2810"/>
+  <!-- Bras portant le fusil -->
+  <path d="M34 38 L20 33" stroke="#c8a850" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M66 38 L76 55" stroke="#c8a850" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Trophée / dents de fauve à la ceinture -->
+  <rect x="33" y="58" width="34" height="4" rx="1" fill="#8a6030"/>
+  <path d="M38 62 L40 70 L42 62 M46 62 L48 70 L50 62 M54 62 L56 70 L58 62" stroke="#f0e080" stroke-width="1.5" fill="none"/>
+  <!-- Poches -->
+  <rect x="35" y="40" width="9" height="8" rx="1" fill="#b89840"/>
+  <rect x="56" y="40" width="9" height="8" rx="1" fill="#b89840"/>
+</svg>
