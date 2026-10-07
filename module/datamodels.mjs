@@ -123,6 +123,10 @@ export class PJDataModel extends TypeDataModel {
       this.malusBlessure = 0;
       this.etatBlessure  = "Normal";
     }
+
+    // Objets barre natifs Foundry — token bars
+    this.pv = { value: this.pvActuels ?? 0, min: 0, max: this.pvMax };
+    this.ev = { value: this.evActuelle ?? 0, min: 0, max: this.evMax };
   }
 }
 
@@ -165,6 +169,10 @@ export class PNJDataModel extends TypeDataModel {
     this.initiative  = this.champs.combat;
     this.evMax       = (c.mental * 2) + c.physique;
     this.volonte     = c.mental;
+
+    // Objets barre natifs Foundry — token bars
+    this.pv = { value: this.pvActuels ?? 0, min: 0, max: this.pvMax };
+    this.ev = { value: this.evActuelle ?? 0, min: 0, max: this.evMax };
   }
 }
 

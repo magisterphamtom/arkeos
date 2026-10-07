@@ -184,36 +184,39 @@ class ArkeosActeur extends Actor {
     // Ne pas écraser si déjà configuré
     if (data.prototypeToken?.bar1?.attribute) return;
     this.updateSource({
-      "prototypeToken.bar1": { attribute: "system.pvActuels" },
-      "prototypeToken.bar2": { attribute: "system.evActuelle" },
+      "prototypeToken.bar1": { attribute: "system.pv" },
+      "prototypeToken.bar2": { attribute: "system.ev" },
       "prototypeToken.displayBars": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,
     });
   }
 
   // ---------------------------------------------------------------
-  // BARRES DE TOKEN — expose pvActuels/pvMax et evActuelle/evMax
-  // comme barres de valeur sur le token en jeu
+  // BARRES DE TOKEN — system.pv et system.ev sont des objets
+  // { value, min, max } reconnus nativement par Foundry comme barres.
+  // Quand la barre est modifiée sur le token (clic), on répercute
+  // sur les champs stockés pvActuels / evActuelle.
   // ---------------------------------------------------------------
   getBarAttribute(barName, options = {}) {
-    if (barName === "system.pvActuels") {
-      return {
-        type: "bar",
-        attribute: barName,
-        value: this.system.pvActuels ?? 0,
-        max:   this.system.pvMax   ?? 1,
-        editable: true,
-      };
+    const data = super.getBarAttribute(barName, options);
+    return data;
+  }
+
+  async modifyTokenAttribute(attribute, value, isDelta, isBar) {
+    if (attribute === "system.pv") {
+      const pvActuels = isDelta
+        ? Math.clamped((this.system.pvActuels ?? 0) + value, 0, this.system.pvMax ?? 999)
+        : Math.clamped(value, 0, this.system.pvMax ?? 999);
+      await this.update({ "system.pvActuels": pvActuels });
+      return this;
     }
-    if (barName === "system.evActuelle") {
-      return {
-        type: "bar",
-        attribute: barName,
-        value: this.system.evActuelle ?? 0,
-        max:   this.system.evMax    ?? 1,
-        editable: true,
-      };
+    if (attribute === "system.ev") {
+      const evActuelle = isDelta
+        ? Math.clamped((this.system.evActuelle ?? 0) + value, 0, this.system.evMax ?? 999)
+        : Math.clamped(value, 0, this.system.evMax ?? 999);
+      await this.update({ "system.evActuelle": evActuelle });
+      return this;
     }
-    return super.getBarAttribute(barName, options);
+    return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
   }
 
   // ---------------------------------------------------------------
