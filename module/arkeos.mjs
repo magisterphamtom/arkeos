@@ -68,15 +68,15 @@ Hooks.once("init", function () {
 
   CONFIG.Actor.documentClass = ArkeosActeur;
 
-  // Barres de token : pv et ev sont des objets {value,min,max} natifs Foundry
+  // Barres de token : chemins relatifs à actor.system (sans préfixe "system.")
   CONFIG.Actor.trackableAttributes = {
     pj: {
-      bar:   ["system.pv", "system.ev"],
-      value: ["system.initiative", "system.defense", "system.champs.combat"],
+      bar:   ["pv", "ev"],
+      value: ["initiative", "defense", "champs.combat"],
     },
     pnj: {
-      bar:   ["system.pv", "system.ev"],
-      value: ["system.initiative", "system.defense"],
+      bar:   ["pv", "ev"],
+      value: ["initiative", "defense"],
     },
   };
 
@@ -184,8 +184,8 @@ class ArkeosActeur extends Actor {
     // Ne pas écraser si déjà configuré
     if (data.prototypeToken?.bar1?.attribute) return;
     this.updateSource({
-      "prototypeToken.bar1": { attribute: "system.pv" },
-      "prototypeToken.bar2": { attribute: "system.ev" },
+      "prototypeToken.bar1": { attribute: "pv" },
+      "prototypeToken.bar2": { attribute: "ev" },
       "prototypeToken.displayBars": CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,
     });
   }
@@ -203,14 +203,14 @@ class ArkeosActeur extends Actor {
 
   async modifyTokenAttribute(attribute, value, isDelta, isBar) {
     const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
-    if (attribute === "system.pv") {
+    if (attribute === "pv") {
       const pvActuels = isDelta
         ? clamp((this.system.pvActuels ?? 0) + value, 0, this.system.pvMax ?? 999)
         : clamp(value, 0, this.system.pvMax ?? 999);
       await this.update({ "system.pvActuels": pvActuels });
       return this;
     }
-    if (attribute === "system.ev") {
+    if (attribute === "ev") {
       const evActuelle = isDelta
         ? clamp((this.system.evActuelle ?? 0) + value, 0, this.system.evMax ?? 999)
         : clamp(value, 0, this.system.evMax ?? 999);
