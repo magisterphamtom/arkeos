@@ -285,45 +285,128 @@ export async function ouvrirCreationPersonnage() {
           </div>`;
       }
 
-      case 5: return `
-        <div class="creation-etape">
+      case 5: {
+        const nomComplet = [etat.prenom, etat.nom].filter(Boolean).join(" ") || "Sans nom";
+        const pgsDep = etat.specialites.reduce((sum, s) => sum + s.cout, 0);
+        const pgsR5 = 36 - pgsDep;
+        // Spécialités groupées par champ
+        const speParChamp = {};
+        for (const champ of ["connaissance","combat","savoir","social"]) {
+          const liste = etat.specialites.filter(s => s.champ === champ);
+          if (arch?.speDepart && arch.champ === champ) {
+            // ajouter la spé de départ si pas déjà dans la liste
+            const dejaPresent = liste.find(s => s.nom === arch.speDepart);
+            speParChamp[champ] = dejaPresent ? liste : [{ nom: arch.speDepart, bonus: 2, depart: true }, ...liste];
+          } else {
+            speParChamp[champ] = liste;
+          }
+        }
+        const totalSpe = Object.values(speParChamp).reduce((a, b) => a + b.length, 0);
+        return `
+        <div class="creation-etape recap-etape">
           <h2>5/5 — Récapitulatif</h2>
-          ${arch ? `<div class="recap-section">
-            <h3>${arch.icone} ${arch.nom}</h3>
-            <p><strong>${etat.prenom} ${etat.nom}</strong> ${etat.surnom ? `"${etat.surnom}"` : ""} — ${etat.culture}, ${etat.nationalite}</p>
-          </div>` : ""}
-          <div class="recap-section">
-            <h3>Caractéristiques</h3>
-            <div class="recap-carac">
-              ${Object.entries(etat.carac).map(([c, v]) => `<div class="rc"><span>${c.substring(0,3).toUpperCase()}</span><b>${v}</b></div>`).join("")}
+
+          <!-- EN-TÊTE PERSO -->
+          <div class="recap-hero">
+            <div class="recap-hero-icone">${arch ? arch.icone : "🎭"}</div>
+            <div class="recap-hero-info">
+              <div class="recap-hero-nom">${nomComplet}${etat.surnom ? ` <span class="recap-surnom">"${etat.surnom}"</span>` : ""}</div>
+              <div class="recap-hero-arch">${arch ? arch.nom : "Archétype non choisi"}</div>
+              <div class="recap-hero-origine">${[etat.culture, etat.nationalite].filter(Boolean).join(" · ") || ""}</div>
             </div>
-            <div class="recap-champs">
-              ${Object.entries(calcChamps(etat.carac)).map(([c, v]) => `<div class="rc"><span>${CHAMPS_LABELS[c].substring(0,3)}</span><b>${v}</b></div>`).join("")}
+            <div class="recap-hero-pg ${pgsR5 < 0 ? 'pg-negatif' : pgsR5 === 0 ? 'pg-zero' : ''}">
+              <span class="recap-pg-val">${pgsR5}</span>
+              <span class="recap-pg-lab">PG restants</span>
             </div>
           </div>
-          <div class="recap-section">
+
+          <!-- CARACTÉRISTIQUES + CHAMPS -->
+          <div class="recap-deux-col">
+            <div class="recap-section recap-section-slim">
+              <h3>Caractéristiques</h3>
+              <div class="recap-carac">
+                ${[["physique","PHY"],["mental","MEN"],["perception","PER"],["presence","PRE"]].map(([c,l]) => `
+                  <div class="rc rc-carac">
+                    <span class="rc-label">${l}</span>
+                    <b class="rc-val">${etat.carac[c]}</b>
+                    <span class="rc-desc">${descCarac(etat.carac[c])}</span>
+                  </div>`).join("")}
+              </div>
+            </div>
+            <div class="recap-section recap-section-slim">
+              <h3>Champs</h3>
+              <div class="recap-champs">
+                ${[["connaissance","Con","#1a3a6a"],["combat","Com","#8b1a00"],["savoir","Sav","#1a5a1a"],["social","Soc","#8b6430"]].map(([c,l,col]) => `
+                  <div class="rc rc-champ" style="border-left: 3px solid ${col}">
+                    <span class="rc-label" style="color:${col}">${l}</span>
+                    <b class="rc-val">${champs[c]}</b>
+                    <span class="rc-cout">×${arch ? arch.coûts[c] : 2}pt</span>
+                  </div>`).join("")}
+              </div>
+            </div>
+          </div>
+
+          <!-- DÉRIVÉES -->
+          <div class="recap-section recap-section-slim">
             <h3>Valeurs dérivées</h3>
             <div class="recap-derives">
-              <span>PV max : <b>${derives.pvMax}</b></span>
-              <span>Seuil −2 : <b>${derives.seuilMoins2}</b></span>
-              <span>Seuil −4 : <b>${derives.seuilMoins4}</b></span>
-              <span>Défense : <b>${derives.defense}</b></span>
-              <span>Impact : <b>${derives.impact}</b></span>
-              <span>EV max : <b>${derives.evMax}</b></span>
-              <span>Volonté : <b>${derives.volonte}</b></span>
-              <span>Initiative : <b>${derives.initiative}</b></span>
-              <span>Éducation : <b>${derives.education}</b></span>
+              <span><label>PV</label><b>${derives.pvMax}</b></span>
+              <span><label>Seuil −2</label><b>${derives.seuilMoins2}</b></span>
+              <span><label>Seuil −4</label><b>${derives.seuilMoins4}</b></span>
+              <span><label>Défense</label><b>${derives.defense}</b></span>
+              <span><label>Impact</label><b>${derives.impact}</b></span>
+              <span><label>EV max</label><b>${derives.evMax}</b></span>
+              <span><label>Initiative</label><b>${derives.initiative}</b></span>
+              <span><label>Volonté</label><b>${derives.volonte}</b></span>
+              <span><label>Éducation</label><b>${derives.education}</b></span>
             </div>
           </div>
-          ${etat.specialites.length > 0 ? `
-            <div class="recap-section">
-              <h3>Spécialités</h3>
-              ${etat.specialites.map(s => `<span class="recap-spe">${s.nom} (${CHAMPS_LABELS[s.champ].substring(0,3)}) +${s.bonus}</span>`).join("")}
-            </div>` : ""}
-          <div class="recap-section">
-            <p>Points d'Éclat : <b>3</b> | Réputation : <b>1</b> | Revenus : <b>${arch ? arch.revenus : "?"} $</b></p>
-          </div>
-        </div>`;
+
+          <!-- SPÉCIALITÉS -->
+          ${totalSpe > 0 ? `
+          <div class="recap-section recap-section-slim">
+            <h3>Spécialités <span class="recap-h3-sub">(${pgsDep} PG dépensés)</span></h3>
+            <div class="recap-spe-grille">
+              ${["connaissance","combat","savoir","social"].map(champ => {
+                const liste = speParChamp[champ];
+                if (!liste.length) return "";
+                const col = { connaissance:"#1a3a6a", combat:"#8b1a00", savoir:"#1a5a1a", social:"#8b6430" }[champ];
+                return `<div class="recap-spe-col">
+                  <div class="recap-spe-champ" style="color:${col};border-bottom:2px solid ${col}">${CHAMPS_LABELS[champ]}</div>
+                  ${liste.map(s => `
+                    <div class="recap-spe-item ${s.depart ? 'recap-spe-depart' : ''}">
+                      <span>${s.nom}</span>
+                      <b>+${s.bonus}</b>
+                    </div>`).join("")}
+                </div>`;
+              }).join("")}
+            </div>
+          </div>` : ""}
+
+          <!-- APTITUDES -->
+          ${arch ? `
+          <div class="recap-section recap-section-slim">
+            <h3>Aptitudes</h3>
+            <div class="recap-aptitudes">
+              ${arch.aptitudes.map(a => `
+                <div class="recap-apt-item">
+                  <span class="recap-apt-nom">${a.nom}</span>
+                  <span class="recap-apt-cout">${a.cout}pt</span>
+                  <span class="recap-apt-effet">${a.effet}</span>
+                </div>`).join("")}
+            </div>
+          </div>` : ""}
+
+          <!-- FINANCES -->
+          ${arch ? `
+          <div class="recap-section recap-section-slim recap-finances">
+            <div class="recap-fin-item"><label>Points d'Éclat</label><b>3</b></div>
+            <div class="recap-fin-item"><label>Réputation</label><b>1</b></div>
+            <div class="recap-fin-sep"></div>
+            <div class="recap-fin-item"><label>Revenus</label><b>${arch.revenus > 0 ? arch.revenus + " $" : "Variable"}</b></div>
+            <div class="recap-fin-item"><label>Liquidités</label><b>${arch.liquidites > 0 ? arch.liquidites + " $" : "—"}</b></div>
+          </div>` : ""}
+        </div>`; }
 
       default: return "<p>Étape inconnue</p>";
     }

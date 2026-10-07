@@ -2396,6 +2396,61 @@
 .recap-derives span { font-size: 0.85em; background: #f0f0f0; padding: 2px 8px; border-radius: 3px; }
 .recap-spe { display: inline-block; background: #e8f0e8; padding: 2px 7px; border-radius: 8px; font-size: 0.85em; margin: 2px; }
 
+/* ── Récapitulatif v2 ──────────────────────────────────────── */
+.recap-etape { display: flex; flex-direction: column; gap: 8px; }
+
+/* Hero */
+.recap-hero { display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #1a0f05 0%, #3a200a 100%); color: #e8c870; border-radius: 6px; padding: 10px 14px; }
+.recap-hero-icone { font-size: 2.2em; line-height: 1; }
+.recap-hero-info { flex: 1; }
+.recap-hero-nom { font-size: 1.15em; font-weight: bold; color: #f0d080; }
+.recap-surnom { font-style: italic; font-size: 0.9em; color: #c8a060; }
+.recap-hero-arch { font-size: 0.88em; color: #c8a060; margin-top: 1px; }
+.recap-hero-origine { font-size: 0.78em; color: #8b7040; margin-top: 1px; }
+.recap-hero-pg { text-align: center; background: rgba(255,255,255,0.08); border-radius: 5px; padding: 5px 10px; min-width: 70px; }
+.recap-hero-pg .recap-pg-val { font-size: 1.4em; font-weight: bold; color: #f0d080; line-height: 1; }
+.recap-hero-pg .recap-pg-lab { font-size: 0.7em; color: #a08040; }
+.recap-hero-pg.pg-zero .recap-pg-val { color: #6dbf6d; }
+.recap-hero-pg.pg-negatif .recap-pg-val { color: #e05050; }
+
+/* 2-col layout */
+.recap-deux-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* slim sections */
+.recap-section-slim { padding: 6px 8px; }
+.recap-section-slim h3 { font-size: 0.88em; margin: 0 0 5px 0; }
+.recap-h3-sub { font-weight: normal; font-size: 0.85em; color: #a08040; }
+
+/* carac / champ rows */
+.rc-carac, .rc-champ { margin-bottom: 3px; padding: 3px 8px; border-radius: 3px; display: flex; align-items: baseline; gap: 4px; }
+.rc-carac { background: #0e0a06; color: #e8b438; }
+.rc-champ { background: rgba(14,10,6,0.06); }
+.rc-label { font-size: 0.85em; color: #c8a060; }
+.rc-val { font-weight: bold; font-size: 1em; }
+.rc-desc { font-size: 0.75em; color: #888; }
+.rc-cout { font-size: 0.7em; background: #e8d8b0; color: #8b6430; border-radius: 3px; padding: 1px 4px; margin-left: auto; }
+
+/* Spécialités en grille par champ */
+.recap-spe-grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.recap-spe-col {}
+.recap-spe-champ { font-size: 0.78em; font-weight: bold; text-transform: uppercase; letter-spacing: 0.03em; padding-bottom: 3px; margin-bottom: 4px; }
+.recap-spe-item { font-size: 0.82em; padding: 2px 5px; border-radius: 3px; background: #e8f0e8; margin-bottom: 2px; color: #2a4a2a; }
+.recap-spe-depart { background: #c8e8c8; font-style: italic; }
+.recap-spe-depart::after { content: " ★"; font-size: 0.75em; color: #6a8a6a; }
+
+/* Aptitudes */
+.recap-aptitudes { display: flex; flex-wrap: wrap; gap: 5px; }
+.recap-apt-item { background: #f0e8d0; border: 1px solid rgba(200,134,10,0.3); border-radius: 4px; padding: 3px 7px; font-size: 0.82em; }
+.recap-apt-nom { font-weight: bold; color: #5a3010; }
+.recap-apt-cout { font-size: 0.75em; color: #a08040; margin: 0 3px; }
+.recap-apt-effet { color: #6a5030; }
+
+/* Finances */
+.recap-finances { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.recap-fin-item { display: flex; gap: 4px; align-items: baseline; font-size: 0.87em; }
+.recap-fin-item label { color: #8b6430; }
+.recap-fin-sep { width: 1px; height: 18px; background: rgba(200,134,10,0.3); }
+
 .creation-dialog .window-content { max-height: 75vh; overflow-y: auto; padding: 16px 18px; background: #fdf6e8; }
 .creation-dialog .dialog-buttons { padding: 8px 18px 12px; background: #f5edd8; border-top: 1px solid rgba(200,134,10,0.25); display: flex; gap: 8px; justify-content: flex-end; }
 @media (max-width: 580px) {
