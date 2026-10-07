@@ -2,7 +2,7 @@
   {{!-- Navigation gauche --}}
   <nav class="ark-wiki-nav">
     <div class="ark-wiki-nav-header">
-      <span class="ark-wiki-nav-logo">⚙️</span>
+      <span class="ark-wiki-nav-logo">📖</span>
       <span class="ark-wiki-nav-title">EW-System</span>
     </div>
     {{#each sections as |s|}}
@@ -24,28 +24,28 @@
       <div class="ark-wiki-cover">
         <h1>📖 Wiki Arkéos</h1>
         <p class="ark-wiki-subtitle">EW-System — Règles de Jeu</p>
-        <p class="ark-wiki-lead">Bienvenue dans le monde d'Arkéos, un univers de pulp-aventure années 1930 où l'extraordinaire côtoie le danger. Ce wiki regroupe l'ensemble des règles de l'EW-System pour Foundry VTT.</p>
+        <p class="ark-wiki-lead">Bienvenue dans le monde d'Arkéos, un univers de pulp-aventure des années 1930 où l'extraordinaire côtoie le danger à chaque coin de rue. Ce wiki regroupe l'ensemble des règles de l'EW-System telles qu'elles sont implémentées dans Foundry VTT.</p>
       </div>
       <div class="ark-wiki-cards">
         <div class="ark-wiki-card">
-          <div class="ark-wiki-card-icon">⚙️</div>
-          <div class="ark-wiki-card-title">Système EW</div>
-          <div class="ark-wiki-card-desc">Résolution par table TR, dés à 20 faces, approche narrative</div>
+          <div class="ark-wiki-card-icon">🎲</div>
+          <div class="ark-wiki-card-title">Résolution D20</div>
+          <div class="ark-wiki-card-desc">Lancez sous ou égal à votre Taux de Réussite</div>
+        </div>
+        <div class="ark-wiki-card">
+          <div class="ark-wiki-card-icon">💪</div>
+          <div class="ark-wiki-card-title">4 Caractéristiques</div>
+          <div class="ark-wiki-card-desc">Physique · Mental · Perception · Présence</div>
         </div>
         <div class="ark-wiki-card">
           <div class="ark-wiki-card-icon">🎭</div>
           <div class="ark-wiki-card-title">4 Champs</div>
-          <div class="ark-wiki-card-desc">Connaissance · Combat · Savoir · Social</div>
+          <div class="ark-wiki-card-desc">Combat · Connaissance · Savoir · Social</div>
         </div>
         <div class="ark-wiki-card">
-          <div class="ark-wiki-card-icon">🌍</div>
-          <div class="ark-wiki-card-title">Aventure Pulp</div>
-          <div class="ark-wiki-card-desc">Années 1930, mystères, action et exploration</div>
-        </div>
-        <div class="ark-wiki-card">
-          <div class="ark-wiki-card-icon">🎲</div>
-          <div class="ark-wiki-card-title">Simple & Fluide</div>
-          <div class="ark-wiki-card-desc">Une mécanique unifiée pour toutes les actions</div>
+          <div class="ark-wiki-card-icon">✨</div>
+          <div class="ark-wiki-card-title">Points d'Éclat</div>
+          <div class="ark-wiki-card-desc">Influencez le destin à des moments cruciaux</div>
         </div>
       </div>
     </div>
@@ -55,34 +55,59 @@
     {{#if (eq section "personnage")}}
     <div class="ark-wiki-section">
       <h1>🎭 Le Personnage</h1>
-      <p>Le personnage est défini par quatre <strong>Champs d'Activité</strong> (scores de 1 à 19) et des Spécialités qui le distinguent.</p>
+      <p>Un personnage Arkéos est défini par 4 <strong>Caractéristiques</strong> de base (de 1 à 15) dont découlent 4 <strong>Champs d'Activité</strong>, des <strong>Spécialités</strong> et diverses valeurs dérivées.</p>
 
-      <h2>Les 4 Champs d'Activité</h2>
+      <h2>Les 4 Caractéristiques</h2>
       <table class="ark-wiki-table">
-        <thead><tr><th>Champ</th><th>Domaine</th><th>Exemples</th></tr></thead>
+        <thead><tr><th>Caractéristique</th><th>Min</th><th>Max</th><th>Rôle</th></tr></thead>
         <tbody>
-          <tr><td>⚔️ <strong>Combat</strong></td><td>Actions offensives et défensives</td><td>Attaquer, esquiver, viser</td></tr>
-          <tr><td>🔍 <strong>Connaissance</strong></td><td>Perception et savoir pratique</td><td>Observer, détecter, se souvenir</td></tr>
-          <tr><td>📚 <strong>Savoir</strong></td><td>Compétences intellectuelles</td><td>Analyser, soigner, déchiffrer</td></tr>
-          <tr><td>💬 <strong>Social</strong></td><td>Relations et influence</td><td>Persuader, bluffer, intimider</td></tr>
+          <tr><td>💪 <strong>Physique</strong></td><td>1</td><td>15</td><td>Force, endurance, robustesse physique</td></tr>
+          <tr><td>🧠 <strong>Mental</strong></td><td>1</td><td>15</td><td>Intelligence, volonté, sang-froid</td></tr>
+          <tr><td>👁️ <strong>Perception</strong></td><td>1</td><td>15</td><td>Sens, vigilance, intuition</td></tr>
+          <tr><td>🗣️ <strong>Présence</strong></td><td>1</td><td>15</td><td>Charisme, leadership, personnalité</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Les 4 Champs (calculés automatiquement)</h2>
+      <p>Les Champs sont calculés depuis les Caractéristiques. Ils ne se modifient pas directement.</p>
+      <table class="ark-wiki-table">
+        <thead><tr><th>Champ</th><th>Formule</th><th>Domaine</th></tr></thead>
+        <tbody>
+          <tr><td>⚔️ <strong>Combat</strong></td><td>(Physique + Perception) ÷ 2</td><td>Attaque, esquive, combat</td></tr>
+          <tr><td>🔍 <strong>Connaissance</strong></td><td>(Mental + Présence) ÷ 2</td><td>Observer, percevoir, mémoriser</td></tr>
+          <tr><td>📚 <strong>Savoir</strong></td><td>(Physique + Mental) ÷ 2</td><td>Analyser, soigner, déchiffrer</td></tr>
+          <tr><td>💬 <strong>Social</strong></td><td>(Présence + Perception) ÷ 2</td><td>Persuader, bluffer, intimider</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Valeurs Dérivées</h2>
+      <table class="ark-wiki-table">
+        <thead><tr><th>Valeur</th><th>Formule</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td>❤️ <strong>PV Max</strong></td><td>Physique × 3</td><td>Points de Vie maximum</td></tr>
+          <tr><td>💙 <strong>EV Max</strong></td><td>(Mental × 2) + Physique</td><td>Énergie Vitale maximum</td></tr>
+          <tr><td>🛡️ <strong>Défense</strong></td><td>Physique ÷ 4 (arrondi sup.)</td><td>Réduit les dégâts subis</td></tr>
+          <tr><td>👊 <strong>Impact</strong></td><td>Physique ÷ 4 (arrondi sup.)</td><td>Bonus aux dégâts au contact</td></tr>
+          <tr><td>⚡ <strong>Initiative</strong></td><td>= Champ Combat</td><td>Bonus au D10 d'initiative</td></tr>
+          <tr><td>🎓 <strong>Éducation</strong></td><td>= Champ Connaissance</td><td>Référence culturelle</td></tr>
+          <tr><td>🧘 <strong>Volonté</strong></td><td>= Mental</td><td>Résistance psychologique</td></tr>
         </tbody>
       </table>
 
       <h2>Les Spécialités</h2>
-      <p>Les Spécialités sont des domaines d'expertise qui accordent un <span class="ark-wiki-badge">+3</span> au score du Champ concerné lors des jets.</p>
+      <p>Les Spécialités sont des domaines d'expertise rattachés à un Champ. Elles accordent un <strong>bonus</strong> (généralement +3) au Champ concerné lors des jets, et peuvent avoir une <strong>double-spécialité</strong> pour un bonus encore plus élevé.</p>
       <div class="ark-wiki-callout">
-        <strong>Exemple :</strong> Un archéologue avec la spécialité <em>Archéologie</em> (Savoir) lance ses dés avec Savoir+3 pour identifier une relique.
+        <strong>Exemple :</strong> Un archéologue avec la spécialité <em>Archéologie</em> (Savoir +3) dispose d'un TR de Savoir+3 pour identifier une relique ancienne.
       </div>
 
-      <h2>Les Traits</h2>
-      <p>Les Traits sont des caractéristiques narratives (positives ou négatives) qui permettent des relances ou imposent des contraintes lors du jeu.</p>
-
-      <h2>Points de Vie & Vigueur</h2>
+      <h2>Points d'Éclat ✨</h2>
+      <p>Ressource narrative permettant aux héros d'influencer le destin. Maximum : 3 points par défaut.</p>
       <table class="ark-wiki-table">
-        <thead><tr><th>Attribut</th><th>Valeur de Base</th><th>Rôle</th></tr></thead>
+        <thead><tr><th>Action</th><th>Coût</th></tr></thead>
         <tbody>
-          <tr><td><strong>PV</strong></td><td>10 + modificateur</td><td>Santé physique — à 0 : inconscient</td></tr>
-          <tr><td><strong>Vigueur</strong></td><td>= Combat</td><td>Résistance aux blessures</td></tr>
+          <tr><td>Réussir automatiquement une confrontation</td><td><span class="ark-wiki-badge">1</span></td></tr>
+          <tr><td>Coup de pouce du destin (indice, coïncidence…)</td><td><span class="ark-wiki-badge">1</span></td></tr>
+          <tr><td>Survivre à une mort certaine</td><td><span class="ark-wiki-badge">3</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -92,40 +117,54 @@
     {{#if (eq section "resolution")}}
     <div class="ark-wiki-section">
       <h1>⚙️ Résolution des Actions</h1>
-      <p>Toutes les actions utilisent la même mécanique : le jet contre la <strong>Table de Résolution (TR)</strong>.</p>
+      <p>Toutes les actions utilisent la même mécanique : le <strong>jet sous le Taux de Réussite (TR)</strong> avec un D20.</p>
 
-      <h2>La Formule de Base</h2>
+      <h2>La Formule</h2>
       <div class="ark-wiki-formula">
-        TR = min(19, max(1, Score + 10 − ND))
+        TR = min(19, max(1, Champ + Bonus Spécialité + 10 − ND))
       </div>
-      <p>Le personnage lance 1d20. Si le résultat est inférieur ou égal à la TR, l'action réussit.</p>
+      <p>Le joueur lance <strong>1D20</strong>. Si le résultat est <strong>inférieur ou égal au TR</strong>, l'action réussit.</p>
 
-      <h2>Les Niveaux de Difficulté</h2>
+      <h2>Niveaux de Difficulté (ND)</h2>
       <table class="ark-wiki-table">
         <thead><tr><th>ND</th><th>Difficulté</th><th>Exemple</th></tr></thead>
         <tbody>
-          <tr><td><span class="ark-wiki-badge">10</span></td><td>Facile</td><td>Tâche routinière</td></tr>
-          <tr><td><span class="ark-wiki-badge">12</span></td><td>Normal</td><td>Action standard</td></tr>
-          <tr><td><span class="ark-wiki-badge">14</span></td><td>Difficile</td><td>Défi réel</td></tr>
-          <tr><td><span class="ark-wiki-badge">16</span></td><td>Ardu</td><td>Prouesse</td></tr>
-          <tr><td><span class="ark-wiki-badge">18</span></td><td>Héroïque</td><td>Exploit légendaire</td></tr>
+          <tr><td><span class="ark-wiki-badge">5</span></td><td>Très facile</td><td>Tâche évidente, sans pression</td></tr>
+          <tr><td><span class="ark-wiki-badge">8</span></td><td>Facile</td><td>Action courante, conditions normales</td></tr>
+          <tr><td><span class="ark-wiki-badge">10</span></td><td>Normal</td><td>Défi standard pour un aventurier</td></tr>
+          <tr><td><span class="ark-wiki-badge">12</span></td><td>Difficile</td><td>Situation compliquée ou adversaire actif</td></tr>
+          <tr><td><span class="ark-wiki-badge">15</span></td><td>Ardu</td><td>Prouesse remarquable</td></tr>
+          <tr><td><span class="ark-wiki-badge">18</span></td><td>Héroïque</td><td>Exploit hors du commun</td></tr>
         </tbody>
       </table>
 
       <h2>Résultats Spéciaux</h2>
       <table class="ark-wiki-table">
-        <thead><tr><th>Résultat</th><th>Effet</th></tr></thead>
+        <thead><tr><th>Résultat D20</th><th>Effet</th></tr></thead>
         <tbody>
-          <tr><td>🎯 <strong>1</strong></td><td>Réussite Critique — succès exceptionnel</td></tr>
-          <tr><td>💥 <strong>20</strong></td><td>Échec Critique — complication narrative</td></tr>
-          <tr><td>≤ TR</td><td>Réussite</td></tr>
-          <tr><td>&gt; TR</td><td>Échec</td></tr>
+          <tr><td>🌟 <strong>1 naturel</strong></td><td>Réussite Critique — succès exceptionnel, avantage narratif</td></tr>
+          <tr><td>✅ <strong>≤ TR</strong></td><td>Réussite</td></tr>
+          <tr><td>❌ <strong>> TR</strong></td><td>Échec</td></tr>
+          <tr><td>💀 <strong>20 naturel</strong></td><td>Échec Critique — complication, rebondissement négatif</td></tr>
         </tbody>
       </table>
 
       <div class="ark-wiki-callout">
-        <strong>Exemple :</strong> Combat=12, ND=14 → TR = min(19, max(1, 12+10-14)) = 8. Le joueur doit faire ≤ 8 sur 1d20.
+        <strong>Exemple :</strong> Combat = 7, Spécialité Pistolet +3, ND = 10.<br>
+        TR = min(19, max(1, 7 + 3 + 10 − 10)) = <strong>10</strong>.<br>
+        Le joueur doit faire ≤ 10 sur son D20.
       </div>
+
+      <h2>Malus de Blessure</h2>
+      <p>Quand un personnage est blessé, ses jets subissent un malus automatique :</p>
+      <table class="ark-wiki-table">
+        <thead><tr><th>PV restants</th><th>État</th><th>Malus</th></tr></thead>
+        <tbody>
+          <tr><td>&gt; 50% des PV max</td><td>Normal</td><td>0</td></tr>
+          <tr><td>≤ 50% des PV max</td><td>Blessé</td><td>−2</td></tr>
+          <tr><td>≤ 25% des PV max</td><td>Gravement Blessé ⚠️</td><td>−4</td></tr>
+        </tbody>
+      </table>
     </div>
     {{/if}}
 
@@ -133,71 +172,95 @@
     {{#if (eq section "combat")}}
     <div class="ark-wiki-section">
       <h1>⚔️ Le Combat</h1>
-      <p>Le combat se déroule en <strong>rounds</strong> de quelques secondes. Chaque participant agit dans l'ordre d'initiative.</p>
 
-      <h2>Initiative</h2>
+      <h2>1. Initiative</h2>
       <div class="ark-wiki-formula">
-        Initiative = 1d20 + Score Combat
+        Initiative = 1D10 + Score d'Initiative (= Champ Combat)
       </div>
-      <p>Du plus haut au plus bas. En cas d'égalité : le PJ passe en premier.</p>
+      <p>Du plus haut au plus bas. Cliquez sur le bouton <strong>⚡ Initiative</strong> dans la fiche ou le tracker de combat.</p>
 
-      <h2>Actions par Round</h2>
+      <h2>2. Cibler l'adversaire</h2>
+      <p>Avant d'attaquer, ciblez un token pour que les dégâts s'appliquent automatiquement :</p>
+      <ul>
+        <li>Maintenez <strong>T</strong> et cliquez sur le token ennemi</li>
+        <li><em>ou</em> clic droit sur le token → <strong>Cibler</strong></li>
+      </ul>
+      <p>Un chevron vert apparaît sur le token ciblé.</p>
+
+      <h2>3. Attaquer</h2>
+      <p>Dans l'onglet <strong>Combat</strong> de la fiche PJ, cliquez sur ⚔️ à côté d'une arme. Le dialogue d'attaque s'ouvre :</p>
+      <ul>
+        <li><strong>ND</strong> : niveau de difficulté (10 par défaut)</li>
+        <li><strong>Bonus situationnel</strong> et <strong>Malus</strong> : modificateurs ponctuels accordés par le MJ</li>
+        <li>Le TR se met à jour en temps réel</li>
+      </ul>
+
+      <h2>4. Résolution des dégâts</h2>
+      <p>En cas de touche, le système lance automatiquement <strong>1D10</strong> et calcule :</p>
       <table class="ark-wiki-table">
-        <thead><tr><th>Action</th><th>Coût</th><th>Description</th></tr></thead>
+        <thead><tr><th>Type</th><th>Calcul</th><th>Effet</th></tr></thead>
         <tbody>
-          <tr><td>Attaquer</td><td>1 action</td><td>Jet Combat vs ND défenseur</td></tr>
-          <tr><td>Se déplacer</td><td>1 action</td><td>Mouvement de base</td></tr>
-          <tr><td>Viser</td><td>1 action</td><td>+2 au prochain jet d'attaque</td></tr>
-          <tr><td>Action gratuite</td><td>0</td><td>Parler, dégainer, etc.</td></tr>
+          <tr><td>🩸 <strong>Létaux</strong></td><td>Modificateur de l'arme (contact : + Impact)</td><td>S'accumulent — réduisent l'Énergie Vitale</td></tr>
+          <tr><td>💥 <strong>Superficiels</strong></td><td>D10 − Défense − Protection (min 0)</td><td>Réduisent les PV directement</td></tr>
         </tbody>
       </table>
 
-      <h2>Attaque et Défense</h2>
-      <p>L'attaquant effectue un jet de Combat contre un ND fixé par la posture du défenseur :</p>
-      <table class="ark-wiki-table">
-        <thead><tr><th>Posture</th><th>ND attaque</th><th>Effet</th></tr></thead>
-        <tbody>
-          <tr><td>Normale</td><td>12</td><td>Aucun modificateur</td></tr>
-          <tr><td>Défensive</td><td>14</td><td>−2 aux attaques du défenseur</td></tr>
-          <tr><td>Agressive</td><td>10</td><td>+2 aux dégâts, −2 à la défense</td></tr>
-        </tbody>
-      </table>
-
-      <h2>Dégâts et Blessures</h2>
-      <p>En cas de succès : les dégâts de l'arme sont réduits par la <strong>Vigueur</strong> du défenseur, puis soustraits aux PV.</p>
       <div class="ark-wiki-callout">
-        <strong>Blessure grave :</strong> Perdre 50% des PV max en un coup → Jet de Vigueur (ND 14) ou tomber à terre.
+        <strong>Réussite Critique (1 naturel) :</strong> dégâts maximaux <em>ou</em> ignore l'armure — au choix du joueur.
       </div>
+
+      <h2>5. Application automatique</h2>
+      <p>Si un token est ciblé, les dégâts sont appliqués instantanément. La carte de chat affiche :<br>
+      <em>🎯 Nom de la cible — PV avant → PV après | État</em></p>
+
+      <h2>États de santé</h2>
+      <table class="ark-wiki-table">
+        <thead><tr><th>PV restants</th><th>État</th><th>Malus jets</th></tr></thead>
+        <tbody>
+          <tr><td>&gt; 50% PV max</td><td>Normal</td><td>—</td></tr>
+          <tr><td>≤ 50% PV max</td><td>Blessé</td><td>−2</td></tr>
+          <tr><td>≤ 25% PV max</td><td>Gravement Blessé ⚠️</td><td>−4</td></tr>
+          <tr><td>0 PV</td><td>Hors combat</td><td>—</td></tr>
+        </tbody>
+      </table>
     </div>
     {{/if}}
 
     {{!-- COMPETENCES --}}
     {{#if (eq section "competences")}}
     <div class="ark-wiki-section">
-      <h1>🔧 Compétences & Aptitudes</h1>
+      <h1>🔧 Spécialités, Aptitudes & Traits</h1>
+
+      <h2>Les Spécialités</h2>
+      <p>Chaque Spécialité est rattachée à un <strong>Champ</strong> et accorde un bonus lors des jets correspondants.</p>
+      <table class="ark-wiki-table">
+        <thead><tr><th>Type</th><th>Bonus</th></tr></thead>
+        <tbody>
+          <tr><td>Spécialité simple</td><td>+3 au Champ</td></tr>
+          <tr><td>Double Spécialité</td><td>Bonus doublé</td></tr>
+        </tbody>
+      </table>
+      <p>Ajoutez des Spécialités depuis le <strong>Compendium Spécialités</strong> en glissant-déposant sur la fiche.</p>
 
       <h2>Les Aptitudes</h2>
-      <p>Les Aptitudes sont des capacités spéciales acquises au fil des aventures. Chacune a un coût en Points d'Expérience (PE).</p>
+      <p>Les Aptitudes sont des capacités spéciales propres à l'archétype. Elles peuvent être :</p>
       <table class="ark-wiki-table">
-        <thead><tr><th>Type</th><th>Description</th></tr></thead>
+        <thead><tr><th>Type</th><th>Fonctionnement</th></tr></thead>
         <tbody>
-          <tr><td><strong>Passive</strong></td><td>Bonus permanent actif en permanence</td></tr>
-          <tr><td><strong>Active</strong></td><td>Déclenchée par le joueur, parfois avec coût</td></tr>
+          <tr><td><strong>Passive</strong></td><td>Bonus permanent, toujours actif</td></tr>
+          <tr><td><strong>Active</strong></td><td>Déclenchée par le joueur à son tour</td></tr>
           <tr><td><strong>Réaction</strong></td><td>S'active automatiquement dans certaines conditions</td></tr>
         </tbody>
       </table>
 
-      <h2>Progression</h2>
-      <p>À la fin de chaque session, le MJ octroie entre 1 et 3 PE selon l'implication des joueurs.</p>
-      <table class="ark-wiki-table">
-        <thead><tr><th>Amélioration</th><th>Coût PE</th></tr></thead>
-        <tbody>
-          <tr><td>Augmenter un Champ de +1</td><td>Valeur actuelle × 2</td></tr>
-          <tr><td>Nouvelle Spécialité</td><td>3 PE</td></tr>
-          <tr><td>Nouvelle Aptitude</td><td>Coût indiqué</td></tr>
-          <tr><td>Nouveau Trait</td><td>1 PE</td></tr>
-        </tbody>
-      </table>
+      <h2>Les Traits</h2>
+      <p>Les Traits sont des caractéristiques narratives du personnage. Ils influencent le jeu de rôle et peuvent donner des bonus ou des contraintes mécaniques selon les situations.</p>
+
+      <h2>Progression (Expérience)</h2>
+      <p>À la fin de chaque session, le MJ attribue des <strong>Points d'Expérience</strong> selon l'implication des joueurs.</p>
+      <div class="ark-wiki-callout">
+        La progression est gérée dans l'onglet <strong>Avancement</strong> de la fiche PJ.
+      </div>
     </div>
     {{/if}}
 
@@ -205,25 +268,23 @@
     {{#if (eq section "pouvoirs")}}
     <div class="ark-wiki-section">
       <h1>✨ Pouvoirs & Surnaturel</h1>
-      <p>Certains personnages ont accès à des capacités extraordinaires : magie antique, technologie secrète, dons psychiques…</p>
+      <p>Certains personnages ont accès à des capacités extraordinaires : dons psychiques, physiologie exceptionnelle ou magie ancienne.</p>
 
-      <h2>Activation</h2>
-      <p>Activer un Pouvoir nécessite un jet du Champ associé contre le ND indiqué dans la description du Pouvoir.</p>
-
-      <h2>Points de Pouvoir</h2>
+      <h2>Trois Types de Pouvoirs</h2>
       <table class="ark-wiki-table">
-        <thead><tr><th>Action</th><th>Coût PP</th></tr></thead>
+        <thead><tr><th>Type</th><th>Origine</th><th>Exemples</th></tr></thead>
         <tbody>
-          <tr><td>Pouvoir mineur</td><td>1 PP</td></tr>
-          <tr><td>Pouvoir majeur</td><td>3 PP</td></tr>
-          <tr><td>Pouvoir légendaire</td><td>5 PP</td></tr>
-          <tr><td>Récupération (repos court)</td><td>+1d6 PP</td></tr>
-          <tr><td>Récupération (repos long)</td><td>Tous PP</td></tr>
+          <tr><td>🧠 <strong>Psioniques</strong></td><td>Don mental inné</td><td>Télépathie, précognition, télékinésie</td></tr>
+          <tr><td>💪 <strong>Physiologiques</strong></td><td>Corps hors norme</td><td>Force surhumaine, régénération, sens aiguisés</td></tr>
+          <tr><td>🔮 <strong>Magiques</strong></td><td>Savoir ésotérique</td><td>Rituels anciens, invocations, protections</td></tr>
         </tbody>
       </table>
 
+      <h2>Activation</h2>
+      <p>Activer un Pouvoir nécessite un jet du <strong>Champ associé</strong> contre le ND indiqué dans la description du Pouvoir.</p>
+
       <div class="ark-wiki-callout">
-        <strong>Surcharge :</strong> Utiliser un Pouvoir sans PP → Jet Savoir ND 16 ou subir 1d6 dégâts directs (ignore Vigueur).
+        Les Pouvoirs sont gérés dans l'onglet <strong>Avancement</strong> de la fiche PJ. Ajoutez-les depuis le <strong>Compendium Pouvoirs</strong>.
       </div>
     </div>
     {{/if}}
@@ -231,33 +292,28 @@
     {{!-- EQUIPEMENT --}}
     {{#if (eq section "equipement")}}
     <div class="ark-wiki-section">
-      <h1>🎒 Équipement & Armes</h1>
+      <h1>🎒 Armes & Équipement</h1>
 
-      <h2>Armes</h2>
+      <h2>Catégories d'Armes</h2>
       <table class="ark-wiki-table">
-        <thead><tr><th>Arme</th><th>Dégâts</th><th>Portée</th><th>Notes</th></tr></thead>
+        <thead><tr><th>Catégorie</th><th>Portée</th><th>Dégâts létaux</th></tr></thead>
         <tbody>
-          <tr><td>Poing / Pied</td><td>1d4</td><td>Contact</td><td>−</td></tr>
-          <tr><td>Couteau</td><td>1d6</td><td>Contact</td><td>Discret</td></tr>
-          <tr><td>Matraque</td><td>1d6</td><td>Contact</td><td>Assommant</td></tr>
-          <tr><td>Pistolet</td><td>1d8</td><td>Courte</td><td>6 balles</td></tr>
-          <tr><td>Fusil</td><td>1d10</td><td>Longue</td><td>Bruyant</td></tr>
-          <tr><td>Thompson</td><td>1d8 × 3</td><td>Courte</td><td>Rafale, 30 balles</td></tr>
+          <tr><td>🤜 <strong>Mêlée</strong></td><td>Contact</td><td>Impact + mod. arme (Physique/4)</td></tr>
+          <tr><td>🔫 <strong>Feu</strong></td><td>Courte / Longue</td><td>Mod. arme uniquement</td></tr>
+          <tr><td>🪃 <strong>Jet</strong></td><td>Courte</td><td>Impact + mod. arme</td></tr>
+          <tr><td>⚡ <strong>Spéciale</strong></td><td>Variable</td><td>Selon description</td></tr>
         </tbody>
       </table>
 
-      <h2>Armures</h2>
-      <table class="ark-wiki-table">
-        <thead><tr><th>Protection</th><th>Réduction dégâts</th></tr></thead>
-        <tbody>
-          <tr><td>Veste en cuir</td><td>1</td></tr>
-          <tr><td>Gilet pare-balles</td><td>3</td></tr>
-          <tr><td>Armure légère</td><td>2</td></tr>
-        </tbody>
-      </table>
+      <h2>Calcul des dégâts</h2>
+      <div class="ark-wiki-formula">
+        Superficiels = D10 − Défense − Protection totale (min 0)
+      </div>
+      <p><strong>Défense</strong> = Physique ÷ 4 (arrondi sup.) — résistance naturelle du personnage.<br>
+      <strong>Protection totale</strong> = somme des protections portées (armures, gilets…).</p>
 
-      <h2>Encombrement</h2>
-      <p>Capacité de transport = <span class="ark-wiki-badge">Combat × 2</span> unités de charge. Au-delà : −2 à tous les jets physiques.</p>
+      <h2>Équipements</h2>
+      <p>Les objets (équipements, outils, véhicules…) sont accessibles via le <strong>Compendium Équipements</strong>. Ils s'affichent dans l'onglet <strong>Principal</strong> de la fiche.</p>
     </div>
     {{/if}}
 
@@ -267,27 +323,28 @@
       <h1>🎪 Conseils du MJ</h1>
 
       <h2>Philosophie du Jeu</h2>
-      <p>Arkéos est un jeu de <strong>pulp-aventure</strong> : les personnages sont compétents, les actions épiques, et le danger est réel mais jamais futile. Favorisez le spectaculaire sur le réalisme strict.</p>
+      <p>Arkéos est un jeu de <strong>pulp-aventure des années 1930</strong> : les personnages sont compétents, les actions épiques, le danger réel mais jamais gratuit. Privilégiez le spectaculaire sur le réalisme strict, et récompensez la prise de risque.</p>
 
       <h2>Fixer les ND</h2>
       <table class="ark-wiki-table">
         <thead><tr><th>Situation</th><th>ND recommandé</th></tr></thead>
         <tbody>
-          <tr><td>Sans pression, conditions idéales</td><td>10</td></tr>
-          <tr><td>Conditions normales</td><td>12</td></tr>
-          <tr><td>Sous pression ou conditions adverses</td><td>14</td></tr>
-          <tr><td>Situation critique ou opposition active</td><td>16</td></tr>
-          <tr><td>L'impossible (pour les héros)</td><td>18</td></tr>
+          <tr><td>Pas de pression, conditions idéales</td><td>5</td></tr>
+          <tr><td>Conditions normales pour un aventurier</td><td>10</td></tr>
+          <tr><td>Adversaire actif, conditions difficiles</td><td>12</td></tr>
+          <tr><td>Situation critique, opposition déterminée</td><td>15</td></tr>
+          <tr><td>Exploit légendaire</td><td>18+</td></tr>
         </tbody>
       </table>
 
       <h2>Réussites Partielles</h2>
-      <p>Un jet raté de 1 à 2 points peut être une <em>réussite partielle</em> : l'action réussit mais avec une complication narrative. Encouragez les joueurs à dépasser leurs limites.</p>
+      <p>Un jet raté de 1 à 2 points peut être traité comme une <em>réussite partielle</em> : l'action réussit mais avec une complication narrative. Cela maintient le rythme et crée des situations intéressantes.</p>
 
-      <h2>XP & Récompenses</h2>
-      <div class="ark-wiki-callout">
-        Attribuez 1 PE pour la participation, +1 pour un exploit notable, +1 pour un moment de jeu de rôle mémorable.
-      </div>
+      <h2>Points d'Éclat</h2>
+      <p>Distribuez des Points d'Éclat en récompense des bons moments de jeu de rôle, des idées créatives ou des moments héroïques. Ils sont là pour que les joueurs osent prendre des risques.</p>
+
+      <h2>PNJ en combat</h2>
+      <p>Utilisez la <strong>fiche PNJ</strong> simplifiée pour les adversaires. Le ND de la fiche PNJ permet d'ajuster rapidement la difficulté sans ouvrir de dialogue. Si un token joueur est ciblé, les dégâts s'appliquent automatiquement.</p>
     </div>
     {{/if}}
 
@@ -297,38 +354,31 @@
       <h1>🌍 L'Univers d'Arkéos</h1>
 
       <h2>Les Années 1930</h2>
-      <p>Arkéos se déroule dans un monde alternatif des années 1930 où l'extraordinaire existe bel et bien : reliques antiques dotées de puissance, sociétés secrètes aux buts obscurs, créatures oubliées dans des régions inexplorées.</p>
+      <p>Arkéos se déroule dans un monde des années 1930 où l'extraordinaire existe réellement : reliques antiques dotées de puissance, sociétés secrètes aux buts obscurs, créatures oubliées dans des régions inexplorées, technologies décalées entre le progrès et l'occulte.</p>
 
-      <h2>Ambiance</h2>
+      <h2>Ambiance Pulp</h2>
       <div class="ark-wiki-grid">
         <div class="ark-wiki-tile">
           <div class="ark-wiki-tile-title">🏛️ Mystères Anciens</div>
-          <p>Civilisations disparues, artefacts perdus, temples oubliés</p>
+          <p>Civilisations disparues, artefacts perdus, temples oubliés aux confins du monde</p>
         </div>
         <div class="ark-wiki-tile">
           <div class="ark-wiki-tile-title">🕵️ Sociétés Secrètes</div>
-          <p>Complots mondiaux, agents doubles, organisations clandestines</p>
+          <p>Complots mondiaux, agents doubles, organisations clandestines aux objectifs obscurs</p>
         </div>
         <div class="ark-wiki-tile">
           <div class="ark-wiki-tile-title">✈️ Globe-Trotter</div>
-          <p>Expéditions aux quatre coins du monde, aventure et découverte</p>
+          <p>Expéditions aux quatre coins du monde — jungles, déserts, villes coloniales, îles perdues</p>
         </div>
         <div class="ark-wiki-tile">
           <div class="ark-wiki-tile-title">⚗️ Science Étrange</div>
-          <p>Inventions révolutionnaires, savants fous, technologie secrète</p>
+          <p>Inventions révolutionnaires, savants fous, technologie qui dépasse l'entendement</p>
         </div>
       </div>
 
-      <h2>Les Factions</h2>
-      <table class="ark-wiki-table">
-        <thead><tr><th>Faction</th><th>Rôle</th></tr></thead>
-        <tbody>
-          <tr><td>🦅 <strong>L'Aigle d'Acier</strong></td><td>Organisation secrète protégeant l'humanité des menaces occultes</td></tr>
-          <tr><td>🐍 <strong>L'Ordre du Serpent</strong></td><td>Cult cherchant à exploiter les pouvoirs des anciennes civilisations</td></tr>
-          <tr><td>🔭 <strong>La Société Hermès</strong></td><td>Académie ésotérique étudiant les phénomènes inexplicables</td></tr>
-          <tr><td>💀 <strong>La Main Noire</strong></td><td>Cartel criminel aux connexions surnaturelles</td></tr>
-        </tbody>
-      </table>
+      <div class="ark-wiki-callout">
+        <strong>Arkéos</strong> est une création d'<strong>Extraordinary Worlds Studio</strong>. Ce système Foundry est une adaptation non-officielle réalisée par un fan. Pour jouer, vous devez posséder le jeu original publié par EW Studio.
+      </div>
     </div>
     {{/if}}
 
@@ -336,30 +386,34 @@
     {{#if (eq section "creation")}}
     <div class="ark-wiki-section">
       <h1>🎲 Création de Personnage</h1>
-      <p>La création de personnage se fait via le bouton <strong>"🎲 Créer un Personnage"</strong> dans la barre latérale.</p>
+      <p>Cliquez sur le bouton <strong>"🎲 Créer un Personnage"</strong> dans la barre latérale des Acteurs pour ouvrir l'assistant de création.</p>
 
-      <h2>Étapes</h2>
+      <h2>Étapes de création</h2>
       <ol class="ark-wiki-steps">
-        <li><strong>Concept</strong> — Définissez qui est votre personnage et son background</li>
-        <li><strong>Archétype</strong> — Choisissez parmi les archétypes disponibles (Aventurier, Détective, Savant, Combattant…)</li>
-        <li><strong>Répartition des Points</strong> — Distribuez 40 points entre les 4 Champs (min 5, max 15)</li>
-        <li><strong>Spécialités</strong> — Choisissez 3 Spécialités liées à votre Champ dominant</li>
-        <li><strong>Traits</strong> — Définissez 2 Traits positifs et 1 Trait négatif</li>
-        <li><strong>Équipement</strong> — Sélectionnez votre équipement de départ selon l'archétype</li>
-        <li><strong>Histoire</strong> — Rédigez un court historique (3-5 lignes)</li>
+        <li><strong>Concept & Archétype</strong> — Qui est votre personnage ? Quel est son background ? Choisissez son archétype (Aventurier, Détective, Savant, Journaliste…)</li>
+        <li><strong>Caractéristiques</strong> — Répartissez vos points entre Physique, Mental, Perception et Présence (min 1, max 15). Les Champs se calculent automatiquement.</li>
+        <li><strong>Spécialités</strong> — Depuis le Compendium Spécialités, faites glisser vos spécialités sur la fiche.</li>
+        <li><strong>Aptitudes & Traits</strong> — Depuis les compendiums correspondants, ajoutez les capacités de votre archétype.</li>
+        <li><strong>Équipement de départ</strong> — Depuis le Compendium Armes et Équipements.</li>
+        <li><strong>État civil & Histoire</strong> — Remplissez les infos de personnage dans l'onglet Principal.</li>
       </ol>
 
-      <h2>Points de Départ</h2>
+      <h2>Récapitulatif des valeurs initiales</h2>
       <table class="ark-wiki-table">
-        <thead><tr><th>Ressource</th><th>Valeur</th></tr></thead>
+        <thead><tr><th>Valeur</th><th>Calcul</th></tr></thead>
         <tbody>
-          <tr><td>Points à répartir (Champs)</td><td>40 points</td></tr>
-          <tr><td>Spécialités gratuites</td><td>3</td></tr>
-          <tr><td>Points de Vie</td><td>10 + (Combat − 10) / 2</td></tr>
-          <tr><td>Points de Pouvoir</td><td>5 (si accès au surnaturel)</td></tr>
-          <tr><td>Points d'Expérience</td><td>0</td></tr>
+          <tr><td>PV Max</td><td>Physique × 3</td></tr>
+          <tr><td>EV Max</td><td>(Mental × 2) + Physique</td></tr>
+          <tr><td>Défense</td><td>Physique ÷ 4 (arrondi sup.)</td></tr>
+          <tr><td>Initiative</td><td>(Physique + Perception) ÷ 2</td></tr>
+          <tr><td>Points d'Éclat</td><td>3 (maximum)</td></tr>
+          <tr><td>Expérience</td><td>0</td></tr>
         </tbody>
       </table>
+
+      <div class="ark-wiki-callout">
+        <strong>Tip :</strong> Un Physique élevé donne plus de PV, une meilleure Défense et un Impact plus fort au combat. Un Mental élevé donne une Énergie Vitale importante et améliore Connaissance et Savoir.
+      </div>
     </div>
     {{/if}}
 
