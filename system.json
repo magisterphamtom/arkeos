@@ -129,5 +129,11 @@
   "manifest": "https://github.com/magisterphamtom/arkeos/releases/latest/download/system.json",
   "download": "https://github.com/magisterphamtom/arkeos/releases/download/v1.3.0/arkeos.zip",
   "bugs": "https://github.com/magisterphamtom/arkeos/issues",
-  "license": "MIT"
+  "license": "MIT",
+  "media": [
+    {
+      "type": "cover",
+      "url": "https://raw.githubusercontent.com/magisterphamtom/arkeos/main/.github/banner.png"
+    }
+  ]
 }
